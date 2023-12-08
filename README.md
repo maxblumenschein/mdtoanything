@@ -144,7 +144,7 @@ output:
       template: info.latex
 ```
 
-# Word
+#### Word
 
 ```yaml
 output:
@@ -161,7 +161,7 @@ output:
 
 By default Pandoc uses ``reference.docx`` located inside the Pandoc user directory. You can customize the format styles inside to adjust the typesetting of Word output.
 
-# InDesign
+#### InDesign
 
 ```yaml
 output:
