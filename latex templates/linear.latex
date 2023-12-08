@@ -1,0 +1,429 @@
+\documentclass[$if(fontsize)$$fontsize$$else$11pt$endif$,$if(lang)$$babel-lang$,$endif$a4paper]{$documentclass$}
+
+% packages %
+\usepackage{babel}
+\usepackage{graphicx}  % importing of images
+\usepackage[hidelinks]{hyperref} % cross-referencing commands
+\usepackage[nameinlink]{cleveref} % advanced referencing
+\usepackage{etoolbox} % programming facilities
+\usepackage{fancyhdr} % header & footer customization
+\usepackage[titles]{tocloft} % table of contents customization
+\usepackage{biblatex} % bibliography
+\usepackage{geometry} % page layout
+\usepackage{xcolor} % custom colors
+\usepackage[normalem]{ulem} % strike-through
+\usepackage{lmodern} % lmodern as base-font
+\usepackage{titling} % custom title styling
+\usepackage{titlesec} % custom title fonts
+\usepackage{fontspec} % allow custom fonts
+\usepackage{luaotfload} % opentype custom fonts
+\usepackage{setspace} % formating of text
+\usepackage{scrextend} % footnote-styling
+\usepackage{enumitem} % lists
+\usepackage{caption} % captions customization
+\usepackage{longtable} % tables
+\usepackage{booktabs} % tables+
+\usepackage[toc]{appendix}
+\usepackage{pdfpages}
+\usepackage{url}
+
+% define variables %
+\def\name{
+	Albert Einstein
+	}
+\def\institution{
+	ETH Zürich
+	}
+\def\department{
+	Institut für Teilchenphysik und Astrophysik
+	}
+\def\street{
+	Otto-​Stern-Weg 5
+	}
+\def\city{
+	Zürich
+	}
+\def\zipcode{
+	CH-8093
+	}
+\def\phone{
+	+41 78 881 86 11
+	}
+\def\email{
+	albert.einstein@phys.ethz.ch
+	}
+\def\webpage{
+	albert-einstein.ch
+	}
+\def\bankaccount{
+	Zürcher Kantonalbank, CH-8010 Zürich\hfill\break
+	IBAN: CH72 0070 0930 0051 9082 0\hfill\break
+	SWIFT/BIC: ZKBKCHZZ80A
+	}
+
+% define path-variables %
+\def\fontpath{/windows/fonts}
+
+% page layout %
+\geometry{
+top=43.3353571543mm, %297mm/1.618^4
+bottom=43.3353571543mm,
+textwidth=123.3292856914mm, %210mm-(297mm/1.618^4)*2
+hcentering,
+}
+
+% custom fonts set %
+\setstretch{1.1}
+\setmainfont[
+Numbers = OldStyle,
+ItalicFont = BradfordLL-RegularItalic.otf,
+BoldFont = BradfordLL-Bold.otf,
+BoldItalicFont  = BradfordLL-BoldItalic.otf]
+{BradfordLL-Regular.otf}
+
+%Söhne
+\setsansfont[
+ItalicFont = 7191b237-670e-465d-b861-9f0c3c6dd411.otf,
+BoldFont = 6a3b5c11-edec-48f3-a82e-ee8a38c85864.otf,
+BoldItalicFont  = 49a80815-f578-4869-87f3-e708e6bab923.otf]
+{c00e802e-6b81-4048-bffc-cf2ccfd38a61.otf}
+
+\setmonofont[
+Path = /Users/maxehrengruber/Documents/Ehrengruber/Office/Fonts/favorites/,
+Scale       = MatchLowercase ,
+ItalicFont = BradfordMonoLL-Regular.otf,
+BoldFont = BradfordMonoLL-Regular.otf,
+BoldItalicFont  = BradfordMonoLL-Regular.otf]
+{BradfordMonoLL-Regular.otf}
+
+%lining-numbers command for occasional use
+\newcommand\liningnumbers{\addfontfeature{Numbers={Lining,Monospaced}}}
+
+% body %
+\setlength{\emergencystretch}{3em} %parameter for justification
+\setlength{\parindent}{22pt}
+
+% custom title & heading fonts
+\makeatletter
+\@ifclassloaded{report}{
+\setcounter{secnumdepth}{3}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{}
+}{}
+\makeatother
+
+\makeatletter
+\@ifclassloaded{report}{
+%\titleformat{\chapter}[display]{\Huge\sffamily\bfseries}{\chaptertitlename\thechapter}{\\ \Huge\bfseries}{.4em}{}
+\titleformat{\chapter}[display]{\raggedright\fontsize{90}{60}\sffamily\bfseries}{\fontsize{90}{60}\sffamily\thechapter}{0pt}{\setstretch{1.0}\Huge\bfseries}[]
+\titleformat{\section}{\setstretch{1.0}\Large\sffamily\bfseries}{\thesection~}{.2em}{}
+\titleformat{\subsection}{\large\sffamily\bfseries}{\thesubsection~}{.2em}{}
+\titleformat{\subsubsection}{\normalsize\sffamily\bfseries}{\thesubsubsection~}{0em}{}
+}{}
+\makeatother
+
+\makeatletter
+\@ifclassloaded{article}{
+\titleformat{\section}{\Large\sffamily\bfseries}{\thesection~}{.2em}{}
+\titleformat{\subsection}{\large\sffamily\bfseries}{\thesubsection~}{.2em}{}
+\titleformat{\subsubsection}{\normalsize\sffamily\bfseries}{\thesubsubsection~}{0em}{}
+}{}
+\makeatother
+
+% define isreport boolean which may be used inside the document contrary to ifclassloaded
+\providebool{isreport}
+\makeatletter
+\@ifclassloaded{report}{\booltrue{isreport}}{\boolfalse{isreport}}
+\makeatother
+
+% define isarticle boolean which may be used inside the document contrary to ifclassloaded
+\providebool{isarticle}
+\makeatletter
+\@ifclassloaded{article}{\booltrue{isarticle}}{\boolfalse{isarticle}}
+\makeatother
+
+% title &
+% patch \maketitle so that it doesn't center
+\makeatletter
+\renewcommand{\maketitle}{\vspace*{\droptitle}\bgroup\setlength{\parindent}{0pt}
+\begin{flushleft}
+  \sffamily\setstretch{1.0}\Huge\bfseries\@title\par\vspace*{\baselineskip}
+  \normalsize\mdseries\@date\par
+  \normalsize\mdseries\@author
+\end{flushleft}\egroup
+}
+\makeatother
+
+\setlength{\droptitle}{50pt}
+
+\title{$title$\vspace*{2\baselineskip}}
+\date{
+  $project$\endgraf
+  $date$\endgraf
+  $if(adress)$\vspace*{2\baselineskip}$endif$ %spacing between date and author, if full adress shall be included
+}
+% add additional info to author field %
+\author{
+        \name\endgraf
+        $if(adress)${
+          \department\endgraf
+          \vspace*{\baselineskip}
+          \institution\endgraf
+          \street\endgraf
+          \zipcode\,\city\endgraf
+          \phone\endgraf
+          \email\endgraf
+          }$endif$\endgraf\vspace*{2\baselineskip}
+        %\vspace{-0.6\baselineskip} % adjust spacing after author field
+        }
+
+\date{
+    }
+% header & footer %
+\pagestyle{fancy} % for "fancy" style
+    \fancyhf{} % remove header & footer
+    \fancyfoot[R]{\scriptsize\sffamily\extcolor{lightgray}\thepage} % folio on footer's right side
+    \renewcommand{\headrulewidth}{0pt} % remove header decoration line
+
+\fancypagestyle{plain} % for "plain" style, used for titlepage and chapter beginnings
+    \fancyhf{} % remove header & footer
+    \fancyfoot[R]{\scriptsize\sffamily\textcolor{lightgray}\thepage} % folio on footer's right side
+    \renewcommand{\headrulewidth}{0pt}%
+
+% abstract %
+% left flushed abstract
+\renewenvironment{abstract}
+ {\vspace*{\baselineskip}
+ \par\noindent\ignorespaces % remove label "Abstract"
+ }
+ {\par\medskip}
+
+% table of contents %
+\renewcommand{\cfttoctitlefont}{\sffamily\Huge\bfseries}
+
+\makeatletter
+\@ifclassloaded{report}{
+% unböld chapter names %
+\renewcommand\cftchapfont{\sffamily\mdseries}
+% unböld chapter folios %
+\renewcommand\cftchappagefont{\sffamily\mdseries}
+% removing chapter name %
+\renewcommand{\@chapapp}\Huge{}
+% unböld section names %
+\renewcommand\cftsecfont{\sffamily\mdseries}
+% unböld section folios %
+\renewcommand\cftsecpagefont{\sffamily\mdseries}
+% unböld subsection names %
+\renewcommand\cftsubsecfont{\sffamily\mdseries}
+% unböld subsection folios %
+\renewcommand\cftsubsecpagefont{\sffamily\mdseries}
+}{}
+\makeatother
+
+\makeatletter
+\@ifclassloaded{book}{
+% unböld chapter names %
+\renewcommand\cftchapfont{\sffamily\mdseries}
+% unböld chapter folios %
+\renewcommand\cftchappagefont{\sffamily\mdseries}
+% removing chapter name %
+\renewcommand{\@chapapp}\Huge{}
+% unböld section names %
+\renewcommand\cftsecfont{\sffamily\mdseries}
+% unböld section folios %
+\renewcommand\cftsecpagefont{\sffamily\mdseries}
+% unböld subsection names %
+\renewcommand\cftsubsecfont{\sffamily\mdseries}
+% unböld subsection folios %
+\renewcommand\cftsubsecpagefont{\sffamily\mdseries}
+}{}
+\makeatother
+
+\makeatletter
+\@ifclassloaded{article}{
+% unböld section names %
+\renewcommand\cftsecfont{\sffamily\mdseries}
+% unböld section folios %
+\renewcommand\cftsecpagefont{\sffamily\mdseries}
+% unböld subsection names %
+\renewcommand\cftsubsecfont{\sffamily\mdseries}
+% unböld subsection folios %
+\renewcommand\cftsubsecpagefont{\sffamily\mdseries}
+% unböld subsubsection names %
+\renewcommand\cftsubsubsecfont{\sffamily\mdseries}
+% unböld subsubsection folios %
+\renewcommand\cftsubsubsecpagefont{\sffamily\mdseries}
+}{}
+\makeatother
+
+% list of figures %
+\renewcommand\cftloftitlefont{\sffamily\Huge\bfseries}
+% unböld figure caption %
+\renewcommand\cftfigfont{\sffamily\mdseries}
+% unböld figure folios %
+\renewcommand\cftfigpagefont{\sffamily\mdseries}
+
+% blockquotes %
+\AtBeginEnvironment{quote}{\small}
+
+\renewenvironment{quote}{%
+  \list{}{%
+    \leftmargin22pt   % this is the adjusting screw
+    \rightmargin22pt
+    \setstretch{1.1}
+  }
+  \item\relax
+}
+{\endlist}
+ \AtBeginEnvironment{quote}{\par
+ %\itshape%  % italic blockquotes
+ }
+
+% lists %
+\setlist{leftmargin=22pt}
+
+% footnotes %
+% spacing between text and footlinerule
+\addtolength{\skip\footins}{11pt}
+
+% spacing between footlinerule and footnotes
+\makeatletter
+\def\footnoterule{\kern-8\p@
+  \hrule \@width 55pt \kern 6.475\p@} % baseline as spacing (11pt*1.25=13.75pt)\hrule is .4pt high
+\makeatother
+
+% spacing after footnotemarker and footnote
+\makeatletter
+\long\def\@makefntext#1{%
+  \parindent 1em\noindent\hb@xt@ \baselineskip{\hss\@makefnmark}~#1%
+}
+\makeatother
+
+% non-superscript footnotetextmarker
+\deffootnote{2.15em}{1em}{\liningnumbers\textbf\thefootnotemark\quad}
+
+% images %
+$if(graphics)$
+\usepackage{graphics}
+\usepackage{float}
+
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\linewidth,height=\textheight,keepaspectratio}
+
+\let\origfigure\figure
+\let\endorigfigure\endfigure
+\renewenvironment{figure}[1][2] {
+    \expandafter\origfigure\expandafter[h]
+} {
+    \endorigfigure
+}
+$endif$
+
+% lists %
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% leftaligned captions
+\captionsetup{justification   = raggedright,
+              singlelinecheck = false,
+              font={footnotesize,stretch=1.1}}
+
+% bibliography style %
+\renewcommand*{\bibfont}{\raggedright}
+
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{22pt}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+\urlstyle{same}
+
+%----------%
+% document %
+\begin{document}
+
+$if(title)$
+\maketitle
+\thispagestyle{empty}
+$endif$
+
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+\ifbool{isreport}{\pagebreak}{}
+\ifbool{isarticle}{
+$if(titlepage)$
+\pagebreak
+$endif$
+}{}
+
+$if(toc)$
+\tableofcontents
+$endif$
+
+$body$
+
+$if(lof)$
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+$endif$
+
+$if(lot)$
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+$endif$
+
+\begingroup
+\nocite{*}
+\raggedright\printbibliography
+\endgroup
+
+%$if(apx)$
+%\appendix
+%\chapter{Appendix}
+%\includepdf[pages=-]{$apx$}
+%$endif$
+
+\ifbool{isreport}{
+$if(apx)$
+\appendix
+\chapter{Appendix}
+\includepdf[pages=-]{$apx$}
+$endif$
+}{}
+
+\ifbool{isarticle}{
+$if(apx)$
+\appendix
+\section{Appendix}
+\includepdf[pages=-]{$apx$}
+$endif$
+}{}
+
+\end{document}

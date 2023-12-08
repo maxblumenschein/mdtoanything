@@ -1,0 +1,194 @@
+\documentclass[$if(fontsize)$$fontsize$$else$11pt$endif$,$if(lang)$$babel-lang$,$endif$a4paper]{article}
+
+\usepackage{babel}
+\usepackage{graphicx}  % importing of images
+\usepackage[hidelinks]{hyperref} % cross-referencing commands
+\usepackage[nameinlink]{cleveref} % advanced referencing
+\usepackage{etoolbox} % programming facilities
+\usepackage{geometry} % page layout
+\usepackage{fancyhdr} % header & footer customization
+\usepackage{afterpage}
+\usepackage[titles]{tocloft} % table of contents customization
+\usepackage{biblatex} % bibliography
+\usepackage{xcolor} % custom colors
+\usepackage{ragged2e}
+\usepackage[normalem]{ulem} % strike-through
+\usepackage{lmodern} % lmodern as base-font
+\usepackage{titling} % custom title styling
+\usepackage{titlesec} % custom title fonts
+\usepackage{fontspec} % allow custom fonts
+\usepackage{luaotfload} % opentype custom fonts
+\usepackage{setspace} % formating of text
+\usepackage{scrextend} % footnote-styling
+\usepackage{enumitem} % lists
+\usepackage{caption} % captions customization
+\usepackage{longtable} % tables
+\usepackage{booktabs} % tables+
+\usepackage{array} % used for tables
+\usepackage[toc]{appendix}
+\usepackage{pdfpages}
+\usepackage{url}
+\usepackage{lastpage} % use for folio (all pages)
+
+% define variables %
+\def\name{
+	Albert Einstein
+	}
+\def\institution{
+	ETH Zürich
+	}
+\def\department{
+	Institut für Teilchenphysik und Astrophysik
+	}
+\def\street{
+	Otto-​Stern-Weg 5
+	}
+\def\city{
+	Zürich
+	}
+\def\zipcode{
+	CH-8093
+	}
+\def\phone{
+	+41 78 881 86 11
+	}
+\def\email{
+	albert.einstein@phys.ethz.ch
+	}
+\def\webpage{
+	albert-einstein.ch
+	}
+\def\bankaccount{
+	Zürcher Kantonalbank, CH-8010 Zürich\hfill\break
+	IBAN: CH72 0070 0930 0051 9082 0\hfill\break
+	SWIFT/BIC: ZKBKCHZZ80A
+	}
+
+% define path-variables %
+\def\fontpath{/windows/fonts}
+
+% page layout %
+\geometry{
+	a4paper, % Paper size
+	top=48mm, % Top margin
+	textheight=233mm, % textheigth
+	left=20mm, % Left margin
+	right=20mm, % Right margin
+	headheight=26mm, %Header height
+	headsep=10mm, %standard circa 8.8mm (20pt?)
+	%showframe % Uncomment to show frames around the margins for debugging purposes
+}
+
+% custom fonts set %
+\setstretch{1.1}
+\setmainfont[
+Numbers = Proportional,
+ItalicFont = ABCSocialEdu-BookItalic.otf,
+BoldFont = ABCSocialEdu-Bold.otf,
+BoldItalicFont  = ABCSocialEdu-BoldItalic.otf]
+{ABCSocialEdu-Book.otf}
+
+\newfontfamily\logo[
+ItalicFont = ABCSocialExtendedEdu-Bold.otf,
+BoldFont = ABCSocialExtendedEdu-Bold.otf,
+BoldItalicFont  = ABCSocialExtendedEdu-Bold.otf]
+{ABCSocialExtendedEdu-Bold.otf}
+
+\newfontfamily\info[
+ItalicFont = ABCDiatypeMono-RegularItalic.otf,
+BoldFont = ABCDiatypeMono-Medium.otf,
+BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
+{ABCDiatypeMono-Regular.otf}
+
+% body %
+\setlength{\parindent}{0pt} % Paragraph indentation
+\setlength{\parskip}{1em} % Vertical space between paragraphs
+\setlength{\emergencystretch}{3em} %parameter for justification
+
+% table %
+\AtBeginEnvironment{longtable}{\addfontfeature{Numbers={Lining,Monospaced}}}
+\setlength\heavyrulewidth{0.5 pt}
+\setlength\lightrulewidth{0.25 pt}
+
+$if(invoice)$
+\AfterEndEnvironment{longtable}{\addfontfeature{Numbers={Lining,Monospaced}}Bitte überweisen Sie den Betrag auf folgendes Konto: \hfill\break
+\bankaccount}
+$endif$
+
+\AtBeginEnvironment{quote}{\small}
+
+% header & footer %
+\fancypagestyle{firstpage}{%
+	\fancyhf{} % Clear default headers/footers
+	\lhead{
+		\fontsize{10}{13}\logo\selectfont \name \\ \bigskip
+		\fontsize{7}{9}\info\selectfont \begin{minipage}[t][24mm][t]{\textwidth}{
+				\street \\ % Address
+				\zipcode\,\city \bigskip\\
+				\email \\
+				\webpage
+			}
+		\end{minipage}
+		}
+	\renewcommand{\headrulewidth}{0pt} % No header rule
+	\renewcommand{\footrulewidth}{0pt} % Footer rule thickness
+	\fancyfoot[R]{\info\tiny\color{lightgray}\thepage\//\pageref{LastPage}} % folio on footer's right side
+}
+
+\fancypagestyle{subsequentpages}{%
+	\fancyhf{} % Clear default headers/footers
+	\lhead{
+		\fontsize{10}{13}\logo\selectfont \name \\ \bigskip\bigskip\bigskip\bigskip\bigskip
+		\vfill
+	}
+	\renewcommand{\headrulewidth}{0pt} % Header rule thickness
+	\renewcommand{\footrulewidth}{0pt} % Footer rule thickness
+	\fancyfoot[R]{\info\tiny\color{lightgray}\thepage\//\pageref{LastPage}} % folio on footer's right side
+}
+
+\AtBeginDocument{\thispagestyle{firstpage}} % Use the first page headers/footers style on the first page
+\pagestyle{subsequentpages} % Use the subsequent pages headers/footers style on subsequent pages
+
+%----------------------------------------------------------------------------------------
+
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	ADDRESSEE AND GREETING
+%----------------------------------------------------------------------------------------
+\begin{minipage}[t][53mm][t]{\textwidth}{
+		$to$
+	}
+\end{minipage}
+
+%----------------------------------------------------------------------------------------
+%	Subject
+%----------------------------------------------------------------------------------------
+$if(date)$
+\begingroup
+\fontsize{7}{9}\info\selectfont
+\begin{minipage}[t][24mm][t]{\textwidth}{
+		$if(reference)$$reference$ \\$endif$
+		$if(date)$\city, $date$$endif$
+	}
+\end{minipage}
+\endgroup
+$endif$
+%----------------------------------------------------------------------------------------
+%	Text
+%----------------------------------------------------------------------------------------
+\begin{FlushLeft}
+$if(subject)$\hrule height 0.5 pt\relax\vspace*{-8 pt}$subject$\vspace*{0.8 pt}\hrule height 0.5 pt\relax\vspace{\baselineskip}$endif$
+
+$body$
+
+\vspace{\baselineskip} % Vertical whitespace
+
+Mit freundlichen Grüssen,\hfill\break
+%\vspace{2\baselineskip} % =3 baselineskips
+\name
+
+\end{FlushLeft}
+
+\end{document}
