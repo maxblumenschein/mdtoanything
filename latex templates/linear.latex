@@ -1,7 +1,6 @@
 \documentclass[$if(fontsize)$$fontsize$$else$11pt$endif$,$if(lang)$$babel-lang$,$endif$a4paper]{$documentclass$}
 
 % packages %
-\usepackage{user_variables_definition}
 \usepackage{babel}
 \usepackage{graphicx}  % importing of images
 \usepackage[hidelinks]{hyperref} % cross-referencing commands
@@ -27,6 +26,9 @@
 \usepackage[toc]{appendix}
 \usepackage{pdfpages}
 \usepackage{url}
+
+% input user variables information %
+\input{user_variables_definition}
 
 % page layout %
 \geometry{

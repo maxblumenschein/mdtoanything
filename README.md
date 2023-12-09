@@ -4,33 +4,35 @@ Using Pandoc these custom Latex templates convert Markdown files (.md) to PDF, W
 
 # Setup
 
-## User Definied Variables
+## User Defined Variables
 
-The Latex template files use variables to insert recurring information like author name or adress. The variables are defined inside the custom package ``user_variables_definition`` inside the ``latex templates`` folder. 
+The Latex template files use variables to insert recurring information like author name or adress. The variables are defined by ``user_variables_definition.tex`` inside your input directory (Markdown file).
 
-### Installation
+Change the corresponding variables to your individual data:
 
-1. Copy the folder ``user_variables_definition`` to your tex directory (under ``texmf/`` or ``texmf-local/``):[^1]
-    ```
-    tex/latex/
-    ```
+```latex
+% define variables %
+\def\name{Albert Einstein}
+\def\institution{ETH Zürich}
+\def\department{Institut für Teilchenphysik und Astrophysik}
+\def\street{Otto-​Stern-Weg 5}
+\def\city{Zürich}
+\def\zipcode{CH-8093}
+\def\phone{+41 78 881 86 11}
+\def\email{albert.einstein@phys.ethz.ch}
+```
 
-2. Open the contained ``user_variables_definition.sty`` file and change the corresponding variables to your individual data:
+### Central User Defined Variables
 
-    ```latex
-    % define variables %
-    \def\name{Albert Einstein}
-    \def\institution{ETH Zürich}
-    \def\department{Institut für Teilchenphysik und Astrophysik}
-    \def\street{Otto-​Stern-Weg 5}
-    \def\city{Zürich}
-    \def\zipcode{CH-8093}
-    \def\phone{+41 78 881 86 11}
-    \def\email{albert.einstein@phys.ethz.ch}
-    ```
+The variables can also be defined with a custom package inside your tex directory. This makes the user variables indipendent of your input directory.
 
-3. Run your TeX indexer program to update the package database. For TeX Live, run:
-``texhash``
+#### Installation
+
+1. **Copy** the folder ``user_variables_definition`` inside ``/latex templates`` to your tex directory (under ``texmf/`` or ``texmf-local/``): ``tex/latex/``[^1]
+
+2. **Update** your TeX index. For TeX Live, run: ``texhash``
+
+3. **Add** ``\usepackage{user_variables_definition}`` and **remove** ``\input{user_variables_definition}`` in the selected Latex template.
 
 [^1]: see [LaTeX/Installing Extra Packages](https://en.wikibooks.org/wiki/LaTeX/Installing_Extra_Packages) for general information on installing custom packages. 
 
