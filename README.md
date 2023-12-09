@@ -4,23 +4,37 @@ Using Pandoc these custom Latex templates convert Markdown files (.md) to PDF, W
 
 # Setup
 
+## User Definied Variables
+
+The Latex template files use variables to insert recurring information like author name or adress. The variables are defined inside the custom package ``user_variables_definition`` inside the ``latex templates`` folder. 
+
+### Installation
+
+1. Copy the folder ``user_variables_definition`` to your tex directory (under ``texmf/`` or ``texmf-local/``):^[see [LaTeX/Installing Extra Packages](https://en.wikibooks.org/wiki/LaTeX/Installing_Extra_Packages) for general information on installing custom packages.] 
+    ```
+    tex/latex/
+    ```
+
+2. Open the contained ``user_variables_definition.sty`` file and change the corresponding variables to your individual data:
+
+    ```latex
+    % define variables %
+    \def\name{Albert Einstein}
+    \def\institution{ETH Zürich}
+    \def\department{Institut für Teilchenphysik und Astrophysik}
+    \def\street{Otto-​Stern-Weg 5}
+    \def\city{Zürich}
+    \def\zipcode{CH-8093}
+    \def\phone{+41 78 881 86 11}
+    \def\email{albert.einstein@phys.ethz.ch}
+    ```
+
+3. Run your TeX indexer program to update the package database. For TeX Live, run:
+``texhash``
+
 ## Latex Template File
 
-Copy the desired template files to the ``/templates`` folder inside the Pandoc user data directory. On *nix and macOS systems this will most likely be: ``$HOME/.pandoc``. On Windows the default user data directory likely is ``%APPDATA%\pandoc``. You can find the user data directory on your system by looking at the output of ``pandoc --version``.  
-
-The Latex template files use variables to insert recurring information like author name or adress. To customize with individual information change the corresponding variables in the latex template:
-
-```latex
-% define variables %
-\def\name{Albert Einstein}
-\def\institution{ETH Zürich}
-\def\department{Institut für Teilchenphysik und Astrophysik}
-\def\street{Otto-​Stern-Weg 5}
-\def\city{Zürich}
-\def\zipcode{CH-8093}
-\def\phone{+41 78 881 86 11}
-\def\email{albert.einstein@phys.ethz.ch}
-```
+Copy the desired template files to the ``/templates`` folder inside the Pandoc user data directory. On *nix and macOS systems this will most likely be: ``$HOME/.pandoc``. On Windows the default user data directory likely is ``%APPDATA%\pandoc``. You can find the user data directory on your system by looking at the output of ``pandoc --version``. 
 
 Custom high-quality fonts are used for typesetting:
 1. ``info.latex``:
