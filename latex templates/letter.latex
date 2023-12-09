@@ -32,7 +32,10 @@
 \usepackage{lastpage} % use for folio (all pages)
 
 % input user variables information %
-\input{user_variables_definition}
+  % either inside input directory:
+    \input{user_variables_definition}
+  % or inside local tex directory:
+    %\usepackage{user_variables_definition}
 
 % page layout %
 \geometry{

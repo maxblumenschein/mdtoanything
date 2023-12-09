@@ -6,7 +6,7 @@ Using Pandoc these custom Latex templates convert Markdown files (.md) to PDF, W
 
 ## User Defined Variables
 
-The Latex template files use variables to insert recurring information like author name or adress. The variables are defined by ``user_variables_definition.tex`` inside your input directory (Markdown file).
+The Latex template files use variables to insert recurring information like author name or adress. By default the variables are defined by ``user_variables_definition.tex`` inside your input directory (Markdown file).
 
 Change the corresponding variables to your individual data:
 
@@ -32,7 +32,7 @@ The variables can also be defined with a custom package inside your tex director
 
 2. **Update** your TeX index. For TeX Live, run: ``texhash``
 
-3. **Add** ``\usepackage{user_variables_definition}`` and **remove** ``\input{user_variables_definition}`` in the selected Latex template.
+3. **Add**/uncomment ``\usepackage{user_variables_definition}`` and **remove**/comment ``\input{user_variables_definition}`` in the selected Latex template.
 
 [^1]: see [LaTeX/Installing Extra Packages](https://en.wikibooks.org/wiki/LaTeX/Installing_Extra_Packages) for general information on installing custom packages. 
 

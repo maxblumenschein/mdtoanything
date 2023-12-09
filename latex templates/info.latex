@@ -1,6 +1,7 @@
 \documentclass[$if(fontsize)$$fontsize$$else$10pt$endif$,$if(lang)$$babel-lang$,$endif$a4paper,$twoside$,openright]{$documentclass$}
 
 % packages %
+
 \usepackage{babel}
 \usepackage{graphicx}  % importing of images
 \usepackage[hidelinks]{hyperref} % cross-referencing commands
@@ -28,7 +29,10 @@
 \usepackage[nameinlink]{cleveref} % advanced referencing
 
 % input user variables information %
-\input{user_variables_definition}
+  % either inside input directory:
+    \input{user_variables_definition}
+  % or inside local tex directory:
+    %\usepackage{user_variables_definition}
 
 % page layout %
 \geometry{
