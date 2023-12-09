@@ -10,7 +10,7 @@ The Latex template files use variables to insert recurring information like auth
 
 ### Installation
 
-1. Copy the folder ``user_variables_definition`` to your tex directory (under ``texmf/`` or ``texmf-local/``):^[see [LaTeX/Installing Extra Packages](https://en.wikibooks.org/wiki/LaTeX/Installing_Extra_Packages) for general information on installing custom packages.] 
+1. Copy the folder ``user_variables_definition`` to your tex directory (under ``texmf/`` or ``texmf-local/``):[^1]
     ```
     tex/latex/
     ```
@@ -31,6 +31,8 @@ The Latex template files use variables to insert recurring information like auth
 
 3. Run your TeX indexer program to update the package database. For TeX Live, run:
 ``texhash``
+
+[^1]: see [LaTeX/Installing Extra Packages](https://en.wikibooks.org/wiki/LaTeX/Installing_Extra_Packages) for general information on installing custom packages. 
 
 ## Latex Template File
 
