@@ -61,7 +61,7 @@ Pandoc assumes these fonts to be installed on your system:
 
 ### Custom Font Paths
 
-If you intend to use these or other fonts not located in the standard system folders, you need specify the location of the font files inside the latex template:
+If you intend to use these or other fonts not located in the standard system folders, you need to specify the location of the font files inside the latex template:
 
 ```latex
 % define path-variables %
