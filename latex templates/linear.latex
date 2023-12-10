@@ -29,9 +29,14 @@
 
 % input user variables information %
   % either inside input directory:
-    \input{user_variables_definition}
+$if(custom_author)$
+\input{user_variables_definition}
+  % or inside pandoc/templates directory:
+$else$
+\input{\string~/AppData/Roaming/pandoc/templates/user_variables_definition.tex}%Windows
+$endif$
   % or inside local tex directory:
-    %\usepackage{user_variables_definition}
+%\usepackage{user_variables_definition}
 
 % page layout %
 \geometry{
@@ -44,6 +49,7 @@ hcentering,
 % custom fonts set %
 \setstretch{1.1}
 \setmainfont[
+%Path = \fontpath,
 Numbers = OldStyle,
 ItalicFont = BradfordLL-RegularItalic.otf,
 BoldFont = BradfordLL-Bold.otf,
@@ -52,12 +58,14 @@ BoldItalicFont  = BradfordLL-BoldItalic.otf]
 
 %Söhne
 \setsansfont[
+%Path = \fontpath,
 ItalicFont = 7191b237-670e-465d-b861-9f0c3c6dd411.otf,
 BoldFont = 6a3b5c11-edec-48f3-a82e-ee8a38c85864.otf,
 BoldItalicFont  = 49a80815-f578-4869-87f3-e708e6bab923.otf]
 {c00e802e-6b81-4048-bffc-cf2ccfd38a61.otf}
 
 \setmonofont[
+%Path = \fontpath,
 Path = /Users/maxehrengruber/Documents/Ehrengruber/Office/Fonts/favorites/,
 Scale       = MatchLowercase ,
 ItalicFont = BradfordMonoLL-Regular.otf,

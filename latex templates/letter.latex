@@ -33,9 +33,14 @@
 
 % input user variables information %
   % either inside input directory:
-    \input{user_variables_definition}
+$if(custom_author)$
+\input{user_variables_definition}
+  % or inside pandoc/templates directory:
+$else$
+\input{\string~/AppData/Roaming/pandoc/templates/user_variables_definition.tex}%Windows
+$endif$
   % or inside local tex directory:
-    %\usepackage{user_variables_definition}
+%\usepackage{user_variables_definition}
 
 % page layout %
 \geometry{
@@ -52,6 +57,7 @@
 % custom fonts set %
 \setstretch{1.1}
 \setmainfont[
+%Path = \fontpath,
 Numbers = Proportional,
 ItalicFont = ABCSocialEdu-BookItalic.otf,
 BoldFont = ABCSocialEdu-Bold.otf,
@@ -59,12 +65,14 @@ BoldItalicFont  = ABCSocialEdu-BoldItalic.otf]
 {ABCSocialEdu-Book.otf}
 
 \newfontfamily\logo[
+%Path = \fontpath,
 ItalicFont = ABCSocialExtendedEdu-Bold.otf,
 BoldFont = ABCSocialExtendedEdu-Bold.otf,
 BoldItalicFont  = ABCSocialExtendedEdu-Bold.otf]
 {ABCSocialExtendedEdu-Bold.otf}
 
 \newfontfamily\info[
+%Path = \fontpath,
 ItalicFont = ABCDiatypeMono-RegularItalic.otf,
 BoldFont = ABCDiatypeMono-Medium.otf,
 BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]

@@ -4,9 +4,13 @@ Using Pandoc these custom Latex templates convert Markdown files (.md) to PDF, W
 
 # Setup
 
+## Latex Template File
+
+Copy the desired template files to the ``/templates`` folder inside the Pandoc user data directory. On *nix and macOS systems this will most likely be: ``$HOME/.pandoc``. On Windows the default user data directory likely is ``$HOME\AppData\Roaming\pandoc``. You can find the user data directory on your system by looking at the output of ``pandoc --version``. 
+
 ## User Defined Variables
 
-The Latex template files use variables to insert recurring information like author name or adress. By default the variables are defined by ``user_variables_definition.tex`` inside your input directory (Markdown file).
+The Latex template files use variables to insert recurring information like author name or adress. By default the variables are defined by ``user_variables_definition.tex`` inside the Pandoc ``/templates`` folder.
 
 Change the corresponding variables to your individual data:
 
@@ -22,7 +26,11 @@ Change the corresponding variables to your individual data:
 \def\email{albert.einstein@phys.ethz.ch}
 ```
 
-### Central User Defined Variables
+### Inside Input Directory
+
+``custom_author: true`` inside the [YAML header of the input file](#markdown-input-file) overwrites the path for user variables to the input directory, i.e. the Markdown file. This allows the definition of custom variables for a special usecases, or if you want to have the variables stay with the input file in general.
+
+### Inside Tex Directory
 
 The variables can also be defined with a custom package inside your tex directory. This makes the user variables indipendent of your input directory.
 
@@ -32,13 +40,11 @@ The variables can also be defined with a custom package inside your tex director
 
 2. **Update** your TeX index. For TeX Live, run: ``texhash``
 
-3. **Add**/uncomment ``\usepackage{user_variables_definition}`` and **remove**/comment ``\input{user_variables_definition}`` in the selected Latex template.
+3. **Add**/uncomment ``\usepackage{user_variables_definition}`` and **remove**/comment ``$if(custom_author)$\input{user_variables_definition}$else$\input{\string~/AppData/Roaming/pandoc/templates/user_variables_definition.tex}%Windows$endif$`` in the selected Latex template.
 
 [^1]: see [LaTeX/Installing Extra Packages](https://en.wikibooks.org/wiki/LaTeX/Installing_Extra_Packages) for general information on installing custom packages. 
 
-## Latex Template File
-
-Copy the desired template files to the ``/templates`` folder inside the Pandoc user data directory. On *nix and macOS systems this will most likely be: ``$HOME/.pandoc``. On Windows the default user data directory likely is ``%APPDATA%\pandoc``. You can find the user data directory on your system by looking at the output of ``pandoc --version``. 
+## Fonts
 
 Custom high-quality fonts are used for typesetting:
 1. ``info.latex``:
@@ -67,6 +73,7 @@ If you intend to use these or other fonts not located in the standard system fol
 ```
 
 Then include the custom font path inside the font settings:
+
 ```latex
 \setmainfont[
 Path = \fontpath,
@@ -105,6 +112,8 @@ Available YAML-variables vary from template to template. For a full list see bel
 
 ```yaml
 title: main title
+
+custom_author: user defined variables inside input directory [true,false]
 
 author: name of author
 date: date [e.g. "\today"]
