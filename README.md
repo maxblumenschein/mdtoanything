@@ -171,7 +171,7 @@ output:
       template: info.latex
 ```
 
-By default the templates are assumed inside the [Pandoc user directory](#latex-template-file). You can also define custom paths or use a link to the repo:
+By default the templates are assumed inside the [Pandoc user directory](#latex-template-file). You can also define custom paths or use URLs:
 
 ```yaml
 template: "https://raw.githubusercontent.com/maxblumenschein/mdtoanything/main/latex%20templates/info.latex"
