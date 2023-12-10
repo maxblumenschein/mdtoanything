@@ -24,7 +24,7 @@ Change the corresponding variables to your individual data:
 
 ### Inside Input Directory
 
-``custom_author: true`` inside the [YAML header of the input file](#markdown-input-file) overwrites the path for user variables to the input directory, i.e. the Markdown file. This allows the definition of custom variables for a special usecases, or if you want to have the variables stay with the input file in general.
+``custom_author: true`` inside the [YAML header of the input file](#markdown-input-file) overwrites the path for user variables to the input directory, i.e. the Markdown file. This allows the definition of custom variables for special usecases, or if you want to have the variables stay with the input file in general.
 
 ### Inside Tex Directory
 
