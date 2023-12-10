@@ -4,10 +4,6 @@ Using Pandoc these custom Latex templates convert Markdown files (.md) to PDF, W
 
 # Setup
 
-## Latex Template File
-
-Copy the desired template files to the ``/templates`` folder inside the Pandoc user data directory. On *nix and macOS systems this will most likely be: ``$HOME/.pandoc``. On Windows the default user data directory likely is ``$HOME\AppData\Roaming\pandoc``. You can find the user data directory on your system by looking at the output of ``pandoc --version``. 
-
 ## User Defined Variables
 
 The template files use variables to insert recurring information like author name or adress. By default the variables are defined by ``user_variables_definition.tex`` inside the Pandoc ``/templates`` folder.
@@ -83,9 +79,13 @@ BoldItalicFont  = ABCDiatype-BoldItalic.otf]
 {ABCDiatype-Regular.otf}
 ```
 
+## Latex Template File
+
+For offline-use copy the desired template files to the ``/templates`` folder inside the Pandoc user data directory. On *nix and macOS systems this will most likely be: ``$HOME/.pandoc``. On Windows the default user data directory likely is ``$HOME\AppData\Roaming\pandoc``. You can find the user data directory on your system by looking at the output of ``pandoc --version``. 
+
 ## Markdown Input File
 
-Specify general information like date, title, language and desired output format of the input Markdown file using a YAML header:
+Specify general information like date, title, language and desired output format and template in the input Markdown file using a YAML header:
 
 ```yaml
 ---
