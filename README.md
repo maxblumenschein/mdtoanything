@@ -10,7 +10,7 @@ Copy the desired template files to the ``/templates`` folder inside the Pandoc u
 
 ## User Defined Variables
 
-The Latex template files use variables to insert recurring information like author name or adress. By default the variables are defined by ``user_variables_definition.tex`` inside the Pandoc ``/templates`` folder.
+The template files use variables to insert recurring information like author name or adress. By default the variables are defined by ``user_variables_definition.tex`` inside the Pandoc ``/templates`` folder.
 
 Change the corresponding variables to your individual data:
 
