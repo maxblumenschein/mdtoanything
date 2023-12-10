@@ -81,7 +81,7 @@ BoldItalicFont  = ABCDiatype-BoldItalic.otf]
 
 ## Latex Template File
 
-For offline-use copy the desired template files to the ``/templates`` folder inside the Pandoc user data directory. On *nix and macOS systems this will most likely be: ``$HOME/.pandoc``. On Windows the default user data directory likely is ``$HOME\AppData\Roaming\pandoc``. You can find the user data directory on your system by looking at the output of ``pandoc --version``. 
+For offline-functionality copy the desired template files to the ``/templates`` folder inside the Pandoc user data directory. On *nix and macOS systems this will most likely be: ``$HOME/.pandoc``. On Windows the default user data directory likely is ``$HOME\AppData\Roaming\pandoc``. You can find the user data directory on your system by looking at the output of ``pandoc --version``. 
 
 ## Markdown Input File
 
