@@ -118,7 +118,7 @@ custom_author: user defined variables inside input directory [true,false]
 author: name of author
 date: date [e.g. "\today"]
 adress: features full adress [true,false]
-
+ 
 project: works like a subtitle
 abstract: abstract to be printed on title page
 
@@ -162,13 +162,19 @@ output:
     template: info.latex
 ```
 
-this will export the PDF inside the same folder as the eponymous Markdown input file. If want to define a custom name and path, use:
+This will export a PDF based on the template ``info.latex`` inside the same folder as the eponymous Markdown input file. If you want to define a custom name and path, use:
 
 ```yaml
 output:
   custom_document:
     path: customname.pdf
       template: info.latex
+```
+
+By default the templates are assumed inside the [Pandoc user directory](#latex-template-file). You can also define custom paths or use a link to the repo:
+
+```yaml
+template: "https://raw.githubusercontent.com/maxblumenschein/mdtoanything/59243725e297d784c8c23ddbad444bdbb12e0aec/latex%20templates/info.latex"
 ```
 
 #### Word
