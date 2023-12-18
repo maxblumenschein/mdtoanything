@@ -123,7 +123,7 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 \date{
   $project$\endgraf
   $date$\endgraf
-  $if(adress)$\vspace*{2\baselineskip}$endif$ %spacing between date and author, if full adress shall be included
+  \vspace*{2\baselineskip} %spacing between date and author
 }
 % add additional info to author field %
 \author{
