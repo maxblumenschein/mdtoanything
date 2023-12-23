@@ -67,7 +67,6 @@ BoldItalicFont  = 49a80815-f578-4869-87f3-e708e6bab923.otf]
 
 \setmonofont[
 %Path = \fontpath,
-Path = /Users/maxehrengruber/Documents/Ehrengruber/Office/Fonts/favorites/,
 Scale       = MatchLowercase ,
 ItalicFont = BradfordMonoLL-Regular.otf,
 BoldFont = BradfordMonoLL-Regular.otf,
