@@ -127,6 +127,7 @@ documentclass: style of document formatting [report,article]
 toc: table of content [true,false]
 lof: list of figures [true,false]
 lot: list of tables [true,false]
+apx: attach file to output document ["path/to/file"]
 
 bibliography: path to bibliography-file [e.g. "example.bib"]
 nocite: prints all bibliographic entries, if cited or not ['@*']

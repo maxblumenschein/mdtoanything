@@ -366,26 +366,38 @@ $endif$
 
 $body$
 
+\ifbool{isreport}{
 $if(lof)$
 \addcontentsline{toc}{chapter}{\listfigurename}
 \listoffigures
 $endif$
+}{}
 
+\ifbool{isarticle}{
+$if(lof)$
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+$endif$
+}{}
+
+\ifbool{isreport}{
 $if(lot)$
 \addcontentsline{toc}{chapter}{\listtablename}
 \listoftables
 $endif$
+}{}
+
+\ifbool{isarticle}{
+$if(lot)$
+\addcontentsline{toc}{section}{\listtablename}
+\listoftables
+$endif$
+}{}
 
 \begingroup
 \nocite{*}
 \raggedright\printbibliography
 \endgroup
-
-%$if(apx)$
-%\appendix
-%\chapter{Appendix}
-%\includepdf[pages=-]{$apx$}
-%$endif$
 
 \ifbool{isreport}{
 $if(apx)$

@@ -106,6 +106,12 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 \@ifclassloaded{report}{\booltrue{isreport}}{\boolfalse{isreport}}
 \makeatother
 
+% define isarticle boolean which may be used inside the document contrary to ifclassloaded
+\providebool{isarticle}
+\makeatletter
+\@ifclassloaded{article}{\booltrue{isarticle}}{\boolfalse{isarticle}}
+\makeatother
+
 % title &
 % patch \maketitle so that it doesn't center
 \makeatletter
@@ -330,15 +336,33 @@ $endif$
 
 $body$
 
+\ifbool{isreport}{
 $if(lof)$
 \addcontentsline{toc}{chapter}{\listfigurename}
 \listoffigures
 $endif$
+}{}
 
+\ifbool{isarticle}{
+$if(lof)$
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+$endif$
+}{}
+
+\ifbool{isreport}{
 $if(lot)$
 \addcontentsline{toc}{chapter}{\listtablename}
 \listoftables
 $endif$
+}{}
+
+\ifbool{isarticle}{
+$if(lot)$
+\addcontentsline{toc}{section}{\listtablename}
+\listoftables
+$endif$
+}{}
 
 \nocite{*}
 \printbibliography
