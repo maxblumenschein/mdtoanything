@@ -61,8 +61,8 @@ BoldItalicFont  = BradfordLL-BoldItalic.otf]
 \setsansfont[
 %Path = \fontpath,
 ItalicFont = 7191b237-670e-465d-b861-9f0c3c6dd411.otf,
-BoldFont = 6a3b5c11-edec-48f3-a82e-ee8a38c85864.otf,
-BoldItalicFont  = 49a80815-f578-4869-87f3-e708e6bab923.otf]
+BoldFont = 39c86d79-9b89-473a-9cdd-1486d9f6b563.otf,
+BoldItalicFont  = 188f1957-cf02-466e-bdda-219644f23d99.otf]
 {c00e802e-6b81-4048-bffc-cf2ccfd38a61.otf}
 
 \setmonofont[
@@ -85,8 +85,8 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 \@ifclassloaded{report}{
 \setcounter{secnumdepth}{3}
 \renewcommand{\thechapter}{\arabic{chapter}}
-\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
-\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
 \renewcommand{\thesubsubsection}{}
 }{}
 \makeatother
@@ -95,9 +95,9 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 \@ifclassloaded{report}{
 %\titleformat{\chapter}[display]{\Huge\sffamily\bfseries}{\chaptertitlename\thechapter}{\\ \Huge\bfseries}{.4em}{}
 \titleformat{\chapter}[display]{\raggedright\fontsize{90}{60}\sffamily\bfseries}{\fontsize{90}{60}\sffamily\thechapter}{0pt}{\setstretch{1.0}\Huge\bfseries}[]
-\titleformat{\section}{\setstretch{1.0}\Large\sffamily\bfseries}{\thesection~}{.2em}{}
-\titleformat{\subsection}{\large\sffamily\bfseries}{\thesubsection~}{.2em}{}
-\titleformat{\subsubsection}{\normalsize\sffamily\bfseries}{\thesubsubsection~}{0em}{}
+\titleformat{\section}{\setstretch{1.0}\Large\sffamily\bfseries}{\thesection}{0em}{}
+\titleformat{\subsection}{\large\sffamily\bfseries}{\thesubsection}{0em}{}
+\titleformat{\subsubsection}{\normalsize\sffamily\bfseries}{\thesubsubsection}{0em}{}
 }{}
 \makeatother
 
@@ -161,7 +161,7 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 % header & footer %
 \pagestyle{fancy} % for "fancy" style
     \fancyhf{} % remove header & footer
-    \fancyfoot[R]{\scriptsize\sffamily\extcolor{lightgray}\thepage} % folio on footer's right side
+    \fancyfoot[R]{\scriptsize\sffamily\textcolor{lightgray}\thepage} % folio on footer's right side
     \renewcommand{\headrulewidth}{0pt} % remove header decoration line
 
 \fancypagestyle{plain} % for "plain" style, used for titlepage and chapter beginnings
@@ -263,7 +263,7 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 
 % footnotes %
 % spacing between text and footlinerule
-\addtolength{\skip\footins}{11pt}
+\addtolength{\skip\footins}{\baselineskip}
 
 % spacing between footlinerule and footnotes
 \makeatletter
@@ -279,7 +279,7 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 \makeatother
 
 % non-superscript footnotetextmarker
-\deffootnote{2.15em}{1em}{\liningnumbers\textbf\thefootnotemark\quad}
+\deffootnote{2.4em}{1em}{\liningnumbers\bfseries\thefootnotemark\hspace{1.2em}}
 
 % images %
 $if(graphics)$
