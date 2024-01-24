@@ -137,7 +137,7 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 
 \title{$title$\vspace*{2\baselineskip}}
 \date{
-  $project$\endgraf
+  $project$\vspace*{\baselineskip}\endgraf
   $date$\endgraf
   $if(adress)$\vspace*{2\baselineskip}$endif$ %spacing between date and author, if full adress shall be included
 }
@@ -156,8 +156,6 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
         %\vspace{-0.6\baselineskip} % adjust spacing after author field
         }
 
-\date{
-    }
 % header & footer %
 \pagestyle{fancy} % for "fancy" style
     \fancyhf{} % remove header & footer
