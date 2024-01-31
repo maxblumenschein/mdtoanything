@@ -60,10 +60,10 @@ BoldItalicFont  = BradfordLL-BoldItalic.otf]
 %Söhne
 \setsansfont[
 %Path = \fontpath,
-ItalicFont = 7191b237-670e-465d-b861-9f0c3c6dd411.otf,
-BoldFont = 39c86d79-9b89-473a-9cdd-1486d9f6b563.otf,
-BoldItalicFont  = 188f1957-cf02-466e-bdda-219644f23d99.otf]
-{c00e802e-6b81-4048-bffc-cf2ccfd38a61.otf}
+ItalicFont = Söhne-BuchKursiv.ttf,
+BoldFont = Söhne-Kräftig.ttf,
+BoldItalicFont  = Söhne-KräftigKursiv.ttf]
+{Söhne-Buch.ttf}
 
 \setmonofont[
 %Path = \fontpath,
