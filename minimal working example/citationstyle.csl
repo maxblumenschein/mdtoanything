@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="never">
+  <info>
+    <title>ME</title>
+    <id>http://www.zotero.org/styles/me</id>
+    <link rel="self" href="http://www.zotero.org/styles/me"/>
+    <author>
+      <name>Max Ehrengruber</name>
+    </author>
+    <updated>2024-02-24T14:54:46+00:00</updated>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name font-variant="small-caps" delimiter=" / " name-as-sort-order="first"/>
+      <substitute>
+        <names variable="editor">
+          <name font-variant="small-caps" delimiter=" / " name-as-sort-order="first"/>
+          <label form="short" prefix=" (" suffix=")"/>
+        </names>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <group>
+      <choose>
+        <if type="article article-magazine entry article-journal article-newspaper entry-dictionary entry-encyclopedia bill chapter webpage" match="any">
+          <text variable="title" quotes="true" font-style="normal"/>
+        </if>
+        <else>
+          <text variable="title" font-style="italic"/>
+          <names variable="translator" prefix=", ">
+            <label form="verb" suffix=" "/>
+            <name delimiter=" / "/>
+          </names>
+        </else>
+      </choose>
+    </group>
+  </macro>
+  <macro name="contributor">
+    <names variable="contributor">
+      <name delimiter=" / "/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <text variable="publisher" suffix=", "/>
+    <group delimiter=" ">
+      <date date-parts="year" form="text" variable="issued"/>
+      <choose>
+        <if match="any" variable="original-date">
+          <group delimiter=" " prefix="(" suffix=")">
+            <text term="original-work-published"/>
+            <date date-parts="year" form="text" variable="original-date"/>
+          </group>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <macro name="place">
+    <text variable="publisher-place"/>
+  </macro>
+  <macro name="container-contributors">
+    <names variable="editor translator">
+      <label form="verb" prefix=", " suffix=" "/>
+      <name delimiter=" / "/>
+    </names>
+  </macro>
+  <citation et-al-min="4" et-al-use-first="1" disambiguate-add-names="true" disambiguate-add-givenname="true" disambiguate-add-year-suffix="true">
+    <layout delimiter="; ">
+      <group delimiter=" ">
+        <names variable="author">
+          <name form="short" delimiter=" / "/>
+          <substitute>
+            <names variable="editor" delimiter=" / "/>
+            <names variable="translator" delimiter=" / "/>
+          </substitute>
+        </names>
+        <choose>
+          <if match="none" variable="author editor contributor container-author original-author" type="book">
+            <text variable="title"/>
+          </if>
+        </choose>
+        <group delimiter="/" prefix="(" suffix=")">
+          <date date-parts="year" form="text" variable="original-date"/>
+          <date date-parts="year" form="text" variable="issued"/>
+        </group>
+        <text variable="locator"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography subsequent-author-substitute="———" entry-spacing="0" hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key variable="issued"/>
+      <key variable="title"/>
+    </sort>
+    <layout font-style="normal" suffix=".">
+      <group delimiter=" ">
+        <text macro="author" suffix=": "/>
+        <group>
+          <text macro="title" suffix="."/>
+          <text macro="contributor"/>
+        </group>
+        <group suffix=".">
+          <choose>
+            <if type="chapter entry-dictionary entry-encyclopedia paper-conference" match="any">
+              <text term="in" text-case="capitalize-first" suffix=": "/>
+              <group suffix=". ">
+                <text variable="container-title" font-style="italic"/>
+                <text macro="container-contributors"/>
+              </group>
+              <text variable="page"/>
+            </if>
+            <else-if type="article article-journal article-magazine article-newspaper" match="any">
+              <text variable="container-title" font-style="italic" font-variant="normal"/>
+            </else-if>
+            <else>
+              <text variable="container-title" font-style="italic"/>
+            </else>
+          </choose>
+        </group>
+        <group delimiter=" ">
+          <group delimiter=" " suffix=".">
+            <choose>
+              <if match="any" variable="volume">
+                <group>
+                  <text term="volume" form="short" text-case="capitalize-first" suffix=" "/>
+                  <text variable="volume" suffix="."/>
+                </group>
+                <group>
+                  <text term="issue" form="short" text-case="capitalize-first" suffix=" "/>
+                  <text variable="issue"/>
+                </group>
+              </if>
+            </choose>
+            <choose>
+              <if match="any" variable="edition">
+                <text variable="edition"/>
+              </if>
+            </choose>
+          </group>
+          <group delimiter=" " suffix=".">
+            <text macro="place" suffix=":"/>
+            <text macro="issued"/>
+            <choose>
+              <if type="webpage" match="any">
+                <group>
+                  <text term="internet" text-case="capitalize-first" prefix="– " suffix=": "/>
+                  <text variable="URL" form="short"/>
+                  <group prefix=" (" suffix=")">
+                    <text term="accessed" suffix=": "/>
+                    <date form="text" variable="accessed"/>
+                  </group>
+                </group>
+              </if>
+            </choose>
+          </group>
+          <group delimiter=". ">
+            <text variable="collection-title"/>
+            <text variable="collection-number"/>
+            <text variable="note"/>
+          </group>
+        </group>
+      </group>
+    </layout>
+  </bibliography>
+</style>

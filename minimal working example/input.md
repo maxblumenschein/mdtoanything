@@ -8,11 +8,11 @@ lang: de
 
 output:
   pdf_document:
-    template: info.latex
+    template: linear.latex
 
 bibliography: "example.bib"
 nocite: '@*'
-csl: "https://raw.githubusercontent.com/maxblumenschein/slick-csl/main/me.csl"
+csl: "citationstyle.csl"
 
 documentclass: article
 ---
@@ -21,7 +21,7 @@ documentclass: article
 Die Astrophysik, als faszinierender Zweig der Physik, eröffnet uns die Möglichkeit, die fundamentalen Geheimnisse des Universums zu erkunden. In ihrer Essenz befasst sie sich mit der Erforschung von Himmelskörpern, den Kräften und Prozessen, die sie formen, sowie den Gesetzmäßigkeiten, die unser kosmisches Umfeld bestimmen. In dieser Einführung begeben wir uns auf eine informative Reise durch die Grundlagen der Astrophysik und lassen uns von der Schönheit und Komplexität des Universums fesseln.
 
 Die Geburt von Sternen markiert einen faszinierenden Auftakt in der Welt der Astrophysik. In den entlegenen Regionen des Weltraums, dort, wo interstellare Gas- und Staubwolken sich scheinbar unbemerkt ausbreiten, beginnt der Prozess der Sternentstehung. Gravitative Kräfte ziehen diese Materie allmählich zusammen, bis ein kritischer Punkt erreicht ist und die Kernfusion entzündet wird. In diesem magischen Moment wird ein Stern geboren, und mit ihm beginnt eine kosmische Saga, die Millionen bis Milliarden Jahre dauern kann.
-Die kosmische Choreographie der Galaxien
+Die kosmische Choreographie der Galaxien.^[@hume2007]
 
 Galaxien, als die Bausteine des Universums, prägen die kosmische Landschaft in einer überwältigenden Vielfalt von Formen und Größen. Von majestätischen Spiralgalaxien, die sich wie lebendige Kunstwerke entfalten, bis zu elliptischen Galaxien, deren Sterne in dicht gedrängten Wolken tanzen, gibt es eine reiche Palette astronomischer Phänomene zu erkunden. Aber nicht nur die Individualität der Galaxien fasziniert – auch ihre Wechselwirkungen, Zusammenstöße und die daraus resultierenden Auswirkungen auf die Sternentstehung bieten einen Einblick in die dynamischen Kräfte, die unser Universum geformt haben und weiterhin formen.
 
