@@ -7,8 +7,18 @@
     <author>
       <name>Max Ehrengruber</name>
     </author>
-    <updated>2024-02-24T14:54:46+00:00</updated>
+    <updated>2024-02-24T15:04:13+00:00</updated>
   </info>
+  <locale xml:lang="de">
+    <terms>
+      <term name="original-work-published">Originalausgabe erschienen</term>
+    </terms>
+  </locale>
+  <locale xml:lang="ch-de">
+    <terms>
+      <term name="original-work-published">Originalausgabe erschienen</term>
+    </terms>
+  </locale>
   <macro name="author">
     <names variable="author">
       <name font-variant="small-caps" delimiter=" / " name-as-sort-order="first"/>
@@ -48,7 +58,7 @@
       <choose>
         <if match="any" variable="original-date">
           <group delimiter=" " prefix="(" suffix=")">
-            <text term="original-work-published"/>
+            <text term="original-work-published" form="short"/>
             <date date-parts="year" form="text" variable="original-date"/>
           </group>
         </if>
