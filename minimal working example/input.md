@@ -6,10 +6,6 @@ adress: true
 
 lang: de
 
-output:
-  pdf_document:
-    template: linear.latex
-
 bibliography: "example.bib"
 nocite: '@*'
 csl: "citationstyle.csl"
@@ -57,7 +53,7 @@ Es ist wichtig zu beachten, dass Einstein, als Schöpfer der allgemeinen Relativ
 
 In den 1930er Jahren, als die Dunkle Materie nicht direkt bekannt war, existierten die Konzepte und Begriffe, die mit Dunkler Materie verbunden sind, noch nicht in der wissenschaftlichen Literatur. Daher gibt es keine spezifischen Äußerungen von Einstein zu diesem Thema. Es war erst viel später, mit Fortschritten in der Astronomie und Astrophysik, dass Wissenschaftler begannen, das Phänomen der Dunklen Materie zu erforschen und zu verstehen.
 
-##  Theoretische Physik bei Stephen Hawking
+## Theoretische Physik bei Stephen Hawking
 
 Stephen Hawking hat sich während seiner Karriere intensiv mit verschiedenen Aspekten der theoretischen Physik und Kosmologie befasst. Zum Zeitpunkt seines Todes im Jahr 2018 war das Konzept der Dunklen Materie bereits fest etabliert, und Hawking hatte einige Überlegungen dazu angestellt, insbesondere im Zusammenhang mit Schwarzen Löchern.
 
@@ -85,7 +81,7 @@ Die helle Materie besteht aus normaler, baryonischer Materie, die aus Protonen, 
 
 ## Helle Materie in Galaxien und Galaxienhaufen
 
-Die helle Materie spielt eine zentrale Rolle in der Struktur und Entwicklung von Galaxien und Galaxienhaufen. (\cref{jwt}) Ihr gravitativer Einfluss bestimmt die Verteilung und Bewegung von sichtbaren Materiekomponenten in diesen kosmischen Strukturen.
+Die helle Materie spielt eine zentrale Rolle in der Struktur und Entwicklung von Galaxien und Galaxienhaufen. Ihr gravitativer Einfluss bestimmt die Verteilung und Bewegung von sichtbaren Materiekomponenten in diesen kosmischen Strukturen.
 
 ![\label{jwt}Das James-Webb-Weltraumteleskop der NASA hat das bisher tiefste und schärfste Infrarotbild des fernen Universums aufgenommen. Dieses Bild des Galaxienhaufens SMACS 0723, das als _Webb's First Deep Field_ bekannt ist, strotzt nur so vor Details.](https://www.nasa.gov/wp-content/uploads/2023/03/main_image_deep_field_smacs0723-5mb.jpg)
 
