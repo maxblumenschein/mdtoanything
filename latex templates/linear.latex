@@ -12,6 +12,7 @@
 \usepackage{geometry} % page layout
 \usepackage{xcolor} % custom colors
 \usepackage[normalem]{ulem} % strike-through
+\usepackage{soul}
 \usepackage{lmodern} % lmodern as base-font
 \usepackage{titling} % custom title styling
 \usepackage{titlesec} % custom title fonts
