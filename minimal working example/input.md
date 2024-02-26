@@ -82,7 +82,7 @@ Die helle Materie besteht aus normaler, baryonischer Materie, die aus Protonen, 
 
 ## Helle Materie in Galaxien und Galaxienhaufen
 
-Die helle Materie spielt eine zentrale Rolle in der Struktur und Entwicklung von Galaxien und Galaxienhaufen. Ihr gravitativer Einfluss bestimmt die Verteilung und Bewegung von sichtbaren Materiekomponenten in diesen kosmischen Strukturen. \cref{jwt} 
+Die helle Materie spielt eine zentrale Rolle in der Struktur und Entwicklung von Galaxien und Galaxienhaufen. Ihr gravitativer Einfluss bestimmt die Verteilung und Bewegung von sichtbaren Materiekomponenten in diesen kosmischen Strukturen.
 
 ![\label{jwt}Das James-Webb-Weltraumteleskop der NASA hat das bisher tiefste und schärfste Infrarotbild des fernen Universums aufgenommen. Dieses Bild des Galaxienhaufens SMACS 0723, das als _Webb's First Deep Field_ bekannt ist, strotzt nur so vor Details.](https://www.nasa.gov/wp-content/uploads/2023/03/main_image_deep_field_smacs0723-5mb.jpg "Das James-Webb-Weltraumteleskop der NASA hat das bisher tiefste und schärfste Infrarotbild des fernen Universums aufgenommen. Dieses Bild des Galaxienhaufens SMACS 0723, das als _Webb's First Deep Field_ bekannt ist, strotzt nur so vor Details.")
 
@@ -92,7 +92,7 @@ Die helle Materie spielt eine zentrale Rolle in der Struktur und Entwicklung von
 
 ## Beobachtungsmethoden und Herausforderungen
 
-Die Erforschung der hellen Materie erfolgt durch eine Vielzahl von Beobachtungsmethoden, darunter optische Teleskope, Radioteleskope und andere fortgeschrittene Detektoren. Dennoch gibt es Herausforderungen, die es zu überwinden gilt. @fig:myfigureid
+Die Erforschung der hellen Materie erfolgt durch eine Vielzahl von Beobachtungsmethoden, darunter optische Teleskope, Radioteleskope und andere fortgeschrittene Detektoren. (\cref{jwt}) Dennoch gibt es Herausforderungen, die es zu überwinden gilt.
 
 
 1. **Dunkle Materie-Domänen:** Bei der Beobachtung von Galaxien und Galaxienhaufen stoßen Wissenschaftler oft auf das Problem, dass die helle Materie nicht unbedingt mit der Dunklen Materie korreliert. Diese Diskrepanzen erfordern fortlaufende Anstrengungen, um die Verteilung und Interaktion der hellen Materie genauer zu verstehen.
