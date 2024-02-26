@@ -1,6 +1,6 @@
 # Markdown to PDF (or Almost Anything Else)
 
-Using Pandoc these custom Latex templates convert Markdown files (.md) to PDF, Word (.docx), InDesign (.icml) or almost anything else.
+Using Pandoc and custom Latex templates to convert Markdown files (.md) to PDF, Word (.docx), InDesign (.icml) or almost anything else.
 
 # Setup
 
@@ -28,7 +28,7 @@ Change the corresponding variables to your individual data:
 
 ### Inside Tex Directory
 
-The variables can also be defined with a custom package inside your tex directory. This makes the user variables indipendent of your input directory.
+The variables can also be defined with a custom package inside your tex directory. This makes the user variables independent of your input directory.
 
 #### Installation
 
@@ -115,7 +115,6 @@ title: main title
 
 custom_author: user defined variables inside input directory [true,false]
 
-author: name of author
 date: date [e.g. "\today"]
 adress: features full adress [true,false]
  
@@ -132,7 +131,7 @@ apx: attach file to output document ["path/to/file"]
 bibliography: path to bibliography-file [e.g. "example.bib"]
 nocite: prints all bibliographic entries, if cited or not ['@*']
 csl: citation style
-
+cref: latex cross-referencing [true,false]
 ```
 
 ### linear.latex
@@ -154,6 +153,8 @@ reference: reference code [e.g. "Nr. 2023.12.0004"]
 ```
 
 ### Specify Output
+
+Different Markdown editor or [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment) handle output specificiation differently. You may need to include additional [Pandoc filter](https://pandoc.org/filters.html) options (e.g. citeproc), depending on your Pandoc parser. The following exemplifies output specification for Visual Studio Code and the extension [Markdown Preview Enhanced](https://shd101wyy.github.io/markdown-preview-enhanced/#/).
 
 #### PDF
 
