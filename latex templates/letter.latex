@@ -37,8 +37,8 @@ $if(custom_author)$
 \input{user_variables_definition}
   % or inside pandoc/templates directory:
 $else$
-\input{\string~/.pandoc/templates/user_variables_definition.tex}%Mac
-%\input{\string~/AppData/Roaming/pandoc/templates/user_variables_definition.tex}%Windows
+%\input{\string~/.pandoc/templates/user_variables_definition.tex}%Mac
+\input{\string~/AppData/Roaming/pandoc/templates/user_variables_definition.tex}%Windows
 $endif$
   % or inside local tex directory:
 %\usepackage{user_variables_definition}
@@ -59,6 +59,7 @@ $endif$
 \setstretch{1.1}
 \setmainfont[
 %Path = \fontpath,
+LetterSpace=0.6,
 Numbers = Proportional,
 ItalicFont = ABCSocialEdu-BookItalic.otf,
 BoldFont = ABCSocialEdu-Bold.otf,
@@ -100,10 +101,10 @@ $endif$
 \fancypagestyle{firstpage}{%
 	\fancyhf{} % Clear default headers/footers
 	\lhead{
-		\fontsize{10}{13}\logo\selectfont \name \\ \bigskip
+		\fontsize{10}{13}\logo\selectfont\name\\ \bigskip
 		\fontsize{7}{9}\info\selectfont \begin{minipage}[t][24mm][t]{\textwidth}{
 				\street \\ % Address
-				\zipcode\,\city \bigskip\\
+				\zipcode\,\nobreakspace\city \bigskip\\
 				\email \\
 				\webpage
 			}
@@ -117,7 +118,7 @@ $endif$
 \fancypagestyle{subsequentpages}{%
 	\fancyhf{} % Clear default headers/footers
 	\lhead{
-		\fontsize{10}{13}\logo\selectfont \name \\ \bigskip\bigskip\bigskip\bigskip\bigskip
+		\fontsize{10}{13}\logo\selectfont\name\\ \bigskip\bigskip\bigskip\bigskip\bigskip
 		\vfill
 	}
 	\renewcommand{\headrulewidth}{0pt} % Header rule thickness
@@ -158,7 +159,7 @@ $endif$
 %	Text
 %----------------------------------------------------------------------------------------
 \begin{FlushLeft}
-$if(subject)$\hrule height 0.5 pt\relax\vspace*{-8 pt}$subject$\vspace*{0.8 pt}\hrule height 0.5 pt\relax\vspace{\baselineskip}$endif$
+$if(subject)$\hrule height 0.6 pt\relax\vspace*{-8 pt}$subject$\vspace*{0.8 pt}\hrule height 0.6 pt\relax\vspace{\baselineskip}$endif$
 
 $body$
 
