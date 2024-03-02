@@ -2,6 +2,8 @@
 title:
 date: 14.12.1927
 
+custom_author: true
+
 lang: de
 
 output:
@@ -11,8 +13,6 @@ output:
 documentclass: article
 
 subject: Quantenmechanik und Gravitation
-
-invoice: false
 
 to: |
   | Stephen Hawking
