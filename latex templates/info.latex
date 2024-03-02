@@ -225,6 +225,9 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 % unböld figure folios %
 \renewcommand\cftfigpagefont{\mdseries}
 
+% lists %
+\setlist[itemize,enumerate,1]{leftmargin=\dimexpr 1.55em}
+
 % blockquotes %
 \AtBeginEnvironment{quote}{\normalsize}
 

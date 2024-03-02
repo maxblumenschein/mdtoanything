@@ -1,6 +1,7 @@
 ---
 title: "Die Faszination der Astrophysik: Eine Reise durch das Universum"
 date: 27. Juni 1913
+custom_author: true
 
 adress: true
 
@@ -77,11 +78,11 @@ In der Astrophysik gibt es eine faszinierende Kategorie von Materie, die nicht m
 
 Die helle Materie besteht aus normaler, baryonischer Materie, die aus Protonen, Neutronen, Elektronen und anderen subatomaren Teilchen besteht. Im Gegensatz zur Dunklen Materie, die nur gravitativ mit anderen Materieformen interagiert, erleben wir die helle Materie auf der Erde und im gesamten beobachtbaren Universum direkt oder indirekt durch ihre Wechselwirkung mit Licht.
 
-1. **Elektromagnetische Wechselwirkung:** Die helle Materie nimmt an der elektromagnetischen Wechselwirkung teil, was bedeutet, dass sie elektromagnetische Strahlung absorbieren, emittieren oder reflektieren kann. Dies ermöglicht ihre direkte Beobachtung durch Teleskope und andere Detektoren.
+* **Elektromagnetische Wechselwirkung:** Die helle Materie nimmt an der elektromagnetischen Wechselwirkung teil, was bedeutet, dass sie elektromagnetische Strahlung absorbieren, emittieren oder reflektieren kann. Dies ermöglicht ihre direkte Beobachtung durch Teleskope und andere Detektoren.
 
-2. **Lichtemission:** Sterne, Galaxien, Gasnebel und andere sichtbare Strukturen im Universum bestehen aus heller Materie. Die Energie, die diese Materieform abstrahiert, ermöglicht ihre Erkennung durch optische, infrarote, und radiowellen Teleskope.
-
-3. **Spektrale Signaturen:** Helle Materie erzeugt charakteristische Spektrallinien, die es den Astronomen ermöglichen, Informationen über ihre chemische Zusammensetzung, Temperatur und Geschwindigkeit zu extrahieren. Diese spektralen Signaturen sind entscheidend für das Verständnis der Eigenschaften von Sternen und Galaxien.
+* **Lichtemission:** Sterne, Galaxien, Gasnebel und andere sichtbare Strukturen im Universum bestehen aus heller Materie. Die Energie, die diese Materieform abstrahiert, ermöglicht ihre Erkennung durch optische, infrarote, und radiowellen Teleskope.
+  
+* **Spektrale Signaturen:** Helle Materie erzeugt charakteristische Spektrallinien, die es den Astronomen ermöglichen, Informationen über ihre chemische Zusammensetzung, Temperatur und Geschwindigkeit zu extrahieren. Diese spektralen Signaturen sind entscheidend für das Verständnis der Eigenschaften von Sternen und Galaxien.
 
 ## Helle Materie in Galaxien und Galaxienhaufen
 

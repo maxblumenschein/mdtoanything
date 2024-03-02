@@ -59,7 +59,7 @@ $endif$
 \setstretch{1.1}
 \setmainfont[
 %Path = \fontpath,
-LetterSpace=0.6,
+LetterSpace = 0.6,
 Numbers = Proportional,
 ItalicFont = ABCSocialEdu-BookItalic.otf,
 BoldFont = ABCSocialEdu-Bold.otf,

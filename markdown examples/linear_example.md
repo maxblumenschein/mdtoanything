@@ -1,6 +1,7 @@
 ---
 title: "Die Faszination der Astrophysik: Eine Reise durch das Universum"
 date: 27. Juni 1913
+custom_author: true
 
 adress: true
 

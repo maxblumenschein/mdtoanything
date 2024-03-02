@@ -18,6 +18,7 @@
 \usepackage{fontspec} % allow custom fonts
 \usepackage{luaotfload} % opentype custom fonts
 \usepackage{setspace} % formating of text
+\usepackage[skip=1\baselineskip plus1pt, indent=0pt]{parskip}
 \usepackage{scrextend} % footnote-styling
 \usepackage{enumitem} % lists
 \usepackage{caption} % captions customization
@@ -49,7 +50,7 @@ bottom=297mm/9*2,
 }
 
 % custom fonts set %
-\setstretch{1.0}
+\singlespacing
 \setmainfont[
 %Path = \fontpath,
 Scale       = MatchLowercase,
@@ -71,7 +72,7 @@ BoldItalicFont  = ABCDiatypeMono-BoldItalic.otf]
 
 % body %
 \setlength{\emergencystretch}{3em} %parameter for justification
-\setlength{\parindent}{1.55em}
+\setlength{\parindent}{0em}
 
 % custom title & heading fonts
 \makeatletter
@@ -118,27 +119,24 @@ BoldItalicFont  = ABCDiatypeMono-BoldItalic.otf]
 \makeatletter
 \renewcommand{\maketitle}{\vspace*{\droptitle}\bgroup\setlength{\parindent}{0pt}
 \begin{flushleft}
-  \setstretch{1}\normalsize\bfseries\@title\par
-  \setstretch{1}\normalsize\mdseries\@date\par
-  \setstretch{1}\normalsize\mdseries\@author
+  \setstretch{1}\normalsize\bfseries\@author\hfill\break
+  \setstretch{1}\normalsize\mdseries\@date\hfill\break
+  \setstretch{1}\normalsize\mdseries\@title
 \end{flushleft}\egroup
 }
 \makeatother
 
 \setlength{\droptitle}{48pt}
 
-\title{$title$\vspace{\baselineskip}}
+\title{$title$}
 \date{
-  $project$\endgraf
-  ––––––––––––––––––\endgraf
-  $date$\endgraf
+  $date$\hfill\break
+  $project$\hfill\break
   $if(adress)$$endif$ %spacing between date and author, if full adress shall be included
 }
 % add additional info to author field %
 \author{
-        ––––––––––––––––––\endgraf
-        \name\endgraf
-        \vspace{\baselineskip}
+        \name
         $if(adress)${
           \department\endgraf
           \institution\endgraf
@@ -146,20 +144,20 @@ BoldItalicFont  = ABCDiatypeMono-BoldItalic.otf]
           \zipcode\,\city\endgraf
           \phone\endgraf
           \email\endgraf
-          ==================\endgraf
-          }$endif$\endgraf\vspace*{2\baselineskip}
+          \vspace*{1\baselineskip}
+          }$endif$\endgraf
         %\vspace{-0.6\baselineskip} % adjust spacing after author field
         }
 
 % header & footer %
 \pagestyle{fancy} % for "fancy" style
 \fancyhf{} % remove header & footer
-\fancyfoot[R]{\scriptsize\extcolor{lightgray}\thepage} % folio on footer's right side
+\fancyfoot[R]{\normalsize\extcolor{lightgray}\thepage} % folio on footer's right side
 \renewcommand{\headrulewidth}{0pt} % remove header decoration line
 
 \fancypagestyle{plain} % for "plain" style, used for titlepage and chapter beginnings
     \fancyhf{} % remove header & footer
-    \fancyfoot[R]{\scriptsize\textcolor{lightgray}\thepage} % folio on footer's right side
+    \fancyfoot[R]{\normalsize\textcolor{lightgray}\thepage} % folio on footer's right side
     \renewcommand{\headrulewidth}{0pt}%
 
 \setlength{\footskip}{10em}

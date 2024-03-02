@@ -52,6 +52,7 @@ hcentering,
 \setstretch{1.1}
 \setmainfont[
 %Path = \fontpath,
+LetterSpace = 0.3,
 Numbers = OldStyle,
 ItalicFont = BradfordLL-RegularItalic.otf,
 BoldFont = BradfordLL-Bold.otf,
