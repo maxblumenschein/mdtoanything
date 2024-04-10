@@ -9,6 +9,8 @@ lof: true
 
 lang: de
 
+abstract: Abstrakter Test Ipsum.
+
 output:
   pdf_document:
     template: linear.latex

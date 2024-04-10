@@ -358,9 +358,23 @@ $if(title)$
 \thispagestyle{empty}
 $endif$
 
+\ifbool{isreport}{
+$if(abstract)$
+\chapter{Abstract}
 \begin{abstract}
-$abstract$
-\end{abstract}
+  $abstract$
+  \end{abstract}
+$endif$
+}{}
+
+\ifbool{isarticle}{
+$if(abstract)$
+\chapter{Abstract}
+\begin{abstract}
+  $abstract$
+  \end{abstract}
+$endif$
+}{}
 
 \ifbool{isreport}{\pagebreak}{}
 \ifbool{isarticle}{

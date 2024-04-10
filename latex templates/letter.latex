@@ -159,7 +159,7 @@ $endif$
 %	Text
 %----------------------------------------------------------------------------------------
 \begin{FlushLeft}
-$if(subject)$\hrule height 0.6 pt\relax\vspace*{-8 pt}$subject$\vspace*{0.8 pt}\hrule height 0.6 pt\relax\vspace{\baselineskip}$endif$
+$if(subject)$\hrule height 0.6 pt\relax\vspace*{-8 pt}\colorbox{black}{\textcolor{white}{$subject$}}\vspace*{0.8 pt}\hrule height 0.6 pt\relax\vspace{\baselineskip}$endif$
 
 $body$
 
