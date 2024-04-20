@@ -4,7 +4,6 @@
 \usepackage{babel}
 \usepackage{graphicx}  % importing of images
 \usepackage[hidelinks]{hyperref} % cross-referencing commands
-\usepackage[nameinlink]{cleveref} % advanced referencing
 \usepackage{etoolbox} % programming facilities
 \usepackage{fancyhdr} % header & footer customization
 \usepackage[titles]{tocloft} % table of contents customization
@@ -28,6 +27,8 @@
 \usepackage{pdfpages}
 \usepackage{url}
 \usepackage{amsmath} % math
+\usepackage[nameinlink]{cleveref} % advanced referencing
+
 
 
 % input user variables information %
