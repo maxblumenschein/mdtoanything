@@ -27,6 +27,8 @@
 \usepackage[toc]{appendix}
 \usepackage{pdfpages}
 \usepackage{url}
+\usepackage{amsmath} % math
+
 
 % input user variables information %
   % either inside input directory:
