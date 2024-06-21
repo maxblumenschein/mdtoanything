@@ -86,7 +86,7 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 \setlength{\emergencystretch}{3em} %parameter for justification
 
 % table %
-\AtBeginEnvironment{longtable}{\addfontfeature{Numbers={Lining,Monospaced}}}
+\AtBeginEnvironment{longtable}{\fontsize{9}{10}\info\selectfont\addfontfeature{Numbers={Lining,Monospaced}}}
 \setlength\heavyrulewidth{0.5 pt}
 \setlength\lightrulewidth{0.25 pt}
 
@@ -104,7 +104,7 @@ $endif$
 		\fontsize{10}{13}\logo\selectfont\name\\ \bigskip
 		\fontsize{7}{9}\info\selectfont \begin{minipage}[t][24mm][t]{\textwidth}{
 				\street \\ % Address
-				\zipcode\,\nobreakspace\city \bigskip\\
+				\zipcode\nobreakspace\city \bigskip\\
 				\email \\
 				\webpage
 			}
