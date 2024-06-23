@@ -159,15 +159,10 @@ $endif$
 %	Text
 %----------------------------------------------------------------------------------------
 \begin{FlushLeft}
-$if(subject)$\hrule height 0.6 pt\relax\vspace*{-8 pt}$subject$\vspace*{0.8 pt}\hrule height 0.6 pt\relax\vspace{\baselineskip}$endif$
+$if(subject)$\hrule height 0.5 pt\relax\vspace*{-6.5 pt}$subject$\vspace*{3.5 pt}\hrule height 0.5 pt\relax\vspace{\baselineskip}$endif$
 
 $body$
-
-\vspace{\baselineskip} % Vertical whitespace
-
-Mit freundlichen Grüssen,\hfill\break
-%\vspace{2\baselineskip} % =3 baselineskips
-\name
+\hfill\break
 
 \end{FlushLeft}
 
