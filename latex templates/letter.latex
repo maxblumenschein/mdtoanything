@@ -129,6 +129,19 @@ $endif$
 \AtBeginDocument{\thispagestyle{firstpage}} % Use the first page headers/footers style on the first page
 \pagestyle{subsequentpages} % Use the subsequent pages headers/footers style on subsequent pages
 
+% spacing between footlinerule and footnotes
+\makeatletter
+\def\footnoterule{\kern-8\p@
+  \hrule \kern 6.475\p@} % baseline as spacing (11pt*1.25=13.75pt)\hrule is .4pt high
+\makeatother
+
+% spacing after footnotemarker and footnote
+\makeatletter
+\long\def\@makefntext#1{%
+  \parindent 1em\noindent\hb@xt@ \baselineskip{\hss\@makefnmark}~#1%
+}
+\makeatother
+
 %----------------------------------------------------------------------------------------
 
 
