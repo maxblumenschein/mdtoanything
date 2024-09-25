@@ -37,8 +37,8 @@ $if(custom_author)$
 \input{user_variables_definition}
   % or inside pandoc/templates directory:
 $else$
-%\input{\string~/.pandoc/templates/user_variables_definition.tex}%Mac
-\input{\string~/AppData/Roaming/pandoc/templates/user_variables_definition.tex}%Windows
+\input{\string~/.pandoc/templates/user_variables_definition.tex}%Mac
+%\input{\string~/AppData/Roaming/pandoc/templates/user_variables_definition.tex}%Windows
 $endif$
   % or inside local tex directory:
 %\usepackage{user_variables_definition}
