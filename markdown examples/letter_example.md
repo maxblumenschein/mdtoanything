@@ -2,8 +2,6 @@
 title:
 date: 14.12.1927
 
-custom_author: true
-
 lang: de
 
 output:
@@ -15,10 +13,20 @@ documentclass: article
 subject: Quantenmechanik und Gravitation
 
 to: |
+  | Einschreiben
+  | Herr
   | Stephen Hawking
+  | Professor
   | 300 E Street SW
   | Washington, D.C.
+  | Vereinigte Staaten von Amerika
 ---
+# Ipsum Lorenzius
+
+## 2019 – 2021
+
+## 1980 – 2019
+
 Lieber Stephen,
 
 ich hoffe, diese Zeilen finden dich in bester Verfassung und im vollen Fluss deiner wissenschaftlichen Neugier. Es freut mich außerordentlich zu sehen, wie deine bahnbrechenden Arbeiten die Grenzen unseres Verständnisses über die Natur des Universums erweitern.

@@ -23,6 +23,7 @@
 \usepackage{caption} % captions customization
 \usepackage{longtable} % tables
 \usepackage{booktabs} % tables+
+\usepackage{array} % used for tables
 \usepackage[toc]{appendix}
 \usepackage{pdfpages}
 \usepackage{url}

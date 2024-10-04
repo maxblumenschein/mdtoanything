@@ -6,7 +6,7 @@
 \usepackage[hidelinks]{hyperref} % cross-referencing commands
 \usepackage[nameinlink]{cleveref} % advanced referencing
 \usepackage{etoolbox} % programming facilities
-\usepackage{geometry} % page layout
+\usepackage[showframe]{geometry} % page layout
 \usepackage{fancyhdr} % header & footer customization
 \usepackage{afterpage}
 \usepackage[titles]{tocloft} % table of contents customization
@@ -16,7 +16,7 @@
 \usepackage[normalem]{ulem} % strike-through
 \usepackage{lmodern} % lmodern as base-font
 \usepackage{titling} % custom title styling
-\usepackage{titlesec} % custom title fonts
+\usepackage[explicit]{titlesec} % custom title fonts
 \usepackage{fontspec} % allow custom fonts
 \usepackage{luaotfload} % opentype custom fonts
 \usepackage{setspace} % formating of text
@@ -30,6 +30,9 @@
 \usepackage{pdfpages}
 \usepackage{url}
 \usepackage{lastpage} % use for folio (all pages)
+\usepackage{mdframed} % custom text boxes
+\usepackage{tcolorbox} % custom text boxes
+
 
 % input user variables information %
   % either inside input directory:
@@ -85,6 +88,23 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 \setlength{\parskip}{1em} % Vertical space between paragraphs
 \setlength{\emergencystretch}{3em} %parameter for justification
 
+% Define a custom mdframed environment with outer margins
+\newmdenv[
+    topline=false,
+    rightline=false,
+    bottomline=false,
+    leftline=false,
+    leftmargin=-2pt,  % Extends box leftward
+    rightmargin=-2pt, % Extends box rightward
+    innerleftmargin=2pt,
+    innerrightmargin=2pt,
+    innertopmargin=4pt,
+    innerbottommargin=-7pt,
+    backgroundcolor=black,
+    fontcolor=white,
+    ignorelastdescenders=true  % Ignores descenders when calculating box height
+]{shadedpar}
+
 % table %
 \AtBeginEnvironment{longtable}{\fontsize{9}{10}\info\selectfont\addfontfeature{Numbers={Lining,Monospaced}}}
 \setlength\heavyrulewidth{0.5 pt}
@@ -129,6 +149,35 @@ $endif$
 \AtBeginDocument{\thispagestyle{firstpage}} % Use the first page headers/footers style on the first page
 \pagestyle{subsequentpages} % Use the subsequent pages headers/footers style on subsequent pages
 
+%\tcbset{arc=0pt,outer arc=0pt,standard jigsaw,
+ % opacityback=0,colframe=black,
+%boxsep=0pt,left=0pt,right=0pt,top=1pt,bottom=0pt,
+%boxrule=0pt,bottomrule=0.5pt,toprule=0.5pt,extrude left by=1pt,extrude right by=1pt}
+
+% custom title & heading
+\titleformat{\section}[block]
+{\vspace{0pt}\normalfont}
+{}
+{0em}
+{#1}[]
+
+% custom title & heading
+\offinterlineskip\titleformat{\subsection}
+{\vspace{0pt}\normalfont}
+{}
+{0em}
+{\begin{shadedpar}{#1}\end{shadedpar}}[]
+
+\titlespacing*{\section}
+    {0pt}% left
+    {0pt}% before sep
+    {-\baselineskip}% after sep
+
+\titlespacing*{\subsection}
+    {0pt}% left
+    {0pt}% before sep
+    {-\baselineskip}% after sep
+
 % spacing between footlinerule and footnotes
 \makeatletter
 \def\footnoterule{\kern-8\p@
@@ -150,10 +199,14 @@ $endif$
 %----------------------------------------------------------------------------------------
 %	ADDRESSEE AND GREETING
 %----------------------------------------------------------------------------------------
-\begin{minipage}[t][53mm][t]{\textwidth}{
-		$to$
+$if(to)$
+\begin{minipage}[t][54mm][t]{\textwidth}{
+		\raisebox{2mm}{\fontsize{7}{7}\info\selectfont\zipcode\nobreakspace\city\vspace{5pt}}\\
+        \normalfont\normalsize\
+        $to$
 	}
 \end{minipage}
+$endif$
 
 %----------------------------------------------------------------------------------------
 %	Subject
@@ -172,7 +225,20 @@ $endif$
 %	Text
 %----------------------------------------------------------------------------------------
 \begin{FlushLeft}
-$if(subject)$\hrule height 0.5 pt\relax\vspace*{-6.5 pt}$subject$\vspace*{3.5 pt}\hrule height 0.5 pt\relax\vspace{\baselineskip}$endif$
+$if(subject)$\begin{shadedpar}$subject$\end{shadedpar}$endif$
+
+\setlength{\parindent}{0pt}%
+\setlength{\parskip}{0pt}%
+
+%\offinterlineskip
+%\tcbset{nobeforeafter,top=2cm}
+%\begin{tcolorbox}%
+%\textbf{Testline}%
+%\end{tcolorbox}
+%\begin{tcolorbox}%
+%\textbf{is}%
+%\end{tcolorbox}
+
 
 $body$
 \hfill\break
