@@ -32,7 +32,7 @@ The variables can also be defined with a custom package inside your tex director
 
 #### Installation
 
-1. **Copy** the folder ``user_variables_definition`` inside ``/latex templates`` to your tex directory (under ``texmf/`` or ``texmf-local/``): ``tex/latex/``[^1]
+1. **Copy** the folder ``/user_variables_definition`` inside ``/latex templates`` to your tex directory (under ``texmf/`` or ``texmf-local/``): ``tex/latex/``[^1]
 
 2. **Update** your TeX index. For TeX Live, run: ``texhash``
 
@@ -210,7 +210,7 @@ You can combine ``.icml`` and PDF and Word output by adding ``pandoc_args: ["-s"
 
 ## Scripting
 
-The Bash script ``convert_with_pandoc.sh`` inside ``script`` converts from and to the common formats ``.pdf``, ``.docx`` and ``.icml``. It allows easy control over file conversion for various formats while automating common Pandoc tasks and setting necessary arguments.
+The Bash script ``convert_with_pandoc.sh`` inside ``/script`` converts from and to the common formats ``.pdf``, ``.docx`` and ``.icml``. It allows easy control over file conversion for various formats while automating common Pandoc tasks and setting necessary arguments.
 It prompts the user for a input file path, output path (defaulting to the input path if left blank), output format and desired template (if needed).
 
 ### Setup
