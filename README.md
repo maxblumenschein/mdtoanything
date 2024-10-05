@@ -38,7 +38,7 @@ The variables can also be defined with a custom package inside your tex director
 
 3. **Add**/uncomment ``\usepackage{user_variables_definition}`` and **remove**/comment ``$if(custom_author)$\input{user_variables_definition}$else$\input{\string~/AppData/Roaming/pandoc/templates/user_variables_definition.tex}%Windows$endif$`` in the selected Latex template.
 
-[^1]: see [LaTeX/Installing Extra Packages](https://en.wikibooks.org/wiki/LaTeX/Installing_Extra_Packages) for general information on installing custom packages. 
+[^1]: see [LaTeX/Installing Extra Packages](https://en.wikibooks.org/wiki/LaTeX/Installing_Extra_Packages) for general information on installing custom packages.
 
 ## Fonts
 
@@ -54,7 +54,7 @@ Custom high-quality fonts are used for typesetting:
     - ABC Social
     - ABC Social Extended
 
-Pandoc assumes these fonts to be installed on your system: 
+Pandoc assumes these fonts to be installed on your system:
 
 - macOS: ``/Library/Fonts/``
 - Windows: ``C:\\Windows\Fonts``
@@ -81,11 +81,11 @@ BoldItalicFont  = ABCDiatype-BoldItalic.otf]
 
 ## Latex Template File
 
-For offline-functionality copy the desired template files to the ``/templates`` folder inside the Pandoc user data directory. On *nix and macOS systems this will most likely be: ``$HOME/.pandoc``. On Windows the default user data directory likely is ``$HOME\AppData\Roaming\pandoc``. You can find the user data directory on your system by looking at the output of ``pandoc --version``. 
+For offline-functionality copy the desired template files to the ``/templates`` folder inside the Pandoc user data directory. On *nix and macOS systems this will most likely be: ``$HOME/.pandoc``. On Windows the default user data directory likely is ``$HOME\AppData\Roaming\pandoc``. You can find the user data directory on your system by looking at the output of ``pandoc --version``.
 
 ## Markdown Input File
 
-Specify general information like date, title, language and desired output format and template in the input Markdown file using a YAML header:
+Specify general information like date, title, language in the input Markdown file using a YAML header:
 
 ```yaml
 ---
@@ -98,7 +98,7 @@ lang: de
 documentclass: article
 
 output:
-  pdf_document: 
+  pdf_document:
     template: info.latex
 
 bibliography: "./literature.bib"
@@ -117,7 +117,7 @@ custom_author: user defined variables inside input directory [true,false]
 
 date: date [e.g. "\today"]
 adress: features full adress [true,false]
- 
+
 project: works like a subtitle
 abstract: abstract to be printed on title page
 
@@ -143,7 +143,7 @@ titlepage: inserts a page break after the titlepage [true,false]
 ### letter.latex
 
 ```yaml
-to: addressee 
+to: addressee
 [e.g. " |
   | NASA Headquarters
   | 300 E Street SW
@@ -207,3 +207,30 @@ pandoc_args: ["-s", "-f", "markdown", "-t", "icml", "-o", "customname.icml"]
 ```
 
 You can combine ``.icml`` and PDF and Word output by adding ``pandoc_args: ["-s", "-f", "markdown", "-t", "icml", "-o", "customname.icml"]``. This will export multiple files with one export command.
+
+## Scripting
+
+The Bash script ``convert_with_pandoc.sh`` inside ``script`` converts from and to the common formats ``.pdf``, ``.docx`` and ``.icml``. It allows easy control over file conversion for various formats while automating common Pandoc tasks and setting necessary arguments.
+It prompts the user for a input file path, output path (defaulting to the input path if left blank), output format and desired template (if needed).
+
+### Setup
+
+1. Setup default default template path, template (e.g. ``linear.latex``) and pdf-engine (e.g. lualatex) of ``convert_with_pandoc.sh``.
+
+2. To make the script executable, run the following command:
+
+```bash
+chmod +x pandoc_convert.sh
+```
+
+3.  Optionally, move the script to a location in your system's PATH (e.g., /usr/local/bin) so it can be run from anywhere:
+
+```bash
+sudo mv pandoc_convert.sh /usr/local/bin/pandoc_convert
+```
+
+4. Run the script from the terminal:
+
+```
+convert_with pandoc
+```
