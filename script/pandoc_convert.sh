@@ -5,6 +5,11 @@ default_template_path=""
 default_template="linear.latex"
 pdf_engine="lualatex"
 
+# Function to check if a URL is reachable
+check_url() {
+    curl --head --silent --fail "$1" >/dev/null 2>&1
+}
+
 # Prompt for the input file path
 read -p "Enter the input file path: " input_path
 
@@ -40,16 +45,23 @@ if [ "$output_format" == "pdf" ]; then
         template_file="$default_template"
     fi
 
-    # First look for the template file in the default template path
-    template_path="$default_template_path$template_file"
+    # Try to find the template online
+    online_template_url="https://raw.githubusercontent.com/maxblumenschein/mdtoanything/refs/heads/main/latex%20templates/$template_file"  # Replace with the actual URL
 
-    if [ ! -f "$template_path" ]; then
-        # If not found, look for the template in the input file directory
-        template_path="$input_dir/$template_file"
+    if check_url "$online_template_url"; then
+        template_path="$online_template_url"
+    else
+        # If not found online, look for the template in the default template path
+        template_path="$default_template_path$template_file"
 
         if [ ! -f "$template_path" ]; then
-            echo "Error: Template file '$template_file' not found in either '$default_template_path' or '$input_dir'."
-            exit 1
+            # If not found, look for the template in the input file directory
+            template_path="$input_dir/$template_file"
+
+            if [ ! -f "$template_path" ]; then
+                echo "Error: Template file '$template_file' not found in either '$default_template_path', online, or '$input_dir'."
+                exit 1
+            fi
         fi
     fi
 fi
