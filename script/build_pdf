@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Change to the scripts directory
+cd "."
+
+# Check if the directory change was successful
+if [ $? -ne 0 ]; then
+    echo "Failed to change directory. Exiting."
+    exit 1
+fi
+
+# Execute the Pandoc command
+pandoc "INPUT" \
+-o "OUTPUT" \
+--template="https://raw.githubusercontent.com/maxblumenschein/mdtoanything/refs/heads/main/latex%20templates/linear.latex" \
+--pdf-engine="lualatex" \
+--citeproc \
+--standalone \
+--resource-path="."
