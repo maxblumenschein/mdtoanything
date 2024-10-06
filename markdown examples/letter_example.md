@@ -10,6 +10,8 @@ output:
 
 documentclass: article
 
+custom_author: true
+
 subject: Quantenmechanik und Gravitation
 
 to: |

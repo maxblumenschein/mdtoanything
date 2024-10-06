@@ -2,7 +2,7 @@
 title: "Die Faszination der Astrophysik: Eine Reise durch das Universum"
 date: 27. Juni 1913
 
-adress: true
+custom-author: true
 
 lang: de
 
@@ -84,7 +84,7 @@ Die helle Materie besteht aus normaler, baryonischer Materie, die aus Protonen, 
 
 Die helle Materie spielt eine zentrale Rolle in der Struktur und Entwicklung von Galaxien und Galaxienhaufen. Ihr gravitativer Einfluss bestimmt die Verteilung und Bewegung von sichtbaren Materiekomponenten in diesen kosmischen Strukturen.
 
-![\label{jwt}Das James-Webb-Weltraumteleskop der NASA hat das bisher tiefste und schärfste Infrarotbild des fernen Universums aufgenommen. Dieses Bild des Galaxienhaufens SMACS 0723, das als _Webb's First Deep Field_ bekannt ist, strotzt nur so vor Details.](https://www.nasa.gov/wp-content/uploads/2023/03/main_image_deep_field_smacs0723-5mb.jpg "Das James-Webb-Weltraumteleskop der NASA hat das bisher tiefste und schärfste Infrarotbild des fernen Universums aufgenommen. Dieses Bild des Galaxienhaufens SMACS 0723, das als _Webb's First Deep Field_ bekannt ist, strotzt nur so vor Details.")
+![\label{jwt}Das James-Webb-Weltraumteleskop der NASA hat das bisher tiefste und schärfste Infrarotbild des fernen Universums aufgenommen. Dieses Bild des Galaxienhaufens SMACS 0723, das als _Webb's First Deep Field_ bekannt ist, strotzt nur so vor Details.](https://science.nasa.gov/wp-content/uploads/2024/07/webb-nircam-miri-stsci-01j06y2cnayapkbw5ekm4s94xj-4k.png "Das James-Webb-Weltraumteleskop der NASA hat das bisher tiefste und schärfste Infrarotbild des fernen Universums aufgenommen. Dieses Bild des Galaxienhaufens SMACS 0723, das als _Webb's First Deep Field_ bekannt ist, strotzt nur so vor Details.")
 
 1. **Galaktische Rotation:** In Galaxien beeinflusst die helle Materie die Rotationsgeschwindigkeiten von Sternen in den äußeren Regionen. Dieser Einfluss ist entscheidend für unser Verständnis der galaktischen Dynamik, da er dazu beiträgt, die beobachteten Rotationskurven zu erklären.
 
