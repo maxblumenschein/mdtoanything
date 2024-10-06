@@ -234,7 +234,14 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 % unböld figure caption %
 \renewcommand\cftfigfont{\mdseries}
 % unböld figure folios %
-\renewcommand\cftfigpagefont{\mdseries}
+\renewcommand\cftfigpagefont{\mdseries\tabularnumbers}
+
+% list of tables %
+\renewcommand\cftlottitlefont{\sffamily\Huge\bfseries}
+% unböld figure caption %
+\renewcommand\cfttabfont{\sffamily\mdseries}
+% unböld figure folios %
+\renewcommand\cfttabpagefont{\sffamily\mdseries\tabularnumbers}
 
 % lists %
 \setlist[itemize,enumerate,1]{leftmargin=\dimexpr 1.55em}
