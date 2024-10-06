@@ -1,13 +1,10 @@
 #!/bin/bash
 
-# Change to the scripts directory
-cd "."
+# Get the directory of the script
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-# Check if the directory change was successful
-if [ $? -ne 0 ]; then
-    echo "Failed to change directory. Exiting."
-    exit 1
-fi
+# Change to the script's directory
+cd "$SCRIPT_DIR"
 
 # Execute the Pandoc command
 pandoc "INPUT" \
