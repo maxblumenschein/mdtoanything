@@ -8,6 +8,8 @@ adress: true
 toc: true
 lof: true
 
+numdepth: 1
+
 lang: de
 
 abstract: Abstrakter Test Ipsum. When no plant of the field and every living creature that moves, of every kind on earth that bear fruit with the seed in its fruit; you shall eat of it, cursed is the one that flows around the whole face of the waters. God made the earth were finished, and all their multitude. They heard the sound of you in the midst of the waters, and let them have dominion over the fish of the field; but for the man there was not found a helper as his partner. They heard the sound of the evening breeze, and the waters that were above the dome. And it was so. So the LORD God made the wild animals of the sea, and over the birds of the air, and brought her to the man. To rule over the face of all the days of your life. They heard the sound of the field and every bird of the sky to give light upon the man, and said to them, Be fruitful and multiply, and fill the waters in the seas, and let it separate the waters in the image of God he created them; male and female he created them.

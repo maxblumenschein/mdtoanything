@@ -87,11 +87,7 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 % custom title & heading fonts
 \makeatletter
 \@ifclassloaded{report}{
-\setcounter{secnumdepth}{3}
-\renewcommand{\thechapter}{\arabic{chapter}}
-\renewcommand{\thesection}{}
-\renewcommand{\thesubsection}{}
-\renewcommand{\thesubsubsection}{}
+\setcounter{secnumdepth}{$if(numdepth)$$numdepth$$else$3$endif$}
 }{}
 \makeatother
 
@@ -99,9 +95,9 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 \@ifclassloaded{report}{
 %\titleformat{\chapter}[display]{\Huge\sffamily\bfseries}{\chaptertitlename\thechapter}{\\ \Huge\bfseries}{.4em}{}
 \titleformat{\chapter}[display]{\raggedright\fontsize{90}{60}\sffamily\bfseries}{\fontsize{90}{60}\sffamily\thechapter}{0pt}{\setstretch{1.0}\Huge\bfseries}[]
-\titleformat{\section}{\setstretch{1.0}\Large\sffamily\bfseries}{\thesection}{0em}{}
-\titleformat{\subsection}{\large\sffamily\bfseries}{\thesubsection}{0em}{}
-\titleformat{\subsubsection}{\normalsize\sffamily\bfseries}{\thesubsubsection}{0em}{}
+\titleformat{\section}{\setstretch{1.0}\Large\sffamily\bfseries}{\thesection~}{.2em}{}
+\titleformat{\subsection}{\large\sffamily\bfseries}{\thesubsection~}{.2em}{}
+\titleformat{\subsubsection}{\normalsize\sffamily\bfseries}{\thesubsubsection~}{.2em}{}
 }{}
 \makeatother
 
@@ -109,7 +105,7 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 \@ifclassloaded{article}{
 \titleformat{\section}{\Large\sffamily\bfseries}{\thesection~}{.2em}{}
 \titleformat{\subsection}{\large\sffamily\bfseries}{\thesubsection~}{.2em}{}
-\titleformat{\subsubsection}{\normalsize\sffamily\bfseries}{\thesubsubsection~}{0em}{}
+\titleformat{\subsubsection}{\normalsize\sffamily\bfseries}{\thesubsubsection~}{.2em}{}
 }{}
 \makeatother
 
@@ -123,6 +119,12 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 \providebool{isarticle}
 \makeatletter
 \@ifclassloaded{article}{\booltrue{isarticle}}{\boolfalse{isarticle}}
+\makeatother
+
+% define isarticle boolean which may be used inside the document contrary to ifclassloaded
+\providebool{isbook}
+\makeatletter
+\@ifclassloaded{book}{\booltrue{isbook}}{\boolfalse{isbook}}
 \makeatother
 
 % title &
@@ -387,6 +389,15 @@ $if(abstract)$
 $endif$
 }{}
 
+\ifbool{isbook}{
+$if(abstract)$
+\chapter*{Abstract}
+\begin{abstract}
+  $abstract$
+  \end{abstract}
+$endif$
+}{}
+
 \ifbool{isreport}{\pagebreak}{}
 \ifbool{isarticle}{
 $if(titlepage)$
@@ -414,6 +425,13 @@ $if(lof)$
 $endif$
 }{}
 
+\ifbool{isbook}{
+$if(lof)$
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+$endif$
+}{}
+
 \ifbool{isreport}{
 $if(lot)$
 \addcontentsline{toc}{chapter}{\listtablename}
@@ -422,6 +440,13 @@ $endif$
 }{}
 
 \ifbool{isarticle}{
+$if(lot)$
+\addcontentsline{toc}{section}{\listtablename}
+\listoftables
+$endif$
+}{}
+
+\ifbool{isbook}{
 $if(lot)$
 \addcontentsline{toc}{section}{\listtablename}
 \listoftables
