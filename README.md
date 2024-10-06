@@ -210,12 +210,12 @@ You can combine ``.icml`` and PDF and Word output by adding ``pandoc_args: ["-s"
 
 ## Scripting
 
-The Bash script ``convert_with_pandoc.sh`` inside ``/script`` converts from and to the common formats ``.pdf``, ``.docx`` and ``.icml``. It allows easy control over file conversion for various formats while automating common Pandoc tasks and setting necessary arguments.
+The Bash script ``pandoc_convert.sh`` inside ``/script`` converts from and to the common formats ``.pdf``, ``.docx`` and ``.icml``. It allows easy control over file conversion for various formats while automating common Pandoc tasks and setting necessary arguments.
 It prompts the user for a input file path, output path (defaulting to the input path if left blank), output format and desired template (if needed).
 
 ### Setup
 
-1. Setup default default template path, template (e.g. ``linear.latex``) and pdf-engine (e.g. lualatex) of ``convert_with_pandoc.sh``.
+1. Setup default default template path, template (e.g. ``linear.latex``) and pdf-engine (e.g. lualatex) of ``pandoc_convert.sh``.
 
 2. To make the script executable, run the following command:
 
@@ -232,5 +232,5 @@ sudo mv pandoc_convert.sh /usr/local/bin/pandoc_convert
 4. Run the script from the terminal:
 
 ```
-convert_with pandoc
+pandoc_convert
 ```
