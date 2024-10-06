@@ -30,8 +30,6 @@
 \usepackage{amsmath} % math
 \usepackage[nameinlink]{cleveref} % advanced referencing
 
-
-
 % input user variables information %
   % either inside input directory:
 $if(custom_author)$
@@ -182,6 +180,11 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
  {\par\medskip}
 
 % table of contents %
+% Redefine the page number font for TOC entries
+\renewcommand{\cftsecpagefont}{\color{lightgray}\liningnumbers}  % for sections
+\renewcommand{\cftsubsecpagefont}{\liningnumbers}  % for subsections
+\renewcommand{\cftsubsubsecpagefont}{\liningnumbers}  % for subsubsections
+
 \renewcommand{\cfttoctitlefont}{\sffamily\Huge\bfseries}
 
 \makeatletter
@@ -189,17 +192,17 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 % unböld chapter names %
 \renewcommand\cftchapfont{\sffamily\mdseries}
 % unböld chapter folios %
-\renewcommand\cftchappagefont{\sffamily\mdseries}
+\renewcommand\cftchappagefont{\sffamily\mdseries\liningnumbers}
 % removing chapter name %
 \renewcommand{\@chapapp}\Huge{}
 % unböld section names %
 \renewcommand\cftsecfont{\sffamily\mdseries}
 % unböld section folios %
-\renewcommand\cftsecpagefont{\sffamily\mdseries}
+\renewcommand\cftsecpagefont{\sffamily\mdseries\liningnumbers}
 % unböld subsection names %
 \renewcommand\cftsubsecfont{\sffamily\mdseries}
 % unböld subsection folios %
-\renewcommand\cftsubsecpagefont{\sffamily\mdseries}
+\renewcommand\cftsubsecpagefont{\sffamily\mdseries\liningnumbers}
 }{}
 \makeatother
 
@@ -208,17 +211,17 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 % unböld chapter names %
 \renewcommand\cftchapfont{\sffamily\mdseries}
 % unböld chapter folios %
-\renewcommand\cftchappagefont{\sffamily\mdseries}
+\renewcommand\cftchappagefont{\sffamily\mdseries\liningnumbers}
 % removing chapter name %
 \renewcommand{\@chapapp}\Huge{}
 % unböld section names %
 \renewcommand\cftsecfont{\sffamily\mdseries}
 % unböld section folios %
-\renewcommand\cftsecpagefont{\sffamily\mdseries}
+\renewcommand\cftsecpagefont{\sffamily\mdseries\liningnumbers}
 % unböld subsection names %
 \renewcommand\cftsubsecfont{\sffamily\mdseries}
 % unböld subsection folios %
-\renewcommand\cftsubsecpagefont{\sffamily\mdseries}
+\renewcommand\cftsubsecpagefont{\sffamily\mdseries\liningnumbers}
 }{}
 \makeatother
 
@@ -227,15 +230,15 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 % unböld section names %
 \renewcommand\cftsecfont{\sffamily\mdseries}
 % unböld section folios %
-\renewcommand\cftsecpagefont{\sffamily\mdseries}
+\renewcommand\cftsecpagefont{\sffamily\mdseries\liningnumbers}
 % unböld subsection names %
 \renewcommand\cftsubsecfont{\sffamily\mdseries}
 % unböld subsection folios %
-\renewcommand\cftsubsecpagefont{\sffamily\mdseries}
+\renewcommand\cftsubsecpagefont{\sffamily\mdseries\liningnumbers}
 % unböld subsubsection names %
 \renewcommand\cftsubsubsecfont{\sffamily\mdseries}
 % unböld subsubsection folios %
-\renewcommand\cftsubsubsecpagefont{\sffamily\mdseries}
+\renewcommand\cftsubsubsecpagefont{\sffamily\mdseries\liningnumbers}
 }{}
 \makeatother
 
