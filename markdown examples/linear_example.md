@@ -91,11 +91,11 @@ Die helle Materie besteht aus normaler, baryonischer Materie, die aus Protonen, 
 
 3. **Spektrale Signaturen:** Helle Materie erzeugt charakteristische Spektrallinien, die es den Astronomen ermöglichen, Informationen über ihre chemische Zusammensetzung, Temperatur und Geschwindigkeit zu extrahieren. Diese spektralen Signaturen sind entscheidend für das Verständnis der Eigenschaften von Sternen und Galaxien.
 
-## Helle Materie in Galaxien und Galaxienhaufen
+### Helle Materie in Galaxien und Galaxienhaufen
 
 Die helle Materie spielt eine zentrale Rolle in der Struktur und Entwicklung von Galaxien und Galaxienhaufen. (\cref{jwt}) Ihr gravitativer Einfluss bestimmt die Verteilung und Bewegung von sichtbaren Materiekomponenten in diesen kosmischen Strukturen.
 
-![\label{jwt}Das James-Webb-Weltraumteleskop der NASA hat das bisher tiefste und schärfste Infrarotbild des fernen Universums aufgenommen. Dieses Bild des Galaxienhaufens SMACS 0723, das als _Webb's First Deep Field_ bekannt ist, strotzt nur so vor Details.](https://www.nasa.gov/wp-content/uploads/2023/03/main_image_deep_field_smacs0723-5mb.jpg)
+![\label{jwt}Das James-Webb-Weltraumteleskop der NASA hat das bisher tiefste und schärfste Infrarotbild des fernen Universums aufgenommen. Dieses Bild des Galaxienhaufens SMACS 0723, das als _Webb's First Deep Field_ bekannt ist, strotzt nur so vor Details.](../resources/kw05_0033982_20240709_001.jpg)
 
 1. **Galaktische Rotation:** In Galaxien beeinflusst die helle Materie die Rotationsgeschwindigkeiten von Sternen in den äußeren Regionen. Dieser Einfluss ist entscheidend für unser Verständnis der galaktischen Dynamik, da er dazu beiträgt, die beobachteten Rotationskurven zu erklären.
 
