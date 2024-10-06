@@ -6,7 +6,7 @@
 \usepackage[hidelinks]{hyperref} % cross-referencing commands
 \usepackage[nameinlink]{cleveref} % advanced referencing
 \usepackage{etoolbox} % programming facilities
-\usepackage[showframe]{geometry} % page layout
+\usepackage{geometry} % page layout
 \usepackage{fancyhdr} % header & footer customization
 \usepackage{afterpage}
 \usepackage[titles]{tocloft} % table of contents customization
@@ -111,7 +111,7 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 \setlength\lightrulewidth{0.25 pt}
 
 $if(invoice)$
-\AfterEndEnvironment{longtable}{\addfontfeature{Numbers={Lining,Monospaced}}Bitte überweisen Sie den Betrag auf folgendes Konto: \hfill\break
+\AfterEndEnvironment{longtable}{\addfontfeature{Numbers={Lining,Monospaced}}
 \bankaccount}
 $endif$
 
@@ -149,35 +149,6 @@ $endif$
 \AtBeginDocument{\thispagestyle{firstpage}} % Use the first page headers/footers style on the first page
 \pagestyle{subsequentpages} % Use the subsequent pages headers/footers style on subsequent pages
 
-%\tcbset{arc=0pt,outer arc=0pt,standard jigsaw,
- % opacityback=0,colframe=black,
-%boxsep=0pt,left=0pt,right=0pt,top=1pt,bottom=0pt,
-%boxrule=0pt,bottomrule=0.5pt,toprule=0.5pt,extrude left by=1pt,extrude right by=1pt}
-
-% custom title & heading
-\titleformat{\section}[block]
-{\vspace{0pt}\normalfont}
-{}
-{0em}
-{#1}[]
-
-% custom title & heading
-\offinterlineskip\titleformat{\subsection}
-{\vspace{0pt}\normalfont}
-{}
-{0em}
-{\begin{shadedpar}{#1}\end{shadedpar}}[]
-
-\titlespacing*{\section}
-    {0pt}% left
-    {0pt}% before sep
-    {-\baselineskip}% after sep
-
-\titlespacing*{\subsection}
-    {0pt}% left
-    {0pt}% before sep
-    {-\baselineskip}% after sep
-
 % spacing between footlinerule and footnotes
 \makeatletter
 \def\footnoterule{\kern-8\p@
@@ -201,7 +172,7 @@ $endif$
 %----------------------------------------------------------------------------------------
 $if(to)$
 \begin{minipage}[t][54mm][t]{\textwidth}{
-		\raisebox{2mm}{\fontsize{7}{7}\info\selectfont\zipcode\nobreakspace\city\vspace{5pt}}\\
+		\raisebox{2mm}{\fontsize{7}{7}\info\selectfont\zipcode\nobreakspace\city,\nobreakspace\name\vspace{5pt}}\\
         \normalfont\normalsize\
         $to$
 	}
@@ -225,10 +196,7 @@ $endif$
 %	Text
 %----------------------------------------------------------------------------------------
 \begin{FlushLeft}
-$if(subject)$\begin{shadedpar}$subject$\end{shadedpar}$endif$
-
-\setlength{\parindent}{0pt}%
-\setlength{\parskip}{0pt}%
+\begin{shadedpar}$title$\end{shadedpar}
 
 %\offinterlineskip
 %\tcbset{nobeforeafter,top=2cm}

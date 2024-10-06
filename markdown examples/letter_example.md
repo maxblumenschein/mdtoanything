@@ -1,6 +1,7 @@
 ---
-title:
+title: Quantenmechanik und Gravitation
 date: 14.12.1927
+reference: REF 987.26343.03
 
 lang: de
 
@@ -8,11 +9,7 @@ output:
   pdf_document:
     template: letter.latex
 
-documentclass: article
-
 custom_author: true
-
-subject: Quantenmechanik und Gravitation
 
 to: |
   | Einschreiben
@@ -23,12 +20,6 @@ to: |
   | Washington, D.C.
   | Vereinigte Staaten von Amerika
 ---
-# Ipsum Lorenzius
-
-## 2019 – 2021
-
-## 1980 – 2019
-
 Lieber Stephen,
 
 ich hoffe, diese Zeilen finden dich in bester Verfassung und im vollen Fluss deiner wissenschaftlichen Neugier. Es freut mich außerordentlich zu sehen, wie deine bahnbrechenden Arbeiten die Grenzen unseres Verständnisses über die Natur des Universums erweitern.
@@ -48,3 +39,6 @@ Deine Fortschritte erinnern mich an die Worte von Niels Bohr: "Manchmal konnten 
 In meinen letzten Jahren habe ich mich intensiv mit der Frage nach einer einheitlichen Feldtheorie beschäftigt. Deine Arbeit hat gezeigt, dass die Suche nach einer solchen Theorie im Mikro- und Makrokosmos weiterhin von eminenter Bedeutung ist. Als Kollege und Mitstreiter ermutige ich dich, diese Reise fortzusetzen und uns näher an die Wahrheit hinter den Schleiern der physikalischen Realität zu führen.
 
 Mögen die Sterne weiterhin deine Forschung erleuchten, und möge deine Leidenschaft für die Wissenschaft unaufhörlich brennen. Ich freue mich darauf, von weiteren Entdeckungen aus deiner Feder zu hören.
+
+Bis bald\
+Albert
