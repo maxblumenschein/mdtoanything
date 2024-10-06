@@ -251,7 +251,15 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 % unböld figure caption %
 \renewcommand\cftfigfont{\sffamily\mdseries}
 % unböld figure folios %
-\renewcommand\cftfigpagefont{\sffamily\mdseries}
+\renewcommand\cftfigpagefont{\sffamily\mdseries\liningnumbers}
+
+% list of tables %
+\renewcommand\cftlottitlefont{\sffamily\Huge\bfseries}
+% unböld figure caption %
+\renewcommand\cfttabfont{\sffamily\mdseries}
+% unböld figure folios %
+\renewcommand\cfttabpagefont{\sffamily\mdseries\liningnumbers}
+
 
 % blockquotes %
 \AtBeginEnvironment{quote}{\small}

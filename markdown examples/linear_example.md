@@ -7,16 +7,13 @@ adress: true
 
 toc: true
 lof: true
+lot: true
 
 numdepth: 2
 
 lang: de
 
-abstract: Abstrakter Test Ipsum. When no plant of the field and every living creature that moves, of every kind on earth that bear fruit with the seed in its fruit; you shall eat of it, cursed is the one that flows around the whole face of the waters. God made the earth were finished, and all their multitude. They heard the sound of you in the midst of the waters, and let them have dominion over the fish of the field; but for the man there was not found a helper as his partner. They heard the sound of the evening breeze, and the waters that were above the dome. And it was so. So the LORD God made the wild animals of the sea, and over the birds of the air, and brought her to the man. To rule over the face of all the days of your life. They heard the sound of the field and every bird of the sky to give light upon the man, and said to them, Be fruitful and multiply, and fill the waters in the seas, and let it separate the waters in the image of God he created them; male and female he created them.
-
-output:
-  pdf_document:
-    template: linear.latex
+abstract: Die Astrophysik ermöglicht es uns, die tiefen Geheimnisse des Universums zu entschlüsseln. Diese Disziplin erforscht die Entstehung von Sternen, die Dynamik von Galaxien und die kosmischen Wechselwirkungen, die das Universum formen. Besondere Aufmerksamkeit gilt der Dunklen Materie, die durch ihre gravitative Wirkung die Struktur des Kosmos prägt, aber selbst unsichtbar bleibt. Ebenso wirft die Dunkle Energie, verantwortlich für die beschleunigte Expansion des Universums, grundlegende Fragen auf. Dieser Artikel führt den Leser durch die faszinierenden Phänomene des Kosmos und zeigt, wie Astrophysik unser Verständnis von Zeit, Raum und Materie erweitert.
 
 bibliography: "example.bib"
 nocite: '@*'
@@ -51,31 +48,30 @@ Die Dunkle Materie ist eine hypothetische Form von Materie, die in der Astrophys
 
 5. **Einfluss auf die kosmische Struktur:** Dunkle Materie spielt eine entscheidende Rolle bei der Bildung großer kosmischer Strukturen wie Galaxien und Galaxienhaufen. Die Schwerkraft der Dunklen Materie zieht normale Materie an und ermöglicht die Entstehung von Sternen und anderen astronomischen Objekten.
 
-Die genaue Natur der Dunklen Materie bleibt eine der herausforderndsten Fragen in der modernen Physik. Forscher setzen ihre Bemühungen fort, dieses Rätsel zu lösen, und experimentieren mit verschiedenen Ansätzen, um Dunkle Materie direkt oder indirekt nachzuweisen.
+## Beschreibung und Messung
 
-## Einstein und die dunkle Materie
+Die genaue Natur der Dunklen Materie bleibt eine der herausforderndsten Fragen in der modernen Physik. Forscher setzen ihre Bemühungen fort, dieses Rätsel zu lösen, und experimentieren mit verschiedenen Ansätzen, um Dunkle Materie direkt oder indirekt zu messen und so zu verstehen. (\cref{tab})
 
-Albert Einstein hat sich nicht direkt zur Dunklen Materie geäußert, da der Begriff und das Konzept der Dunklen Materie erst nach seinem Tod in den 1930er Jahren entwickelt wurden. Einstein veröffentlichte seine allgemeine Relativitätstheorie im Jahr 1915, die die Gravitation als Krümmung der Raumzeit beschreibt. Obwohl diese Theorie viele Phänomene im Universum erfolgreich erklären konnte, gab es einige Unstimmigkeiten bei der Anwendung auf größere kosmologische Skalen.
+Die Dichte der Dunklen Materie $\rho_{DM}$ lässt sich im Zusammenhang mit der Gravitationswirkung zum Beispiel folgendermaßen ausdrücken:
 
-In den 1930er Jahren, als Astronomen begannen, die Rotationsgeschwindigkeiten von Galaxien zu messen, stellten sie fest, dass die sichtbare Materie allein nicht ausreichte, um die beobachteten Rotationskurven zu erklären. Es schien, als gäbe es eine zusätzliche unsichtbare Masse, die durch ihre Gravitationswirkung die sichtbare Materie beeinflusst. Diese unsichtbare Masse wurde später als Dunkle Materie bezeichnet.
+$$\rho_{DM}(r) = \frac{\sigma_v^2}{4 \pi G r^2} \left( \frac{\partial \Phi(r)}{\partial r} + \frac{1}{r} \right)
+$$
 
-> Die Dunkle Materie, ein Schatten in den Gleichungen des Universums, bleibt für uns unsichtbar, aber ihre Anwesenheit ist in der Gravitation eingraviert. In meinem bescheidenen Verständnis der Naturgesetze sehe ich Dunkle Materie als die stille Komplizin im kosmischen Ballett. Wie ein unsichtbares Orchester dirigiert sie die Bewegungen der Galaxien, und wir, die Astronomen, sind die tanzenden Beobachter, die versuchen, den Rhythmus zu verstehen. Die Natur, so komplex und dennoch so elegant, birgt weiterhin ihre Geheimnisse, und Dunkle Materie ist zweifellos ein Kapitel, das darauf wartet, von aufmerksamen Lesern entschlüsselt zu werden.^[@einstein1915: 198–199.]
+Wobei:
 
-Es ist wichtig zu beachten, dass Einstein, als Schöpfer der allgemeinen Relativitätstheorie, versuchte, seine Gleichungen zu modifizieren, um ein statisches Universum zu erhalten, was zu seiner Einführung der sogenannten kosmologischen Konstante führte. Später wurde jedoch bekannt, dass das Universum tatsächlich expandiert, und Einsteins ursprüngliche kosmologische Konstante war nicht mehr erforderlich.
+* $\sigma_v$ die Geschwindigkeitsdispersion der Dunklen Materie ist,
+* $G$ die Gravitationskonstante,
+* $r$ der Abstand zum galaktischen Zentrum,
+* $\Phi(r)$ das Gravitationspotential.
 
-In den 1930er Jahren, als die Dunkle Materie nicht direkt bekannt war, existierten die Konzepte und Begriffe, die mit Dunkler Materie verbunden sind, noch nicht in der wissenschaftlichen Literatur. Daher gibt es keine spezifischen Äußerungen von Einstein zu diesem Thema. Es war erst viel später, mit Fortschritten in der Astronomie und Astrophysik, dass Wissenschaftler begannen, das Phänomen der Dunklen Materie zu erforschen und zu verstehen.
+| Parameter                   | Symbol          | Beschreibung                                         | Einheit               |
+|------------------------------|-----------------|------------------------------------------------------|-----------------------|
+| Dichte der Dunklen Materie    | $\rho_{DM}$     | Massenverteilung der Dunklen Materie                  | $\mathrm{GeV/cm^3}$   |
+| Geschwindigkeitsdispersion    | $\sigma_v$      | Streuung der Teilchengeschwindigkeit                  | $\mathrm{km/s}$       |
+| Abstandsvariable              | $r$             | Abstand vom galaktischen Zentrum                      | $\mathrm{kpc}$        |
+| Gravitationskonstante         | $G$             | Fundamentale Konstante der Gravitation                | $\mathrm{m^3 kg^{-1} s^{-2}}$ |
 
-##  Theoretische Physik bei Stephen Hawking
-
-Stephen Hawking hat sich während seiner Karriere intensiv mit verschiedenen Aspekten der theoretischen Physik und Kosmologie befasst. Zum Zeitpunkt seines Todes im Jahr 2018 war das Konzept der Dunklen Materie bereits fest etabliert, und Hawking hatte einige Überlegungen dazu angestellt, insbesondere im Zusammenhang mit Schwarzen Löchern.
-
-Hawking erlangte Berühmtheit durch seine Arbeit zur Quantenmechanik von Schwarzen Löchern. 1974 formulierte er die Idee, dass Schwarze Löcher aufgrund quantenmechanischer Effekte, die als Hawking-Strahlung bekannt sind, Energie verlieren und schließlich verdampfen könnten. Diese Arbeit verband auf einzigartige Weise Quantenmechanik und Gravitation.
-
-In Bezug auf Dunkle Materie gibt es keine bahnbrechenden Beiträge von Hawking in diesem Bereich. Seine Forschung konzentrierte sich hauptsächlich auf Schwarze Löcher, Quantenfeldtheorie im gekrümmten Raum und die Natur der Zeit.
-
-> Die Natur verbirgt oft ihre Geheimnisse vor unseren Augen. Dunkle Materie, diese unsichtbare und dennoch entscheidende Komponente des Universums, entzieht sich unseren direkten Beobachtungen, bleibt jedoch durch ihre gravitative Wirkung präsent. Wie Schatten im Dunkeln, fordert uns die Dunkle Materie dazu heraus, ihre rätselhaften Eigenschaften zu entschlüsseln. Während wir die Geheimnisse von Schwarzen Löchern und den Anfang des Universums erforschen, bleibt die Dunkle Materie ein faszinierendes Puzzlestück im großen Mosaik der kosmischen Evolution. Die Entdeckung ihrer Natur wird zweifellos unser Verständnis des Universums vertiefen und neue Türen zu den fundamentalen Gesetzen der Physik öffnen.^[@hawking1988: 41.]
-
-Es ist wichtig zu beachten, dass Wissenschaftler oft in spezifischen Bereichen ihrer Expertise arbeiten, und nicht jeder Experte in theoretischer Physik beschäftigt sich zwangsläufig mit allen Aspekten der Astrophysik oder Kosmologie. Daher könnte es sein, dass Hawking zwar theoretische Arbeit zu Schwarzen Löchern geleistet hat, aber seine Beiträge zur Dunklen Materie begrenzter waren.
+: \label{tab}Physikalische Parameter im Zusammenhang mit Dunkler Materie.
 
 # Helle Materie
 
@@ -85,17 +81,9 @@ In der Astrophysik gibt es eine faszinierende Kategorie von Materie, die nicht m
 
 Die helle Materie besteht aus normaler, baryonischer Materie, die aus Protonen, Neutronen, Elektronen und anderen subatomaren Teilchen besteht. Im Gegensatz zur Dunklen Materie, die nur gravitativ mit anderen Materieformen interagiert, erleben wir die helle Materie auf der Erde und im gesamten beobachtbaren Universum direkt oder indirekt durch ihre Wechselwirkung mit Licht.
 
-1. **Elektromagnetische Wechselwirkung:** Die helle Materie nimmt an der elektromagnetischen Wechselwirkung teil, was bedeutet, dass sie elektromagnetische Strahlung absorbieren, emittieren oder reflektieren kann. Dies ermöglicht ihre direkte Beobachtung durch Teleskope und andere Detektoren.
+Helle Materie spielt eine zentrale Rolle in der Struktur und Entwicklung von Galaxien und Galaxienhaufen. (\cref{jwt}) Ihr gravitativer Einfluss bestimmt die Verteilung und Bewegung von sichtbaren Materiekomponenten in diesen kosmischen Strukturen.
 
-2. **Lichtemission:** Sterne, Galaxien, Gasnebel und andere sichtbare Strukturen im Universum bestehen aus heller Materie. Die Energie, die diese Materieform abstrahiert, ermöglicht ihre Erkennung durch optische, infrarote, und radiowellen Teleskope.
-
-3. **Spektrale Signaturen:** Helle Materie erzeugt charakteristische Spektrallinien, die es den Astronomen ermöglichen, Informationen über ihre chemische Zusammensetzung, Temperatur und Geschwindigkeit zu extrahieren. Diese spektralen Signaturen sind entscheidend für das Verständnis der Eigenschaften von Sternen und Galaxien.
-
-### Helle Materie in Galaxien und Galaxienhaufen
-
-Die helle Materie spielt eine zentrale Rolle in der Struktur und Entwicklung von Galaxien und Galaxienhaufen. (\cref{jwt}) Ihr gravitativer Einfluss bestimmt die Verteilung und Bewegung von sichtbaren Materiekomponenten in diesen kosmischen Strukturen.
-
-![\label{jwt}Das James-Webb-Weltraumteleskop der NASA hat das bisher tiefste und schärfste Infrarotbild des fernen Universums aufgenommen. Dieses Bild des Galaxienhaufens SMACS 0723, das als _Webb's First Deep Field_ bekannt ist, strotzt nur so vor Details.](../resources/kw05_0033982_20240709_001.jpg)
+![\label{jwt}Das James-Webb-Weltraumteleskop der NASA hat das bisher tiefste und schärfste Infrarotbild des fernen Universums aufgenommen. Dieses Bild des Galaxienhaufens SMACS 0723, das als _Webb's First Deep Field_ bekannt ist, strotzt nur so vor Details.](https://www.nasa.gov/wp-content/uploads/2023/03/main_image_deep_field_smacs0723-5mb.jpg){ width=100% }
 
 1. **Galaktische Rotation:** In Galaxien beeinflusst die helle Materie die Rotationsgeschwindigkeiten von Sternen in den äußeren Regionen. Dieser Einfluss ist entscheidend für unser Verständnis der galaktischen Dynamik, da er dazu beiträgt, die beobachteten Rotationskurven zu erklären.
 
