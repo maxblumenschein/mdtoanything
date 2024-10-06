@@ -75,11 +75,14 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 % custom title & heading fonts
 \makeatletter
 \@ifclassloaded{report}{
-\setcounter{secnumdepth}{1}
-\renewcommand{\thechapter}{\arabic{chapter}}
-\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
-\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
-\renewcommand{\thesubsubsection}{}
+\setcounter{secnumdepth}{$if(numdepth)$$numdepth$$else$3$endif$}
+}{}
+\makeatother
+
+% custom title & heading fonts
+\makeatletter
+\@ifclassloaded{article}{
+\setcounter{secnumdepth}{$if(numdepth)$$numdepth$$else$3$endif$}
 }{}
 \makeatother
 
@@ -176,17 +179,17 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 % unböld chapter names %
 \renewcommand\cftchapfont{\mdseries}
 % unböld chapter folios %
-\renewcommand\cftchappagefont{\mdseries}
+\renewcommand\cftchappagefont{\mdseries\tabularnumbers}
 % removing chapter name %
 \renewcommand{\@chapapp}\Huge{}
 % unböld section names %
 \renewcommand\cftsecfont{\mdseries}
 % unböld section folios %
-\renewcommand\cftsecpagefont{\mdseries}
+\renewcommand\cftsecpagefont{\mdseries\tabularnumbers}
 % unböld subsection names %
 \renewcommand\cftsubsecfont{\mdseries}
 % unböld subsection folios %
-\renewcommand\cftsubsecpagefont{\mdseries}
+\renewcommand\cftsubsecpagefont{\mdseries\tabularnumbers}
 }{}
 \makeatother
 
@@ -195,17 +198,17 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 % unböld chapter names %
 \renewcommand\cftchapfont{\mdseries}
 % unböld chapter folios %
-\renewcommand\cftchappagefont{\mdseries}
+\renewcommand\cftchappagefont{\mdseries\tabularnumbers}
 % removing chapter name %
 \renewcommand{\@chapapp}\Huge{}
 % unböld section names %
 \renewcommand\cftsecfont{\mdseries}
 % unböld section folios %
-\renewcommand\cftsecpagefont{\mdseries}
+\renewcommand\cftsecpagefont{\mdseries\tabularnumbers}
 % unböld subsection names %
 \renewcommand\cftsubsecfont{\mdseries}
 % unböld subsection folios %
-\renewcommand\cftsubsecpagefont{\mdseries}
+\renewcommand\cftsubsecpagefont{\mdseries\tabularnumbers}
 }{}
 \makeatother
 
@@ -214,7 +217,15 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 % unböld section names %
 \renewcommand\cftsecfont{\mdseries}
 % unböld section folios %
-\renewcommand\cftsecpagefont{\mdseries}
+\renewcommand\cftsecpagefont{\mdseries\tabularnumbers}
+% unböld subsection names %
+\renewcommand\cftsubsecfont{\mdseries}
+% unböld subsection folios %
+\renewcommand\cftsubsecpagefont{\mdseries\tabularnumbers}
+% unböld subsubsection names %
+\renewcommand\cftsubsubsecfont{\mdseries}
+% unböld subsubsection folios %
+\renewcommand\cftsubsubsecpagefont{\mdseries\tabularnumbers}
 }{}
 \makeatother
 

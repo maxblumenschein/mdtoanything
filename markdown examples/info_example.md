@@ -5,6 +5,9 @@ custom_author: true
 
 adress: true
 
+toc: true
+numdepth: 1
+
 lang: de
 
 output:
@@ -15,7 +18,7 @@ bibliography: "example.bib"
 nocite: '@*'
 csl: "https://raw.githubusercontent.com/maxblumenschein/slick-csl/main/me.csl"
 
-documentclass: article
+documentclass: report
 ---
 # Einleitung
 
@@ -81,7 +84,7 @@ Die helle Materie besteht aus normaler, baryonischer Materie, die aus Protonen, 
 * **Elektromagnetische Wechselwirkung:** Die helle Materie nimmt an der elektromagnetischen Wechselwirkung teil, was bedeutet, dass sie elektromagnetische Strahlung absorbieren, emittieren oder reflektieren kann. Dies ermöglicht ihre direkte Beobachtung durch Teleskope und andere Detektoren.
 
 * **Lichtemission:** Sterne, Galaxien, Gasnebel und andere sichtbare Strukturen im Universum bestehen aus heller Materie. Die Energie, die diese Materieform abstrahiert, ermöglicht ihre Erkennung durch optische, infrarote, und radiowellen Teleskope.
-  
+
 * **Spektrale Signaturen:** Helle Materie erzeugt charakteristische Spektrallinien, die es den Astronomen ermöglichen, Informationen über ihre chemische Zusammensetzung, Temperatur und Geschwindigkeit zu extrahieren. Diese spektralen Signaturen sind entscheidend für das Verständnis der Eigenschaften von Sternen und Galaxien.
 
 ## Helle Materie in Galaxien und Galaxienhaufen

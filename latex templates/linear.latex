@@ -91,6 +91,13 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 }{}
 \makeatother
 
+% custom title & heading fonts
+\makeatletter
+\@ifclassloaded{article}{
+\setcounter{secnumdepth}{$if(numdepth)$$numdepth$$else$3$endif$}
+}{}
+\makeatother
+
 \makeatletter
 \@ifclassloaded{report}{
 %\titleformat{\chapter}[display]{\Huge\sffamily\bfseries}{\chaptertitlename\thechapter}{\\ \Huge\bfseries}{.4em}{}
@@ -182,11 +189,6 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
  {\par\medskip}
 
 % table of contents %
-% Redefine the page number font for TOC entries
-\renewcommand{\cftsecpagefont}{\color{lightgray}\liningnumbers}  % for sections
-\renewcommand{\cftsubsecpagefont}{\liningnumbers}  % for subsections
-\renewcommand{\cftsubsubsecpagefont}{\liningnumbers}  % for subsubsections
-
 \renewcommand{\cfttoctitlefont}{\sffamily\Huge\bfseries}
 
 \makeatletter

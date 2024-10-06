@@ -8,7 +8,7 @@ adress: true
 toc: true
 lof: true
 
-numdepth: 1
+numdepth: 2
 
 lang: de
 
@@ -22,7 +22,7 @@ bibliography: "example.bib"
 nocite: '@*'
 csl: "https://raw.githubusercontent.com/maxblumenschein/slick-csl/main/me.csl"
 
-documentclass: article
+documentclass: report
 ---
 # Einleitung
 
