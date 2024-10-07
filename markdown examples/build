@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Get the directory of the script
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# Change to the script's directory
+cd "$SCRIPT_DIR"
+
+# LINEAR -> Execute the Pandoc command
+pandoc "linear_example.md" \
+-o "linear_example.pdf" \
+--template="../latex%20templates/linear.latex" \
+--pdf-engine="lualatex" \
+--citeproc \
+--standalone \
+--resource-path="."
+
+# INFO -> Execute the Pandoc command
+pandoc "info_example.md" \
+-o "info_example.pdf" \
+--template="../latex%20templates/info.latex" \
+--pdf-engine="lualatex" \
+--citeproc \
+--standalone \
+--resource-path="."
+
+# LETTER -> Execute the Pandoc command
+pandoc "letter_example.md" \
+-o "letter_example.pdf" \
+--template="../latex%20templates/letter.latex" \
+--pdf-engine="lualatex" \
+--citeproc \
+--standalone \
+--resource-path="."
+
+# LETTER-INVOICE -> Execute the Pandoc command
+pandoc "letter-invoice_example.md" \
+-o "letter-invoice_example.pdf" \
+--template="../latex%20templates/letter.latex" \
+--pdf-engine="lualatex" \
+--citeproc \
+--standalone \
+--resource-path="."
