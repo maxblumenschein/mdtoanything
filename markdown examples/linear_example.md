@@ -3,40 +3,33 @@ title: "Die Faszination der Astrophysik: Eine Reise durch das Universum"
 date: 27. Juni 1913
 custom_author: true
 
-adress: true
-
-toc: true
-lof: true
-lot: true
-
 numdepth: 2
 
 lang: de
 
 abstract: Die Astrophysik ermöglicht es uns, die tiefen Geheimnisse des Universums zu entschlüsseln. Diese Disziplin erforscht die Entstehung von Sternen, die Dynamik von Galaxien und die kosmischen Wechselwirkungen, die das Universum formen. Besondere Aufmerksamkeit gilt der Dunklen Materie, die durch ihre gravitative Wirkung die Struktur des Kosmos prägt, aber selbst unsichtbar bleibt. Ebenso wirft die Dunkle Energie, verantwortlich für die beschleunigte Expansion des Universums, grundlegende Fragen auf. Dieser Artikel führt den Leser durch die faszinierenden Phänomene des Kosmos und zeigt, wie Astrophysik unser Verständnis von Zeit, Raum und Materie erweitert.
 
-bibliography: "example.bib"
-nocite: '@*'
-csl: "https://raw.githubusercontent.com/maxblumenschein/slick-csl/main/me.csl"
 
-documentclass: report
+bibliography: "../resources/example.bib"
+csl: "../resources/citationstyle.csl"
+
+documentclass: article
 ---
 # Einleitung
 
 Die Astrophysik, als faszinierender Zweig der Physik, eröffnet uns die Möglichkeit, die fundamentalen Geheimnisse des Universums zu erkunden. In ihrer Essenz befasst sie sich mit der Erforschung von Himmelskörpern, den Kräften und Prozessen, die sie formen, sowie den Gesetzmäßigkeiten, die unser kosmisches Umfeld bestimmen. In dieser Einführung begeben wir uns auf eine informative Reise durch die Grundlagen der Astrophysik und lassen uns von der Schönheit und Komplexität des Universums fesseln.
 
 Die Geburt von Sternen markiert einen faszinierenden Auftakt in der Welt der Astrophysik. In den entlegenen Regionen des Weltraums, dort, wo interstellare Gas- und Staubwolken sich scheinbar unbemerkt ausbreiten, beginnt der Prozess der Sternentstehung. Gravitative Kräfte ziehen diese Materie allmählich zusammen, bis ein kritischer Punkt erreicht ist und die Kernfusion entzündet wird. In diesem magischen Moment wird ein Stern geboren, und mit ihm beginnt eine kosmische Saga, die Millionen bis Milliarden Jahre dauern kann.
-Die kosmische Choreographie der Galaxien
 
 Galaxien, als die Bausteine des Universums, prägen die kosmische Landschaft in einer überwältigenden Vielfalt von Formen und Größen. Von majestätischen Spiralgalaxien, die sich wie lebendige Kunstwerke entfalten, bis zu elliptischen Galaxien, deren Sterne in dicht gedrängten Wolken tanzen, gibt es eine reiche Palette astronomischer Phänomene zu erkunden. Aber nicht nur die Individualität der Galaxien fasziniert – auch ihre Wechselwirkungen, Zusammenstöße und die daraus resultierenden Auswirkungen auf die Sternentstehung bieten einen Einblick in die dynamischen Kräfte, die unser Universum geformt haben und weiterhin formen.
 
 # Dunkle Materie
 
-Die Dunkle Materie ist eine hypothetische Form von Materie, die in der Astrophysik und Kosmologie postuliert wird, um bestimmte beobachtbare Phänomene im Universum zu erklären.[^1] Im Gegensatz zur "normalen" Materie, aus der Sterne, Planeten und sichtbare Galaxien bestehen, interagiert Dunkle Materie nur schwach oder überhaupt nicht mit elektromagnetischer Strahlung, einschließlich Licht.[^2]
+Die Dunkle Materie ist eine hypothetische Form von Materie, die in der Astrophysik und Kosmologie postuliert wird, um bestimmte beobachtbare Phänomene im Universum zu erklären.[^1] Im Gegensatz zur "normalen" Materie, aus der Sterne, Planeten und sichtbare Galaxien bestehen, interagiert Dunkle Materie nur schwach oder überhaupt nicht mit elektromagnetischer Strahlung, einschließlich Licht.[^fntest]
 
-[^1]: Diese Hypothese wurde ursprünglich eingeführt, um die Diskrepanz zwischen der beobachteten und der berechneten Masse von Galaxien zu erklären. Sie dient als Modell, um die gravitativen Effekte zu deuten, die mit sichtbarer Materie allein nicht erklärt werden können. Vgl. @planck2018.
+[^1]: [@planck2018]\. Diese Hypothese wurde ursprünglich eingeführt, um die Diskrepanz zwischen der beobachteten und der berechneten Masse von Galaxien zu erklären. Sie dient als Modell, um die gravitativen Effekte zu deuten, die mit sichtbarer Materie allein nicht erklärt werden können.
 
-[^2]: @planck2018: 118–134.
+[^fntest]: [@planck2018]: 118–134.
 
 1. **Unsichtbar und nicht nachweisbar:** Dunkle Materie gibt keine elektromagnetische Strahlung ab, absorbiert sie nicht und reflektiert sie nicht. Daher kann sie nicht direkt mit Teleskopen beobachtet werden, die auf elektromagnetische Strahlung angewiesen sind.
 
@@ -44,20 +37,20 @@ Die Dunkle Materie ist eine hypothetische Form von Materie, die in der Astrophys
 
 ## Beschreibung und Messung
 
-Die genaue Natur der Dunklen Materie bleibt eine der herausforderndsten Fragen in der modernen Physik. Forscher setzen ihre Bemühungen fort, dieses Rätsel zu lösen, und experimentieren mit verschiedenen Ansätzen, um Dunkle Materie direkt oder indirekt zu messen und so zu verstehen.[^3] (\cref{tab})
+Die genaue Natur der Dunklen Materie bleibt eine der herausforderndsten Fragen in der modernen Physik. Forscher setzen ihre Bemühungen fort, dieses Rätsel zu lösen, und experimentieren mit verschiedenen Ansätzen, um Dunkle Materie direkt oder indirekt zu messen und so zu verstehen.[^3]
 
-[^3]: @astronomer2020, @blackhole2022.
+[^3]: [@astronomer2020], [@blackhole2022].
 
 Die Dichte der Dunklen Materie $\rho_{DM}$ lässt sich im Zusammenhang mit der Gravitationswirkung zum Beispiel folgendermaßen ausdrücken:[^4]
 
-[^4]: Diese Gleichung basiert auf Modellen der gravitativen Wechselwirkung, die annehmen, dass Dunkle Materie hauptsächlich über Gravitation wirkt und keine anderen bekannten Wechselwirkungen eingeht. Verschiedene Ansätze versuchen, die Verteilung der Dunklen Materie zu bestimmen, insbesondere im Hinblick auf Galaxienrotation und die Bildung von Galaxienhaufen.  @blackhole2022.
+[^4]: Diese Gleichung basiert auf Modellen der gravitativen Wechselwirkung, die annehmen, dass Dunkle Materie hauptsächlich über Gravitation wirkt und keine anderen bekannten Wechselwirkungen eingeht. Verschiedene Ansätze versuchen, die Verteilung der Dunklen Materie zu bestimmen, insbesondere im Hinblick auf Galaxienrotation und die Bildung von Galaxienhaufen. [@astronomer2020].
 
 $$\rho_{DM}(r) = \frac{\sigma_v^2}{4 \pi G r^2} \left( \frac{\partial \Phi(r)}{\partial r} + \frac{1}{r} \right)
 $$
 
 Wobei:
 
-* $\sigma_v$ die Geschwindigkeitsdispersion der Dunklen Materie ist,
+* $\sigma_v$ die Geschwindigkeitsdispersion der Dunklen Materie,
 * $G$ die Gravitationskonstante,
 * $r$ der Abstand zum galaktischen Zentrum,
 * $\Phi(r)$ das Gravitationspotential.
@@ -69,7 +62,7 @@ Wobei:
 | Abstandsvariable              | $r$             | Abstand vom galaktischen Zentrum                      | $\mathrm{kpc}$        |
 | Gravitationskonstante         | $G$             | Fundamentale Konstante der Gravitation                | $\mathrm{m^3 kg^{-1} s^{-2}}$ |
 
-: \label{tab}Physikalische Parameter im Zusammenhang mit Dunkler Materie.
+: Physikalische Parameter im Zusammenhang mit Dunkler Materie.
 
 # Helle Materie
 
@@ -83,15 +76,17 @@ Ein weiterer zentraler Punkt ist die Untersuchung der Wechselwirkungen zwischen 
 
 > Im Gegensatz zur Dunklen Materie, die sich unserem direkten Zugriff entzieht, ist die helle Materie aufgrund ihrer Wechselwirkung mit elektromagnetischer Strahlung deutlich zugänglicher für unsere Forschung. Diese essentielle Eigenschaft ermöglicht es uns nicht nur, sie zu beobachten, sondern auch tiefere Einsichten in ihre Verteilung und Dichte im Universum zu gewinnen.[^5]
 
-[^5]: @hawking1988: 79.
+[^5]: [@hawking1988]: 79.
 
-Helle Materie spielt eine zentrale Rolle in der Struktur und Entwicklung von Galaxien und Galaxienhaufen. (\cref{jwt}) Ihr gravitativer Einfluss bestimmt die Verteilung und Bewegung von sichtbaren Materiekomponenten in diesen kosmischen Strukturen.
+Helle Materie spielt eine zentrale Rolle in der Struktur und Entwicklung von Galaxien und Galaxienhaufen. Ihr gravitativer Einfluss bestimmt die Verteilung und Bewegung von sichtbaren Materiekomponenten in diesen kosmischen Strukturen.
 
 Die Dynamik der Galaxienrotation ist ein faszinierendes Beispiel für die Bedeutung der hellen Materie. In Galaxien wie unserer Milchstraße folgt die Geschwindigkeit der Sterne in den äußeren Regionen einem Muster, das durch die Gesamtmasse der hellen Materie beeinflusst wird. Die Messung dieser Rotationskurven hat es Astronomen ermöglicht, Rückschlüsse auf die Masseverteilung innerhalb von Galaxien zu ziehen und wichtige Erkenntnisse über die zugrunde liegende Struktur des Kosmos zu gewinnen. Zudem zeigt die Wechselwirkung der hellen Materie mit ihrer Umgebung, dass sie nicht nur die sichtbare Materie beeinflusst, sondern auch die Bildung von Galaxienhaufen steuert. Ein weiterer bemerkenswerter Aspekt der hellen Materie ist ihre Rolle bei der Reionisierung des Universums. In der Frühzeit des Universums, als es noch sehr heiß und dicht war, konnte die elektromagnetische Strahlung nicht durch das Plasma dringen.
 
-Letztlich ermöglicht das Verständnis der hellen Materie nicht nur einen Blick in die Vergangenheit des Universums, sondern auch in seine Zukunft. Die Wechselwirkungen zwischen heller und dunkler Materie, sowie die Rolle von dunkler Energie, könnten entscheidend sein, um die langfristige Entwicklung der kosmischen Strukturen zu erklären. Indem wir die Dynamik der hellen Materie besser verstehen, kommen wir der Beantwortung grundlegender Fragen über die Natur des Universums und unseren Platz darin näher.
+Letztlich ermöglicht das Verständnis der hellen Materie nicht nur einen Blick in die Vergangenheit des Universums, sondern auch in seine Zukunft. Die Wechselwirkungen zwischen heller und dunkler Materie, sowie die Rolle von dunkler Energie, könnten entscheidend sein, um die langfristige Entwicklung der kosmischen Strukturen zu erklären.[^6] Indem wir die Dynamik der hellen Materie besser verstehen, kommen wir der Beantwortung grundlegender Fragen über die Natur des Universums und unseren Platz darin näher.
 
-![\label{jwt}Das James-Webb-Weltraumteleskop der NASA hat das bisher tiefste und schärfste Infrarotbild des fernen Universums aufgenommen. Dieses Bild des Galaxienhaufens SMACS 0723, das als _Webb's First Deep Field_ bekannt ist, strotzt nur so vor Details.](https://www.nasa.gov/wp-content/uploads/2023/03/main_image_deep_field_smacs0723-5mb.jpg){ width=100% }
+[^6]: [@einstein1915]
+
+![Das James-Webb-Weltraumteleskop der NASA hat das bisher tiefste und schärfste Infrarotbild des fernen Universums aufgenommen. Dieses Bild des Galaxienhaufens SMACS 0723, das als _Webb's First Deep Field_ bekannt ist, strotzt nur so vor Details.](https://www.nasa.gov/wp-content/uploads/2023/03/main_image_deep_field_smacs0723-5mb.jpg){ width=100% }
 
 1. **Galaktische Rotation:** In Galaxien beeinflusst die helle Materie die Rotationsgeschwindigkeiten von Sternen in den äußeren Regionen. Dieser Einfluss ist entscheidend für unser Verständnis der galaktischen Dynamik, da er dazu beiträgt, die beobachteten Rotationskurven zu erklären.
 

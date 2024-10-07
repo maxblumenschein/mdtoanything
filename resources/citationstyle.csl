@@ -7,7 +7,7 @@
     <author>
       <name>Max Ehrengruber</name>
     </author>
-    <updated>2024-02-24T15:04:13+00:00</updated>
+    <updated>2024-10-07T18:25:53+00:00</updated>
   </info>
   <locale xml:lang="de">
     <terms>
@@ -74,27 +74,31 @@
       <name delimiter=" / "/>
     </names>
   </macro>
-  <citation et-al-min="4" et-al-use-first="1" disambiguate-add-names="true" disambiguate-add-givenname="true" disambiguate-add-year-suffix="true">
+  <citation et-al-min="4" et-al-use-first="1">
     <layout delimiter="; ">
-      <group delimiter=" ">
-        <names variable="author">
-          <name form="short" delimiter=" / "/>
-          <substitute>
-            <names variable="editor" delimiter=" / "/>
-            <names variable="translator" delimiter=" / "/>
-          </substitute>
-        </names>
-        <choose>
-          <if match="none" variable="author editor contributor container-author original-author" type="book">
-            <text variable="title"/>
-          </if>
-        </choose>
-        <group delimiter="/" prefix="(" suffix=")">
-          <date date-parts="year" form="text" variable="original-date"/>
-          <date date-parts="year" form="text" variable="issued"/>
-        </group>
-        <text variable="locator"/>
-      </group>
+      <choose>
+        <if match="all" position="ibid">
+          <text term="ibid"/>
+        </if>
+        <else-if match="all" position="ibid-with-locator">
+          <text term="ibid"/>
+        </else-if>
+        <else>
+          <group delimiter=" ">
+            <names variable="author">
+              <name form="short"/>
+              <substitute>
+                <names variable="editor"/>
+                <names variable="translator"/>
+              </substitute>
+            </names>
+            <group delimiter=" " prefix="(" suffix=")">
+              <date date-parts="year" form="text" variable="issued"/>
+            </group>
+            <text variable="locator"/>
+          </group>
+        </else>
+      </choose>
     </layout>
   </citation>
   <bibliography subsequent-author-substitute="———" entry-spacing="0" hanging-indent="true">
