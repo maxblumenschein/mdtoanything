@@ -82,7 +82,7 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 
 % body %
 \setlength{\emergencystretch}{3em} %parameter for justification
-\setlength{\parindent}{22pt}
+\setlength{\parindent}{2em}
 
 % custom title & heading fonts
 \makeatletter
@@ -146,7 +146,7 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 }
 \makeatother
 
-\setlength{\droptitle}{50pt}
+\setlength{\droptitle}{4em}
 
 \title{$title$\vspace*{2\baselineskip}}
 \date{
@@ -266,8 +266,8 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 
 \renewenvironment{quote}{%
   \list{}{%
-    \leftmargin22pt   % this is the adjusting screw
-    \rightmargin22pt
+    \leftmargin2em   % this is the adjusting screw
+    \rightmargin2em
     \setstretch{1.1}
   }
   \item\relax
@@ -278,7 +278,7 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
  }
 
 % lists %
-\setlist{leftmargin=22pt}
+\setlist{leftmargin=2em}
 
 % footnotes %
 % spacing between text and footlinerule
@@ -287,7 +287,7 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 % spacing between footlinerule and footnotes
 \makeatletter
 \def\footnoterule{\kern-8\p@
-  \hrule \@width 55pt \kern 6.475\p@} % baseline as spacing (11pt*1.25=13.75pt)\hrule is .4pt high
+  \hrule \@width 5em \kern 6.475\p@} % baseline as spacing (11pt*1.25=13.75pt)\hrule is .4pt high
 \makeatother
 
 % spacing after footnotemarker and footnote
