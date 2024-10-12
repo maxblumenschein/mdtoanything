@@ -45,8 +45,13 @@ Die Dichte der Dunklen Materie $\rho_{DM}$ lässt sich im Zusammenhang mit der G
 
 [^4]: Diese Gleichung basiert auf Modellen der gravitativen Wechselwirkung, die annehmen, dass Dunkle Materie hauptsächlich über Gravitation wirkt und keine anderen bekannten Wechselwirkungen eingeht. Verschiedene Ansätze versuchen, die Verteilung der Dunklen Materie zu bestimmen, insbesondere im Hinblick auf Galaxienrotation und die Bildung von Galaxienhaufen. [@astronomer2020].
 
-$$\rho_{DM}(r) = \frac{\sigma_v^2}{4 \pi G r^2} \left( \frac{\partial \Phi(r)}{\partial r} + \frac{1}{r} \right)
-$$
+```{=latex}
+\phantom{}
+\[
+\rho_{DM}(r) = \frac{\sigma_v^2}{4 \pi G r^2} \left( \frac{\partial \Phi(r)}{\partial r} + \frac{1}{r} \right)
+\]
+\phantom{}
+```
 
 Wobei:
 
