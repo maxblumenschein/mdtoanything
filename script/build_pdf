@@ -7,9 +7,9 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
 # Execute the Pandoc command
-pandoc "INPUT" \
--o "OUTPUT" \
---template="https://raw.githubusercontent.com/maxblumenschein/mdtoanything/refs/heads/main/latex%20templates/linear.latex" \
+pandoc "input.pdf" \    # Replace with your input PDF file path
+-o "output.pdf" \   # Replace with your output PDF file path
+--template="https://raw.githubusercontent.com/maxblumenschein/mdtoanything/refs/heads/main/latex%20templates/linear.latex" \    # Replace with your Latex template file path
 --pdf-engine="lualatex" \
 --citeproc \
 --standalone \

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Get the directory of the script
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# Change to the script's directory
+cd "$SCRIPT_DIR"
+
+# Rearrange for booklet print
+python3 "build_booklet_pdf.py" \
