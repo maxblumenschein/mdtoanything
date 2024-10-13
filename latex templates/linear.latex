@@ -1,4 +1,4 @@
-\documentclass[$if(fontsize)$$fontsize$$else$11pt$endif$,$if(lang)$$babel-lang$,$endif$a4paper]{$documentclass$}
+\documentclass[$if(fontsize)$$fontsize$$else$11pt$endif$,$if(lang)$$babel-lang$$endif$,$if(twoside)$twoside,openright$endif$,a4paper]{$documentclass$}
 
 % packages %
 \usepackage{babel}
@@ -46,8 +46,8 @@ $endif$
 \geometry{
 top=43.3353571543mm, %297mm/1.618^4
 bottom=43.3353571543mm,
-textwidth=123.3292856914mm, %210mm-(297mm/1.618^4)*2
-hcentering,
+textwidth=124mm, %210mm-(297mm/1.618^4)*2
+outer=43mm, %(210mm-124mm)/2 for hcentering %adjust this for binding compensation
 }
 
 % custom fonts set %
@@ -137,16 +137,18 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 % title &
 % patch \maketitle so that it doesn't center
 \makeatletter
-\renewcommand{\maketitle}{\vspace*{\droptitle}\bgroup\setlength{\parindent}{0pt}
+\renewcommand{\maketitle}{\vspace*{\droptitle}
 \begin{flushleft}
   \sffamily\setstretch{1.0}\Huge\bfseries\@title\par\vspace*{\baselineskip}
+  $if(titlepage)$$if(twoside)$\null\thispagestyle{empty}\newpage$endif$\null\thispagestyle{empty}\newpage
+\vspace*{\droptitle}\sffamily\setstretch{1.0}\Huge\bfseries\@title\par\vspace*{\baselineskip}$endif$
   \normalsize\mdseries\@date\par
-  \normalsize\mdseries\@author
-\end{flushleft}\egroup
+  \normalsize\mdseries\@author\par
+\end{flushleft}
 }
 \makeatother
 
-\setlength{\droptitle}{4em}
+\setlength{\droptitle}{4.5em} %adjust vertical offset of title to align with other headings
 
 \title{$title$\vspace*{2\baselineskip}}
 \date{
@@ -183,10 +185,9 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 % abstract %
 % left flushed abstract
 \renewenvironment{abstract}
- {\vspace*{\baselineskip}
- \par\noindent\ignorespaces % remove label "Abstract"
- }
- {\par\medskip}
+    {% remove label "Abstract"
+    }
+    {\par\medskip}
 
 % table of contents %
 \renewcommand{\cfttoctitlefont}{\sffamily\Huge\bfseries}
@@ -372,6 +373,8 @@ $endif$
 
 \urlstyle{same}
 
+\raggedbottom % prevents \flushbottom when using twoside option
+
 %----------%
 % document %
 \begin{document}
@@ -384,27 +387,25 @@ $endif$
 \ifbool{isreport}{
 $if(abstract)$
 \chapter*{Abstract}
-\begin{abstract}
-  $abstract$
-  \end{abstract}
+    \begin{abstract}
+    $abstract$
+    \end{abstract}
 $endif$
 }{}
 
 \ifbool{isarticle}{
 $if(abstract)$
-\begin{abstract}
-  \section*{Abstract}
-  $abstract$
-  \end{abstract}
+\section*{Abstract}
+    \begin{abstract}
+    $abstract$
+    \end{abstract}
 $endif$
 }{}
 
 \ifbool{isbook}{
 $if(abstract)$
 \chapter*{Abstract}
-\begin{abstract}
   $abstract$
-  \end{abstract}
 $endif$
 }{}
 

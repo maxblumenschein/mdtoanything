@@ -1,9 +1,12 @@
 ---
-title: "Die Faszination der Astrophysik: Eine Reise durch das Universum"
+title: "Astrophysik: Eine Reise durch das Universum"
 date: 27. Juni 1913
 custom_author: true
 
 numdepth: 2
+
+titlepage: true
+twoside: true
 
 lang: de
 
@@ -13,7 +16,7 @@ abstract: Die Astrophysik ermöglicht es uns, die tiefen Geheimnisse des Univers
 bibliography: "../resources/example.bib"
 csl: "../resources/citationstyle.csl"
 
-documentclass: article
+documentclass: report
 ---
 # Einleitung
 
