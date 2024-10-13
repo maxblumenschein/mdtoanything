@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
 # LINEAR -> Execute the Pandoc command
-pandoc "linear_example.md" \
+pandoc "text_example.md" \
 -o "linear_example.pdf" \
 --template="../latex%20templates/linear.latex" \
 --pdf-engine="lualatex" \
@@ -16,7 +16,7 @@ pandoc "linear_example.md" \
 --resource-path="."
 
 # INFO -> Execute the Pandoc command
-pandoc "info_example.md" \
+pandoc "text_example.md" \
 -o "info_example.pdf" \
 --template="../latex%20templates/info.latex" \
 --pdf-engine="lualatex" \
@@ -34,7 +34,7 @@ pandoc "letter_example.md" \
 --resource-path="."
 
 # LETTER-INVOICE -> Execute the Pandoc command
-pandoc "letter-invoice_example.md" \
+pandoc "invoice_example.md" \
 -o "letter-invoice_example.pdf" \
 --template="../latex%20templates/letter.latex" \
 --pdf-engine="lualatex" \

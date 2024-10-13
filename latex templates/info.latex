@@ -1,10 +1,9 @@
-\documentclass[$if(fontsize)$$fontsize$$else$10pt$endif$,$if(lang)$$babel-lang$,$endif$a4paper,$twoside$,openright]{$documentclass$}
+\documentclass[$if(fontsize)$$fontsize$$else$10pt$endif$,$if(lang)$$babel-lang$$endif$,$if(twoside)$twoside,openright$endif$,a4paper]{$documentclass$}
 
 % packages %
 
 \usepackage{babel}
 \usepackage{graphicx}  % importing of images
-\usepackage[hidelinks]{hyperref} % cross-referencing commands
 \usepackage{etoolbox} % programming facilities
 \usepackage{fancyhdr} % header & footer customization
 \usepackage[titles]{tocloft} % table of contents customization
@@ -19,13 +18,17 @@
 \usepackage{luaotfload} % opentype custom fonts
 \usepackage{setspace} % formating of text
 \usepackage{scrextend} % footnote-styling
+\usepackage{footmisc}
 \usepackage{enumitem} % lists
 \usepackage{caption} % captions customization
 \usepackage{longtable} % tables
 \usepackage{booktabs} % tables+
+\usepackage{array} % used for tables
 \usepackage[toc]{appendix}
 \usepackage{pdfpages}
+\usepackage{url}
 \usepackage{amsmath} % math
+\usepackage[hidelinks]{hyperref} % cross-referencing commands
 \usepackage[nameinlink]{cleveref} % advanced referencing
 
 % input user variables information %
@@ -70,7 +73,7 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 
 % body %
 \setlength{\emergencystretch}{3em} %parameter for justification
-\setlength{\parindent}{1.55em}
+\setlength{\parindent}{2em}
 
 % custom title & heading fonts
 \makeatletter
@@ -113,6 +116,12 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 \providebool{isarticle}
 \makeatletter
 \@ifclassloaded{article}{\booltrue{isarticle}}{\boolfalse{isarticle}}
+\makeatother
+
+% define isarticle boolean which may be used inside the document contrary to ifclassloaded
+\providebool{isbook}
+\makeatletter
+\@ifclassloaded{book}{\booltrue{isbook}}{\boolfalse{isbook}}
 \makeatother
 
 % title &
@@ -244,14 +253,14 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 \renewcommand\cfttabpagefont{\sffamily\mdseries\tabularnumbers}
 
 % lists %
-\setlist[itemize,enumerate,1]{leftmargin=\dimexpr 1.55em}
+\setlist[itemize,enumerate,1]{leftmargin=\dimexpr 2em}
 
 % blockquotes %
 \AtBeginEnvironment{quote}{\normalsize}
 
 \renewenvironment{quote}{%
   \list{}{%
-    \leftmargin1.55em   % this is the adjusting screw
+    \leftmargin2em   % this is the adjusting screw
     \rightmargin0pt
   }
   \item\relax
@@ -270,15 +279,8 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
   \hrule \@width 0pt \kern 13.35\p@} % baseline as spacing (11pt*1.25=13.75pt)\hrule is .4pt high
 \makeatother
 
-% spacing after footnotemarker and footnote
-\makeatletter
-\long\def\@makefntext#1{%
-  \parindent 1em\noindent\hb@xt@ \baselineskip{\hss\@makefnmark}~#1%
-}
-\makeatother
-
 % non-superscript footnotetextmarker
-\deffootnote{2em}{1em}{\tabularnumbers\thefootnotemark\quad}
+\deffootnote{2.5em}{1em}{\tabularnumbers\thefootnotemark\quad}
 
 % images %
 $if(graphics)$
@@ -325,7 +327,7 @@ $if(csl-refs)$
 \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
 \makeatother
 \newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
+\setlength{\cslhangindent}{2em}
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
 \newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
@@ -348,6 +350,10 @@ $if(csl-refs)$
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 
+\urlstyle{same}
+
+\raggedbottom % prevents \flushbottom when using twoside option
+
 %----------%
 % document %
 \begin{document}
@@ -357,11 +363,37 @@ $if(title)$
 \thispagestyle{empty}
 $endif$
 
-\begin{abstract}
-$abstract$
-\end{abstract}
+\ifbool{isreport}{
+$if(abstract)$
+\chapter*{Abstract}
+    \begin{abstract}
+    $abstract$
+    \end{abstract}
+$endif$
+}{}
+
+\ifbool{isarticle}{
+$if(abstract)$
+\section*{Abstract}
+    \begin{abstract}
+    $abstract$
+    \end{abstract}
+$endif$
+}{}
+
+\ifbool{isbook}{
+$if(abstract)$
+\chapter*{Abstract}
+  $abstract$
+$endif$
+}{}
 
 \ifbool{isreport}{\pagebreak}{}
+\ifbool{isarticle}{
+$if(titlepage)$
+\pagebreak
+$endif$
+}{}
 
 $if(toc)$
 \tableofcontents
@@ -383,6 +415,13 @@ $if(lof)$
 $endif$
 }{}
 
+\ifbool{isbook}{
+$if(lof)$
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+$endif$
+}{}
+
 \ifbool{isreport}{
 $if(lot)$
 \addcontentsline{toc}{chapter}{\listtablename}
@@ -397,7 +436,32 @@ $if(lot)$
 $endif$
 }{}
 
+\ifbool{isbook}{
+$if(lot)$
+\addcontentsline{toc}{section}{\listtablename}
+\listoftables
+$endif$
+}{}
+
+\begingroup
 \nocite{*}
-\printbibliography
+\raggedright\printbibliography
+\endgroup
+
+\ifbool{isreport}{
+$if(apx)$
+\appendix
+\chapter{Appendix}
+\includepdf[pages=-]{$apx$}
+$endif$
+}{}
+
+\ifbool{isarticle}{
+$if(apx)$
+\appendix
+\section{Appendix}
+\includepdf[pages=-]{$apx$}
+$endif$
+}{}
 
 \end{document}

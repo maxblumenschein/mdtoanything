@@ -5,9 +5,6 @@ custom_author: true
 
 numdepth: 2
 
-titlepage: true
-twoside: true
-
 adress: true
 
 lang: de
@@ -32,7 +29,7 @@ Galaxien, als die Bausteine des Universums, prägen die kosmische Landschaft in 
 
 Die Dunkle Materie ist eine hypothetische Form von Materie, die in der Astrophysik und Kosmologie postuliert wird, um bestimmte beobachtbare Phänomene im Universum zu erklären.[^1] Im Gegensatz zur "normalen" Materie, aus der Sterne, Planeten und sichtbare Galaxien bestehen, interagiert Dunkle Materie nur schwach oder überhaupt nicht mit elektromagnetischer Strahlung, einschließlich Licht.[^fntest]
 
-[^1]: [@planck2018]\. Diese Hypothese wurde ursprünglich eingeführt, um die Diskrepanz zwischen der beobachteten und der berechneten Masse von Galaxien zu erklären. Sie dient als Modell, um die gravitativen Effekte zu deuten, die mit sichtbarer Materie allein nicht erklärt werden können.
+[^1]: [@planck2018]. Diese Hypothese wurde ursprünglich eingeführt, um die Diskrepanz zwischen der beobachteten und der berechneten Masse von Galaxien zu erklären. Sie dient als Modell, um die gravitativen Effekte zu deuten, die mit sichtbarer Materie allein nicht erklärt werden können.
 
 [^fntest]: [@planck2018]: 118–134.
 
@@ -94,7 +91,7 @@ Die Dynamik der Galaxienrotation ist ein faszinierendes Beispiel für die Bedeut
 
 Letztlich ermöglicht das Verständnis der hellen Materie nicht nur einen Blick in die Vergangenheit des Universums, sondern auch in seine Zukunft. Die Wechselwirkungen zwischen heller und dunkler Materie, sowie die Rolle von dunkler Energie, könnten entscheidend sein, um die langfristige Entwicklung der kosmischen Strukturen zu erklären.[^6] Indem wir die Dynamik der hellen Materie besser verstehen, kommen wir der Beantwortung grundlegender Fragen über die Natur des Universums und unseren Platz darin näher.
 
-[^6]: [@einstein1915]
+[^6]: [@einstein1915].
 
 ![Das James-Webb-Weltraumteleskop der NASA hat das bisher tiefste und schärfste Infrarotbild des fernen Universums aufgenommen. Dieses Bild des Galaxienhaufens SMACS 0723, das als _Webb's First Deep Field_ bekannt ist, strotzt nur so vor Details.](https://www.nasa.gov/wp-content/uploads/2023/03/main_image_deep_field_smacs0723-5mb.jpg){ width=100% }
 
