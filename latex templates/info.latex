@@ -28,7 +28,7 @@
 \usepackage{pdfpages}
 \usepackage{url}
 \usepackage{amsmath} % math
-\usepackage[hidelinks]{hyperref} % cross-referencing commands
+\PassOptionsToPackage{hyphens}{url}\usepackage[hidelinks]{hyperref} % cross-referencing commands
 \usepackage[nameinlink]{cleveref} % advanced referencing
 
 % input user variables information %
