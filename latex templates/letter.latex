@@ -6,7 +6,7 @@
 \usepackage[hidelinks]{hyperref} % cross-referencing commands
 \usepackage[nameinlink]{cleveref} % advanced referencing
 \usepackage{etoolbox} % programming facilities
-\usepackage[showframe]{geometry} % page layout
+\usepackage{geometry} % page layout
 \usepackage{fancyhdr} % header & footer customization
 \usepackage{afterpage}
 \usepackage{xcolor} % custom colors
