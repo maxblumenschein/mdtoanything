@@ -41,3 +41,12 @@ pandoc "invoice_example.md" \
 --citeproc \
 --standalone \
 --resource-path="."
+
+# LETTER-INVOICE -> Execute the Pandoc command
+pandoc "cv_example.md" \
+-o "letter-cv_example.pdf" \
+--template="../latex%20templates/letter.latex" \
+--pdf-engine="lualatex" \
+--citeproc \
+--standalone \
+--resource-path="."

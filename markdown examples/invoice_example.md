@@ -30,7 +30,7 @@ to: |
 
 [^1]: Von der Mehrwertsteuer ausgenommen.
 
-Bitte überweisen Sie den Betrag innerhalb von 14 Tagen auf das oben genannte Bankkonto.
+Bitte überweisen Sie den Betrag innerhalb von 14 Tagen auf das unten genannte Bankkonto.
 
 Ich freue mich in Zukunft wieder mit Ihnen zu arbeiten.
 
