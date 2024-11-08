@@ -11,7 +11,7 @@ custom_author: true
 no_adress: true
 ---
 Albert Einstein \
-Otto- Stern-Weg 5 \
+Otto-Stern-Weg 5 \
 CH-8093 Zürich
 
 albert.einstein@phys.ethz.ch \
