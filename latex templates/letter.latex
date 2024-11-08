@@ -1,22 +1,16 @@
 \documentclass[$if(fontsize)$$fontsize$$else$11pt$endif$,$if(lang)$$babel-lang$,$endif$a4paper]{article}
 
-% packages %
+% PACKAGES %
 \usepackage{babel}
-\usepackage{graphicx}  % importing of images
-\usepackage[hidelinks]{hyperref} % cross-referencing commands
-\usepackage[nameinlink]{cleveref} % advanced referencing
+\usepackage{iflang}
 \usepackage{etoolbox} % programming facilities
 \usepackage{geometry} % page layout
 \usepackage{fancyhdr} % header & footer customization
 \usepackage{afterpage}
-\usepackage[titles]{tocloft} % table of contents customization
-\usepackage{biblatex} % bibliography
 \usepackage{xcolor} % custom colors
 \usepackage{ragged2e}
-\usepackage[normalem]{ulem} % strike-through
-\usepackage{lmodern} % lmodern as base-font
 \usepackage{titling} % custom title styling
-\usepackage[explicit]{titlesec} % custom title fonts
+\usepackage{titlesec} % custom title fonts
 \usepackage{fontspec} % allow custom fonts
 \usepackage{luaotfload} % opentype custom fonts
 \usepackage{setspace} % formating of text
@@ -32,6 +26,8 @@
 \usepackage{lastpage} % use for folio (all pages)
 \usepackage{mdframed} % custom text boxes
 \usepackage{tcolorbox} % custom text boxes
+\usepackage[hidelinks]{hyperref} % cross-referencing commands
+\usepackage[nameinlink]{cleveref} % advanced referencing
 
 
 % input user variables information %
@@ -49,12 +45,16 @@ $endif$
 % page layout %
 \geometry{
 	a4paper, % Paper size
-	top=48mm, % Top margin
-	textheight=233mm, % textheigth
-	left=20mm, % Left margin
-	right=20mm, % Right margin
+	top=48mm,
+	$if(no_adress)$
+	bottom=20mm, % textheigth
+	$else$
+	bottom=38mm, % textheigth
+	$endif$
+	left=20mm, right=20mm,
 	headheight=26mm, %Header height
 	headsep=10mm, %standard circa 8.8mm (20pt?)
+	footskip=10mm,
 	%showframe % Uncomment to show frames around the margins for debugging purposes
 }
 
@@ -65,16 +65,16 @@ $endif$
 LetterSpace = 0.6,
 Numbers = Proportional,
 ItalicFont = ABCSocialEdu-BookItalic.otf,
-BoldFont = ABCSocialEdu-Bold.otf,
-BoldItalicFont  = ABCSocialEdu-BoldItalic.otf]
+BoldFont = ABCSocialEdu-Medium.otf,
+BoldItalicFont  = ABCSocialEdu-MediumItalic.otf]
 {ABCSocialEdu-Book.otf}
 
 \newfontfamily\logo[
 %Path = \fontpath,
-ItalicFont = ABCSocialExtendedEdu-Bold.otf,
-BoldFont = ABCSocialExtendedEdu-Bold.otf,
-BoldItalicFont  = ABCSocialExtendedEdu-Bold.otf]
-{ABCSocialExtendedEdu-Bold.otf}
+ItalicFont = ABCSocialExtendedEdu-Black.otf,
+BoldFont = ABCSocialExtendedEdu-Black.otf,
+BoldItalicFont  = ABCSocialExtendedEdu-Black.otf]
+{ABCSocialExtendedEdu-Black.otf}
 
 \newfontfamily\info[
 %Path = \fontpath,
@@ -82,11 +82,6 @@ ItalicFont = ABCDiatypeMono-RegularItalic.otf,
 BoldFont = ABCDiatypeMono-Medium.otf,
 BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 {ABCDiatypeMono-Regular.otf}
-
-% body %
-\setlength{\parindent}{0pt} % Paragraph indentation
-\setlength{\parskip}{1em} % Vertical space between paragraphs
-\setlength{\emergencystretch}{3em} %parameter for justification
 
 % Define a custom mdframed environment with outer margins
 \newmdenv[
@@ -99,7 +94,7 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
     innerleftmargin=2pt,
     innerrightmargin=2pt,
     innertopmargin=4pt,
-    innerbottommargin=-7pt,
+    innerbottommargin=4pt,
 	skipabove=0pt,
 	skipbelow=0pt,
     backgroundcolor=black,
@@ -107,57 +102,159 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
     ignorelastdescenders=true  % Ignores descenders when calculating box height
 ]{shadedpar}
 
-% table %
+% Define a custom mdframed environment with outer margins
+\newmdenv[
+    topline=true,
+    rightline=false,
+    bottomline=true,
+    leftline=false,
+    leftmargin=-2pt,  % Extends box leftward
+    rightmargin=-2pt, % Extends box rightward
+    innerleftmargin=2pt,
+    innerrightmargin=2pt,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+	skipabove=0pt,
+	skipbelow=0pt,
+    ignorelastdescenders=true  % Ignores descenders when calculating box height
+]{borderpar}
+
+\newcommand{\framedsection}[1]{%
+  \vspace{-1.5\parskip}
+  \begin{shadedpar}
+    \normalfont\bfseries #1 \\
+  \end{shadedpar}
+  \vspace{-2.36\parskip}
+}
+
+\newcommand{\framedsubsection}[1]{%
+  \vspace{-1.5\parskip}
+  \begin{borderpar}
+    \normalfont\bfseries #1 \\
+  \end{borderpar}
+  \vspace{-2.36\parskip}
+}
+
+% BODY %
+	\setlength{\parindent}{0pt} % Paragraph indentation
+	\setlength{\parskip}{1em} % Vertical space between paragraphs
+	\setlength{\emergencystretch}{3em} %parameter for justification
+
+% HEADINGS %
+	% hack to remove the the space inserted by \parskip after headings
+		\usepackage{xpatch}
+		\xapptocmd{\sectionlinesformat}{\vspace*{-\parskip}}{}{}
+	% font-size
+		\titleformat{\section}
+		{} % No additional formatting
+		{} % No label (removes the section number)
+		{0pt} % Space between label and title
+		{\framedsection} % Use the framed section command
+		\titleformat{\subsection}
+		{} % No additional formatting
+		{} % No label (removes the section number)
+		{0pt} % Space between label and title
+		{\framedsubsection} % Use the framed section command
+		\titleformat{\subsubsection}
+		{} % No additional formatting
+		{} % No label (removes the section number)
+		{0pt} % Space between label and title
+		{\textbf} % Use the framed section command
+	% spacing
+		\titlespacing\section{0pt}{\parskip}{-\parskip} % -4.8\parskip = quick-hack for spacing (some space seems to be added inside "shadedpar","borderpar" or "\framedsection" or "\framedsubsection")
+		\titlespacing\subsection{0pt}{\parskip}{-\parskip} % -3.3\parskip = quick-hack for spacing (some space seems to be added inside "shadedpar","borderpar" or "\framedsection" or "\framedsubsection")
+		\titlespacing\subsubsection{0pt}{\parskip}{-\parskip}
+
+%----------------------------------------------------------------------------------------
+% TABLE %
 \AtBeginEnvironment{longtable}{\fontsize{9}{10}\info\selectfont\addfontfeature{Numbers={Lining,Monospaced}}}
 \setlength\heavyrulewidth{0.5 pt}
 \setlength\lightrulewidth{0.25 pt}
 
-$if(invoice)$
-\AfterEndEnvironment{longtable}{\addfontfeature{Numbers={Lining,Monospaced}}
-\bankaccount}
-$endif$
-
 \AtBeginEnvironment{quote}{\small}
 
-% header & footer %
+%----------------------------------------------------------------------------------------
+% HEADER & FOOTER %
+
+	% first page %
 \fancypagestyle{firstpage}{%
 	\fancyhf{} % Clear default headers/footers
 	\lhead{
-		\fontsize{10}{13}\logo\selectfont\name\\ \bigskip
-		\fontsize{7}{9}\info\selectfont \begin{minipage}[t][24mm][t]{\textwidth}{
-				\street \\ % Address
-				\zipcode\nobreakspace\city \bigskip\\
-				\email \\
-				\webpage
-			}
-		\end{minipage}
+		\parbox[][\headheight][t]{85mm}{\fontsize{10}{13}\logo\selectfont\name\\}
+		\vfill
 		}
 	\renewcommand{\headrulewidth}{0pt} % No header rule
 	\renewcommand{\footrulewidth}{0pt} % Footer rule thickness
-	\fancyfoot[R]{\info\tiny\color{lightgray}\thepage\//\pageref{LastPage}} % folio on footer's right side
+	\fancyfoot[L]{%
+    	$if(invoice)$
+        \fontsize{7}{9}\info\selectfont\begin{minipage}[b][][b]{80mm}{
+      		\bankaccount
+      		}
+      		\end{minipage}
+        $endif$
+    	\hfill
+        $if(no_adress)$
+        \fontsize{7}{9}\selectfont % Set the font size for the footer
+        \begin{minipage}[b][][b]{85mm} % Create a minipage for the footer content
+        \end{minipage}%
+        $else$
+        \fontsize{7}{9}\selectfont % Set the font size for the footer
+        \begin{minipage}[b][][b]{85mm} % Create a minipage for the footer content
+            \info % Add your custom variables here
+            \name \\
+            \street \\ % Address line
+            \zipcode\nobreakspace\city \bigskip\\ % Zip code and city
+            \email \\
+            \webpage
+        \end{minipage}%
+        $endif$
+        }
+        $if(no_adress)$
+        \fancyfoot[R]{\begin{minipage}[t][][t]{10mm}
+               \raggedleft % Aligns the content to the right within the minipage
+               \info\tiny\color{lightgray}\thepage\//\pageref{LastPage}\hfill
+               \end{minipage}} % folio on footer's right side
+        $else$
+        \fancyfoot[R]{\begin{minipage}[b][28mm][b]{10mm}
+               \raggedleft % Aligns the content to the right within the minipage
+               \info\tiny\color{lightgray}\thepage\//\pageref{LastPage}\hfill
+               \end{minipage}} % folio on footer's right side
+        $endif$
 }
-
+	% subsequent page %
 \fancypagestyle{subsequentpages}{%
 	\fancyhf{} % Clear default headers/footers
 	\lhead{
-		\fontsize{10}{13}\logo\selectfont\name\\ \bigskip\bigskip\bigskip\bigskip\bigskip
+		\parbox[][\headheight][t]{85mm}{\fontsize{10}{13}\logo\selectfont\name\\}
 		\vfill
 	}
 	\renewcommand{\headrulewidth}{0pt} % Header rule thickness
 	\renewcommand{\footrulewidth}{0pt} % Footer rule thickness
-	\fancyfoot[R]{\info\tiny\color{lightgray}\thepage\//\pageref{LastPage}} % folio on footer's right side
+	$if(no_adress)$
+        \fancyfoot[R]{\begin{minipage}[t][][t]{10mm}
+               \raggedleft % Aligns the content to the right within the minipage
+               \info\tiny\color{lightgray}\thepage\//\pageref{LastPage}\hfill
+               \end{minipage}} % folio on footer's right side
+        $else$
+        \fancyfoot[R]{\begin{minipage}[b][28mm][b]{10mm}
+               \raggedleft % Aligns the content to the right within the minipage
+               \info\tiny\color{lightgray}\thepage\//\pageref{LastPage}\hfill
+               \end{minipage}} % folio on footer's right side
+        $endif$
 }
 
 \AtBeginDocument{\thispagestyle{firstpage}} % Use the first page headers/footers style on the first page
 \pagestyle{subsequentpages} % Use the subsequent pages headers/footers style on subsequent pages
 
-% spacing between footlinerule and footnotes
+%----------------------------------------------------------------------------------------
+% FOOTNOTES %
+
+	% spacing between footlinerule and footnotes
 \makeatletter
 \def\footnoterule{\kern-8\p@
   \hrule \kern 6.475\p@} % baseline as spacing (11pt*1.25=13.75pt)\hrule is .4pt high
 \makeatother
-
-% spacing after footnotemarker and footnote
+	% spacing after footnotemarker and footnote
 \makeatletter
 \long\def\@makefntext#1{%
   \parindent 1em\noindent\hb@xt@ \baselineskip{\hss\@makefnmark}~#1%
@@ -166,52 +263,43 @@ $endif$
 
 %----------------------------------------------------------------------------------------
 
-
 \begin{document}
 
 %----------------------------------------------------------------------------------------
 %	ADDRESSEE AND GREETING
 %----------------------------------------------------------------------------------------
 $if(to)$
-\begin{minipage}[t][54mm][t]{\textwidth}{
-		\raisebox{2mm}{\fontsize{7}{7}\info\selectfont\zipcode\nobreakspace\city,\nobreakspace\name\vspace{5pt}}\\
-        \normalfont\normalsize\
+\begin{minipage}[t][42mm][t]{3em}{
+	\IfLanguageName{english}{To:}{\phantom{}}\IfLanguageName{german}{An:}{\phantom{}}\IfLanguageName{ngerman}{An:}{\phantom{}}\IfLanguageName{swiss}{An:}{\phantom{}}
+	}
+\end{minipage}
+\begin{minipage}[t][42mm][t]{80mm}{
         $to$
 	}
 \end{minipage}
+\vspace{2\baselineskip}
 $endif$
 
 %----------------------------------------------------------------------------------------
-%	Subject
-%----------------------------------------------------------------------------------------
-$if(date)$
-\begingroup
-\fontsize{7}{9}\info\selectfont
-\begin{minipage}[t][24mm][t]{\textwidth}{
-		$if(reference)$$reference$ \\$endif$
-		$if(date)$\city, $date$$endif$
-	}
-\end{minipage}
-\endgroup
-$endif$
-%----------------------------------------------------------------------------------------
-%	Text
+%	TITLE
 %----------------------------------------------------------------------------------------
 \begin{FlushLeft}
-\begin{shadedpar}$title$\end{shadedpar}
+	\begin{shadedpar}
+		\textbf{$title$}
+		\hfill
+		\fontsize{7}{9}\info\selectfont{$date$} \\
+	\end{shadedpar}
+	\vspace{1\baselineskip}
 
-%\offinterlineskip
-%\tcbset{nobeforeafter,top=2cm}
-%\begin{tcolorbox}%
-%\textbf{Testline}%
-%\end{tcolorbox}
-%\begin{tcolorbox}%
-%\textbf{is}%
-%\end{tcolorbox}
-
+%----------------------------------------------------------------------------------------
+%	BODY
+%----------------------------------------------------------------------------------------
 
 $body$
-\hfill\break
+
+%----------------------------------------------------------------------------------------
+%	SIGNATURE
+%----------------------------------------------------------------------------------------
 
 \end{FlushLeft}
 
