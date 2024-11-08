@@ -120,19 +120,19 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 ]{borderpar}
 
 \newcommand{\framedsection}[1]{%
-  \vspace{-1.5\parskip}
+  \vspace{-1.5em}
   \begin{shadedpar}
-    \normalfont\bfseries #1 \\
+    \normalfont #1 \\
   \end{shadedpar}
-  \vspace{-2.36\parskip}
+  \vspace{-1.73em}
 }
 
 \newcommand{\framedsubsection}[1]{%
-  \vspace{-1.5\parskip}
+  \vspace{-2.15em}
   \begin{borderpar}
-    \normalfont\bfseries #1 \\
+    \normalfont #1 \\
   \end{borderpar}
-  \vspace{-2.36\parskip}
+  \vspace{-2.36em}%-2.36
 }
 
 % BODY %
@@ -285,7 +285,7 @@ $endif$
 %----------------------------------------------------------------------------------------
 \begin{FlushLeft}
 	\begin{shadedpar}
-		\textbf{$title$}
+		{$title$}
 		\hfill
 		\fontsize{7}{9}\info\selectfont{$date$} \\
 	\end{shadedpar}
