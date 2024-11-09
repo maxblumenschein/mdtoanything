@@ -9,6 +9,8 @@ output:
 custom_author: true
 
 no_adress: true
+
+portrait: true
 ---
 Albert Einstein \
 Otto-Stern-Weg 5 \
@@ -16,6 +18,10 @@ CH-8093 Zürich
 
 albert.einstein@phys.ethz.ch \
 albert-einstein.ch
+
+Sprachen: Deutsch (Muttersprache), Englisch (C1)
+ \
+ \
 
 # Berufliche Aktivitäten
 

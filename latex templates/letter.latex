@@ -21,6 +21,10 @@
 \usepackage{booktabs} % tables+
 \usepackage{array} % used for tables
 \usepackage[toc]{appendix}
+\usepackage{graphicx} % For including images
+\usepackage{wrapfig}  % For wrapping text around figures
+\usepackage[export]{adjustbox}  % For advanced image control
+\usepackage[absolute,overlay]{textpos}  % For absolute positioning of content
 \usepackage{pdfpages}
 \usepackage{url}
 \usepackage{lastpage} % use for folio (all pages)
@@ -283,6 +287,7 @@ $endif$
 %----------------------------------------------------------------------------------------
 %	TITLE
 %----------------------------------------------------------------------------------------
+
 \begin{FlushLeft}
 	\begin{shadedpar}
 		{$title$}
@@ -294,6 +299,13 @@ $endif$
 %----------------------------------------------------------------------------------------
 %	BODY
 %----------------------------------------------------------------------------------------
+
+\begin{textblock*}{3.6cm}(154mm,48mm + 38pt)  % Define width and position (x=3cm, y=3cm from top-left corner)
+    \includegraphics[height=4.5cm,
+    clip,
+    keepaspectratio,
+    max width=\linewidth]{\portraitpath}
+\end{textblock*}
 
 $body$
 
