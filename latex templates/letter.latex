@@ -21,6 +21,10 @@
 \usepackage{booktabs} % tables+
 \usepackage{array} % used for tables
 \usepackage[toc]{appendix}
+\usepackage{graphicx} % For including images
+\usepackage{wrapfig}  % For wrapping text around figures
+\usepackage[export]{adjustbox}  % For advanced image control
+\usepackage[absolute,overlay]{textpos}  % For absolute positioning of content
 \usepackage{pdfpages}
 \usepackage{url}
 \usepackage{lastpage} % use for folio (all pages)
@@ -46,7 +50,7 @@ $endif$
 \geometry{
 	a4paper, % Paper size
 	top=48mm,
-	$if(no_adress)$
+	$if(cv)$
 	bottom=20mm, % textheigth
 	$else$
 	bottom=38mm, % textheigth
@@ -193,7 +197,7 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
       		\end{minipage}
         $endif$
     	\hfill
-        $if(no_adress)$
+        $if(cv)$
         \fontsize{7}{9}\selectfont % Set the font size for the footer
         \begin{minipage}[b][][b]{85mm} % Create a minipage for the footer content
         \end{minipage}%
@@ -209,7 +213,7 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
         \end{minipage}%
         $endif$
         }
-        $if(no_adress)$
+        $if(cv)$
         \fancyfoot[R]{\begin{minipage}[t][][t]{10mm}
                \raggedleft % Aligns the content to the right within the minipage
                \info\tiny\color{lightgray}\thepage\//\pageref{LastPage}\hfill
@@ -230,7 +234,7 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 	}
 	\renewcommand{\headrulewidth}{0pt} % Header rule thickness
 	\renewcommand{\footrulewidth}{0pt} % Footer rule thickness
-	$if(no_adress)$
+	$if(cv)$
         \fancyfoot[R]{\begin{minipage}[t][][t]{10mm}
                \raggedleft % Aligns the content to the right within the minipage
                \info\tiny\color{lightgray}\thepage\//\pageref{LastPage}\hfill
@@ -283,6 +287,7 @@ $endif$
 %----------------------------------------------------------------------------------------
 %	TITLE
 %----------------------------------------------------------------------------------------
+
 \begin{FlushLeft}
 	\begin{shadedpar}
 		{$title$}
@@ -292,9 +297,30 @@ $endif$
 	\vspace{1\baselineskip}
 
 %----------------------------------------------------------------------------------------
+%	CV HEAD
+%----------------------------------------------------------------------------------------
+$if(cv)$
+\begin{minipage}[t][][t]{125mm} % Reduce width slightly if needed
+    \vspace{0pt} % Forces minipage to start exactly at the top
+    \name \\
+    \street \\ % Address line
+    \zipcode\nobreakspace\city \\ % Zip code and city
+    \bigskip % Optional, adjust if needed
+    \email \\
+    \webpage \\
+    \bigskip
+    $skills$
+\end{minipage}
+\hfill
+\begin{minipage}[t][][t]{36mm}
+    \vspace{0pt} % Forces minipage to start exactly at the top
+    \includegraphics[height=45mm, width=36mm, clip, keepaspectratio, max width=\linewidth]{\portraitpath}
+    \end{minipage}
+$endif$
+
+%----------------------------------------------------------------------------------------
 %	BODY
 %----------------------------------------------------------------------------------------
-
 $body$
 
 %----------------------------------------------------------------------------------------

@@ -2,21 +2,14 @@
 title: CV
 lang: de
 
-output:
-  pdf_document:
-    template: letter.latex
-
 custom_author: true
 
-no_adress: true
+cv: true
+
+skills: |
+  | Sprachen: Deutsch (Muttersprache), Englisch (C1)
+  | Technik: Taschenrechner
 ---
-Albert Einstein \
-Otto-Stern-Weg 5 \
-CH-8093 Zürich
-
-albert.einstein@phys.ethz.ch \
-albert-einstein.ch
-
 # Berufliche Aktivitäten
 
 ## 1901--1909: Technischer Assistent und Patentprüfer, Schweizer Patentamt, Bern
