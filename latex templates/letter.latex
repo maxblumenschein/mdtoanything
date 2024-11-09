@@ -300,12 +300,14 @@ $endif$
 %	BODY
 %----------------------------------------------------------------------------------------
 
+$if(portrait)$
 \begin{textblock*}{3.6cm}(154mm,48mm + 38pt)  % Define width and position (x=3cm, y=3cm from top-left corner)
     \includegraphics[height=4.5cm,
     clip,
     keepaspectratio,
     max width=\linewidth]{\portraitpath}
 \end{textblock*}
+$endif$
 
 $body$
 
