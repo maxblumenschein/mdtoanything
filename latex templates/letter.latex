@@ -306,6 +306,8 @@ $if(cv)$
     \street \\ % Address line
     \zipcode\nobreakspace\city \\ % Zip code and city
     \bigskip % Optional, adjust if needed
+    \born \\
+    \phone \\
     \email \\
     \webpage \\
     \bigskip
