@@ -33,7 +33,6 @@
 \usepackage[hidelinks]{hyperref} % cross-referencing commands
 \usepackage[nameinlink]{cleveref} % advanced referencing
 
-
 % input user variables information %
   % either inside input directory:
 $if(custom_author)$
@@ -309,7 +308,14 @@ $if(cv)$
     \born \\
     \phone \\
     \email \\
-    \webpage \\
+    % Check if \webpage is defined and non-empty, only then add a line break
+    \ifdefined\webpage
+        \ifx\webpage\empty
+            % Do nothing if \webpage is empty
+        \else
+            \webpage \\
+        \fi
+    \fi
     \bigskip
     $skills$
 \end{minipage}

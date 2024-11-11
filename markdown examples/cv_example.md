@@ -8,7 +8,6 @@ cv: true
 
 skills: |
   | Sprachen: Deutsch (Muttersprache), Englisch (C1)
-  | Technik: Taschenrechner
 ---
 # Berufliche Aktivitäten
 
