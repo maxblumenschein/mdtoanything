@@ -202,13 +202,20 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
         \end{minipage}%
         $else$
         \fontsize{7}{9}\selectfont % Set the font size for the footer
-        \begin{minipage}[b][][b]{85mm} % Create a minipage for the footer content
+        \begin{minipage}[b][][t]{85mm} % Create a minipage for the footer content
             \info % Add your custom variables here
             \name \\
             \street \\ % Address line
             \zipcode\nobreakspace\city \bigskip\\ % Zip code and city
-            \email \\
-            \webpage
+            \email
+            % Check if \webpage is defined and non-empty, only then add a line break
+            \ifdefined\webpage
+                \ifx\webpage\empty
+                \else
+                \\
+                \webpage
+                \fi
+            \fi
         \end{minipage}%
         $endif$
         }
