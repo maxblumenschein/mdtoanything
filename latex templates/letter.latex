@@ -207,6 +207,7 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
             \name \\
             \street \\ % Address line
             \zipcode\nobreakspace\city \bigskip\\ % Zip code and city
+            \phone \\
             \email
             % Check if \webpage is defined and non-empty, only then add a line break
             \ifdefined\webpage
