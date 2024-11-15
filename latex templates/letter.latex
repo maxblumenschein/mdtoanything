@@ -45,21 +45,23 @@ $endif$
   % or inside local tex directory:
 %\usepackage{user_variables_definition}
 
-% page layout %
+% Page layout %
 \geometry{
-	a4paper, % Paper size
-	top=48mm,
-	$if(cv)$
-	bottom=20mm, % textheigth
-	$else$
-	bottom=38mm, % textheigth
-	$endif$
-	left=20mm, right=20mm,
-	headheight=26mm, %Header height
-	headsep=10mm, %standard circa 8.8mm (20pt?)
-	footskip=10mm,
-	%showframe % Uncomment to show frames around the margins for debugging purposes
+    a4paper, % Paper size
+    top=48mm, % Top margin
+    left=20mm, right=20mm, % Side margins
+    headheight=26mm, % Header height
+    headsep=10mm, % Distance between header and text
+    footskip=10mm, % Distance from text to baseline of the footer
+    $if(cv)$
+    bottom=20mm, % Bottom margin for CV
+    $else$
+    bottom=38mm, % Default bottom margin
+    $endif$
+    % Uncomment for debugging purposes
+    showframe
 }
+
 
 % custom fonts set %
 \setstretch{1.1}
@@ -176,86 +178,92 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 
 \AtBeginEnvironment{quote}{\small}
 
-%----------------------------------------------------------------------------------------
 % HEADER & FOOTER %
 
-	% first page %
+% First page %
 \fancypagestyle{firstpage}{%
-	\fancyhf{} % Clear default headers/footers
-	\lhead{
-		\parbox[][\headheight][t]{85mm}{\fontsize{10}{13}\logo\selectfont\name\\}
-		\vfill
-		}
-	\renewcommand{\headrulewidth}{0pt} % No header rule
-	\renewcommand{\footrulewidth}{0pt} % Footer rule thickness
-	\fancyfoot[L]{%
-    	$if(invoice)$
-        \fontsize{7}{9}\info\selectfont\begin{minipage}[b][][b]{80mm}{
-      		\bankaccount
-      		}
-      		\end{minipage}
-        $endif$
-    	\hfill
-        $if(cv)$
-        \fontsize{7}{9}\selectfont % Set the font size for the footer
-        \begin{minipage}[b][][b]{85mm} % Create a minipage for the footer content
+    \fancyhf{} % Clear default headers/footers
+    \lhead{%
+        \parbox[][\headheight][t]{85mm}{\fontsize{10}{13}\logo\selectfont\name\\}
+    }
+    \renewcommand{\headrulewidth}{0pt} % No header rule
+    \renewcommand{\footrulewidth}{0pt} % No footer rule
+
+    % Footer content
+    \fancyfoot[L]{%
+        \fontsize{7}{9}\selectfont % Set footer font size
+        $if(invoice)$%
+        \begin{minipage}[t][20mm][b]{80mm} % Footer aligned 20mm from the page's bottom
+        \info
+        \bankaccount
         \end{minipage}%
-        $else$
-        \fontsize{7}{9}\selectfont % Set the font size for the footer
-        \begin{minipage}[b][][t]{85mm} % Create a minipage for the footer content
-            \info % Add your custom variables here
-            \name \\
-            \street \\ % Address line
-            \zipcode\nobreakspace\city \bigskip\\ % Zip code and city
-            \phone \\
-            \email
-            % Check if \webpage is defined and non-empty, only then add a line break
+        \hfill
+        \begin{minipage}[t][20mm][b]{85mm} % Footer aligned 20mm from the page's bottom
+            \info
+            \ifdefined\name \name \hfill\break\fi
+            \ifdefined\street \street \hfill\break\fi
+            \ifdefined\zipcode \zipcode\nobreakspace\city \bigskip\hfill\break \fi
+            \ifdefined\phone \phone \hfill\break\fi
+            \ifdefined\email \email \hfill\fi
             \ifdefined\webpage
                 \ifx\webpage\empty
                 \else
-                \\
-                \webpage
+                    \break\webpage
                 \fi
             \fi
         \end{minipage}%
-        $endif$
-        }
-        $if(cv)$
-        \fancyfoot[R]{\begin{minipage}[t][][t]{10mm}
-               \raggedleft % Aligns the content to the right within the minipage
-               \info\tiny\color{lightgray}\thepage\//\pageref{LastPage}\hfill
-               \end{minipage}} % folio on footer's right side
-        $else$
-        \fancyfoot[R]{\begin{minipage}[b][28mm][b]{10mm}
-               \raggedleft % Aligns the content to the right within the minipage
-               \info\tiny\color{lightgray}\thepage\//\pageref{LastPage}\hfill
-               \end{minipage}} % folio on footer's right side
-        $endif$
-}
-	% subsequent page %
-\fancypagestyle{subsequentpages}{%
-	\fancyhf{} % Clear default headers/footers
-	\lhead{
-		\parbox[][\headheight][t]{85mm}{\fontsize{10}{13}\logo\selectfont\name\\}
-		\vfill
-	}
-	\renewcommand{\headrulewidth}{0pt} % Header rule thickness
-	\renewcommand{\footrulewidth}{0pt} % Footer rule thickness
-	$if(cv)$
-        \fancyfoot[R]{\begin{minipage}[t][][t]{10mm}
-               \raggedleft % Aligns the content to the right within the minipage
-               \info\tiny\color{lightgray}\thepage\//\pageref{LastPage}\hfill
-               \end{minipage}} % folio on footer's right side
-        $else$
-        \fancyfoot[R]{\begin{minipage}[b][28mm][b]{10mm}
-               \raggedleft % Aligns the content to the right within the minipage
-               \info\tiny\color{lightgray}\thepage\//\pageref{LastPage}\hfill
-               \end{minipage}} % folio on footer's right side
-        $endif$
+        $elseif(cv)$%
+        \begin{minipage}[t][20mm][b]{85mm} % Footer aligned 20mm from the page's bottom
+            % No specific footer content for CV
+        \end{minipage}%
+        $else$%
+        \hfill
+        \begin{minipage}[t][20mm][b]{85mm} % Footer aligned 20mm from the page's bottom
+            \info
+            \ifdefined\name \name \hfill\break\fi
+            \ifdefined\street \street \hfill\break\fi
+            \ifdefined\zipcode \zipcode\nobreakspace\city \bigskip\hfill\break \fi
+            \ifdefined\phone \phone \hfill\break\fi
+            \ifdefined\email \email \hfill\fi
+            \ifdefined\webpage
+                \ifx\webpage\empty
+                \else
+                    \break\webpage
+                \fi
+            \fi
+        \end{minipage}%
+        $endif$%
+    }
+    \fancyfoot[R]{%
+        \begin{minipage}[t][$if(cv)$2mm$else$20mm$endif$][b]{10mm} % Footer aligned 20mm from the page's bottom
+            \raggedleft
+            \info\tiny\color{lightgray}\thepage\//\pageref{LastPage}%
+        \end{minipage}%
+    }
 }
 
-\AtBeginDocument{\thispagestyle{firstpage}} % Use the first page headers/footers style on the first page
-\pagestyle{subsequentpages} % Use the subsequent pages headers/footers style on subsequent pages
+% Subsequent pages %
+\fancypagestyle{subsequentpages}{%
+    \fancyhf{} % Clear default headers/footers
+    \lhead{%
+        \parbox[][\headheight][t]{85mm}{\fontsize{10}{13}\logo\selectfont\name\\}
+    }
+    \renewcommand{\headrulewidth}{0pt} % No header rule
+    \renewcommand{\footrulewidth}{0pt} % No footer rule
+
+    % Footer content
+    \fancyfoot[R]{%
+        \begin{minipage}[t][$if(cv)$2mm$else$20mm$endif$][b]{10mm} % Footer aligned 20mm from the page's bottom
+            \raggedleft
+            \info\tiny\color{lightgray}\thepage\//\pageref{LastPage}%
+        \end{minipage}%
+    }
+}
+
+% Apply styles to document
+\AtBeginDocument{\thispagestyle{firstpage}} % Use firstpage style on the first page
+\pagestyle{subsequentpages} % Use subsequentpages style on all other pages
+
 
 %----------------------------------------------------------------------------------------
 % FOOTNOTES %
