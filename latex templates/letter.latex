@@ -59,7 +59,7 @@ $endif$
     bottom=38mm, % Default bottom margin
     $endif$
     % Uncomment for debugging purposes
-    showframe
+    %showframe
 }
 
 
@@ -315,8 +315,8 @@ $endif$
 %	CV HEAD
 %----------------------------------------------------------------------------------------
 $if(cv)$
-\begin{minipage}[t][][t]{125mm} % Reduce width slightly if needed
-    \vspace{0pt} % Forces minipage to start exactly at the top
+\vspace{0pt} % Forces minipage to start exactly at the top
+\begin{minipage}[t][][t]{120mm} % Reduce width slightly if needed
     \name \\
     \street \\ % Address line
     \zipcode\nobreakspace\city \\ % Zip code and city
@@ -336,9 +336,10 @@ $if(cv)$
     $skills$
 \end{minipage}
 \hfill
-\begin{minipage}[t][][t]{36mm}
-    \vspace{0pt} % Forces minipage to start exactly at the top
-    \includegraphics[height=45mm, width=36mm, clip, keepaspectratio, max width=\linewidth]{\portraitpath}
+\vspace{0pt} % Forces minipage to start exactly at the top
+\begin{minipage}[t][][t]{40mm}
+    \vspace{-3mm} % Forces minipage to start exactly at the top
+    \includegraphics[height=50mm, width=40mm, clip, keepaspectratio, max width=\linewidth]{\portraitpath}
     \end{minipage}
 $endif$
 
