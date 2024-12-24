@@ -74,7 +74,7 @@
       <name delimiter=" / "/>
     </names>
   </macro>
-  <citation et-al-min="4" et-al-use-first="1">
+  <citation et-al-min="4" et-al-use-first="1" disambiguate-add-names="true" disambiguate-add-givenname="true" disambiguate-add-year-suffix="true">>
     <layout delimiter="; ">
       <choose>
         <if match="all" position="ibid">
@@ -84,19 +84,25 @@
           <text term="ibid"/>
         </else-if>
         <else>
-          <group delimiter=" ">
+            <group delimiter=" ">
             <names variable="author">
-              <name form="short"/>
-              <substitute>
-                <names variable="editor"/>
-                <names variable="translator"/>
-              </substitute>
+                <name form="short" delimiter=" / "/>
+                <substitute>
+                <names variable="editor" delimiter=" / "/>
+                <names variable="translator" delimiter=" / "/>
+                </substitute>
             </names>
-            <group delimiter=" " prefix="(" suffix=")">
-              <date date-parts="year" form="text" variable="issued"/>
+            <choose>
+                <if match="none" variable="author editor contributor container-author original-author" type="book">
+                <text variable="title"/>
+                </if>
+            </choose>
+            <group delimiter="/" prefix="(" suffix=")">
+                <date date-parts="year" form="text" variable="original-date"/>
+                <date date-parts="year" form="text" variable="issued"/>
             </group>
             <text variable="locator"/>
-          </group>
+            </group>
         </else>
       </choose>
     </layout>
