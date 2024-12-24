@@ -11,6 +11,7 @@
 \usepackage{xcolor} % custom colors
 \usepackage[normalem]{ulem} % strike-through
 \usepackage{soul}
+\usepackage{microtype} % advanced hyphenation and protrusion
 \usepackage{lmodern} % lmodern as base-font
 \usepackage{titling} % custom title styling
 \usepackage{titlesec} % custom title fonts
@@ -80,6 +81,24 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 %lining-numbers command for occasional use
 \newcommand\liningnumbers{\addfontfeature{Numbers={Lining,Monospaced}}}
 
+% define isreport boolean which may be used inside the document contrary to ifclassloaded
+\providebool{isreport}
+\makeatletter
+\@ifclassloaded{report}{\booltrue{isreport}}{\boolfalse{isreport}}
+\makeatother
+
+% define isarticle boolean which may be used inside the document contrary to ifclassloaded
+\providebool{isarticle}
+\makeatletter
+\@ifclassloaded{article}{\booltrue{isarticle}}{\boolfalse{isarticle}}
+\makeatother
+
+% define isarticle boolean which may be used inside the document contrary to ifclassloaded
+\providebool{isbook}
+\makeatletter
+\@ifclassloaded{book}{\booltrue{isbook}}{\boolfalse{isbook}}
+\makeatother
+
 % body %
 \setlength{\emergencystretch}{3em} %parameter for justification
 \setlength{\parindent}{2em}
@@ -114,24 +133,6 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 \titleformat{\subsection}{\large\sffamily\bfseries}{\thesubsection~}{.2em}{}
 \titleformat{\subsubsection}{\normalsize\sffamily\bfseries}{\thesubsubsection~}{.2em}{}
 }{}
-\makeatother
-
-% define isreport boolean which may be used inside the document contrary to ifclassloaded
-\providebool{isreport}
-\makeatletter
-\@ifclassloaded{report}{\booltrue{isreport}}{\boolfalse{isreport}}
-\makeatother
-
-% define isarticle boolean which may be used inside the document contrary to ifclassloaded
-\providebool{isarticle}
-\makeatletter
-\@ifclassloaded{article}{\booltrue{isarticle}}{\boolfalse{isarticle}}
-\makeatother
-
-% define isarticle boolean which may be used inside the document contrary to ifclassloaded
-\providebool{isbook}
-\makeatletter
-\@ifclassloaded{book}{\booltrue{isbook}}{\boolfalse{isbook}}
 \makeatother
 
 % title &
@@ -256,9 +257,9 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 
 % list of tables %
 \renewcommand\cftlottitlefont{\sffamily\Huge\bfseries}
-% unböld figure caption %
+% unböld table caption %
 \renewcommand\cfttabfont{\sffamily\mdseries}
-% unböld figure folios %
+% unböld table folios %
 \renewcommand\cfttabpagefont{\sffamily\mdseries\liningnumbers}
 
 
