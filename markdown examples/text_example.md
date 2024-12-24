@@ -11,7 +11,6 @@ lang: de
 
 abstract: Die Astrophysik ermöglicht es uns, die tiefen Geheimnisse des Universums zu entschlüsseln. Diese Disziplin erforscht die Entstehung von Sternen, die Dynamik von Galaxien und die kosmischen Wechselwirkungen, die das Universum formen. Besondere Aufmerksamkeit gilt der Dunklen Materie, die durch ihre gravitative Wirkung die Struktur des Kosmos prägt, aber selbst unsichtbar bleibt. Ebenso wirft die Dunkle Energie, verantwortlich für die beschleunigte Expansion des Universums, grundlegende Fragen auf. Dieser Artikel führt den Leser durch die faszinierenden Phänomene des Kosmos und zeigt, wie Astrophysik unser Verständnis von Zeit, Raum und Materie erweitert.
 
-
 bibliography: "../resources/example.bib"
 csl: "../resources/citationstyle.csl"
 

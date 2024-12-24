@@ -3,10 +3,6 @@ title: Quantenmechanik und Gravitation
 date: \today
 lang: de
 
-output:
-  pdf_document:
-    template: letter.latex
-
 custom_author: true
 
 to: |

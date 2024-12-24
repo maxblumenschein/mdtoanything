@@ -97,9 +97,6 @@ lang: de
 
 documentclass: article
 
-output:
-  pdf_document:
-    template: info.latex
 
 bibliography: "./literature.bib"
 csl: "https://raw.githubusercontent.com/maxblumenschein/slick-csl/main/me.csl"
@@ -150,63 +147,9 @@ to: addressee
   | Washington, D.C."]
 invoice: include bank account information before complimentary close [true,false]
 reference: reference code [e.g. "Nr. 2023.12.0004"]
+cv: inserts author info and changes layout accordingly [true,false]
+skills: inserts author´s skills info [e.g. "English C1"]  
 ```
-
-### Specify Output
-
-Different Markdown editor or [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment) handle output specificiation differently. You may need to include additional [Pandoc filter](https://pandoc.org/filters.html) options (e.g. citeproc), depending on your Pandoc parser. The following exemplifies output specification for Visual Studio Code and the extension [Markdown Preview Enhanced](https://shd101wyy.github.io/markdown-preview-enhanced/#/).
-
-#### PDF
-
-```yaml
-output:
-  pdf_document:
-    template: info.latex
-```
-
-This will export a PDF based on the template ``info.latex`` inside the same folder as the eponymous Markdown input file. If you want to define a custom name and path, use:
-
-```yaml
-output:
-  custom_document:
-    path: customname.pdf
-      template: info.latex
-```
-
-By default the templates are assumed inside the [Pandoc user directory](#latex-template-file). You can also define custom paths or use URLs:
-
-```yaml
-template: "https://raw.githubusercontent.com/maxblumenschein/mdtoanything/main/latex%20templates/info.latex"
-```
-
-#### Word
-
-```yaml
-output:
-  word_document:
-```
-
-or for custom output path and name:
-
-```yaml
-output:
-  custom_document:
-    path: customname.docx
-```
-
-By default Pandoc uses ``reference.docx`` located inside the Pandoc user directory. You can customize the format styles inside to adjust the typesetting of Word output.
-
-#### InDesign
-
-```yaml
-output:
-  custom_document:
-    path: customname.icml
-
-pandoc_args: ["-s", "-f", "markdown", "-t", "icml", "-o", "customname.icml"]
-```
-
-You can combine ``.icml`` and PDF and Word output by adding ``pandoc_args: ["-s", "-f", "markdown", "-t", "icml", "-o", "customname.icml"]``. This will export multiple files with one export command.
 
 ## Scripting
 

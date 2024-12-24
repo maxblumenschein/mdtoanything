@@ -7,10 +7,6 @@ invoice: true
 
 lang: de
 
-output:
-  pdf_document:
-    template: letter.latex
-
 custom_author: true
 
 to: |
