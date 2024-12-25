@@ -10,6 +10,7 @@
 \usepackage{biblatex} % bibliography
 \usepackage{geometry} % page layout
 \usepackage{xcolor} % custom colors
+\usepackage{microtype} % advanced hyphenation and protrusion
 \usepackage[normalem]{ulem} % strike-through
 \usepackage{lmodern} % lmodern as base-font
 \usepackage{titling} % custom title styling

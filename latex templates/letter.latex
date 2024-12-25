@@ -8,6 +8,7 @@
 \usepackage{fancyhdr} % header & footer customization
 \usepackage{afterpage}
 \usepackage{xcolor} % custom colors
+\usepackage{microtype} % advanced hyphenation and protrusion
 \usepackage{ragged2e}
 \usepackage{titling} % custom title styling
 \usepackage{titlesec} % custom title fonts
