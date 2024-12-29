@@ -6,7 +6,7 @@ Using Pandoc and custom Latex templates to convert Markdown files (.md) to PDF, 
 
 ## User Defined Variables
 
-The template files use variables to insert recurring information like author name or adress. By default the variables are defined by ``user_variables_definition.tex`` inside the Pandoc ``/templates`` folder.
+The template files use variables to insert recurring information like author name or address. By default the variables are defined by ``user_variables_definition.tex`` inside the Pandoc ``/templates`` folder.
 
 Change the corresponding variables to your individual data:
 
@@ -97,7 +97,6 @@ lang: de
 
 documentclass: article
 
-
 bibliography: "./literature.bib"
 csl: "https://raw.githubusercontent.com/maxblumenschein/slick-csl/main/me.csl"
 ---
@@ -113,7 +112,7 @@ title: main title
 custom_author: user defined variables inside input directory [true,false]
 
 date: date [e.g. "\today"]
-adress: features full adress [true,false]
+address: features full address [true,false]
 
 project: works like a subtitle
 abstract: abstract to be printed on title page
@@ -148,7 +147,7 @@ to: addressee
 invoice: include bank account information before complimentary close [true,false]
 reference: reference code [e.g. "Nr. 2023.12.0004"]
 cv: inserts author info and changes layout accordingly [true,false]
-skills: inserts author´s skills info [e.g. "English C1"]  
+skills: inserts author´s skills info [e.g. "English C1"]
 ```
 
 ## Scripting
