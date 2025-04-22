@@ -1,7 +1,6 @@
 ---
 title: Rechnung
-date: 14.12.1927
-reference: Nr. 19.02.006
+date: 14.12.1927, Nr. 27.12.006
 
 invoice: true
 
@@ -24,7 +23,7 @@ to: |
 | | | |---|
 | Total[^1] | | | 2'240.00 |
 
-[^1]: Von der Mehrwertsteuer ausgenommen.
+[^1]: Von der Steuer ausgenommene Leistungen. Art. 21 Abs. 16 Bundesgesetz über die Mehrwertsteuer (12. Juni, 2009, Stand am 1. Januar, 2025).
 
 Bitte überweisen Sie den Betrag innerhalb von 14 Tagen auf das unten genannte Bankkonto.
 
