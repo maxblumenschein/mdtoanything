@@ -179,6 +179,10 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 
 \AtBeginEnvironment{quote}{\small}
 
+% LISTS %
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
 % HEADER & FOOTER %
 
 % First page %
