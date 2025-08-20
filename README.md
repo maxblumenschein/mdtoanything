@@ -176,3 +176,7 @@ sudo mv pandoc_convert.sh /usr/local/bin/pandoc_convert
 ```
 pandoc_convert
 ```
+
+# Terms of Use
+
+This project is licensed under a Creative Commons license CC BY-NC-ND 4.0. The material may be distributed under the following conditions: Attribution “Markdown to PDF (or Almost Anything Else)”, no commercial use, no editing or modification.
