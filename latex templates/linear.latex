@@ -83,6 +83,11 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 %lining-numbers command for occasional use
 \newcommand\liningnumbers{\addfontfeature{Numbers={Lining,Monospaced}}}
 
+%lining tabular figures in tables %
+\AtBeginEnvironment{tabular}{\addfontfeature{Numbers={Lining,Monospaced}}}
+\AtBeginEnvironment{longtable}{\addfontfeature{Numbers={Lining,Monospaced}}}
+
+
 % define isreport boolean which may be used inside the document contrary to ifclassloaded
 \providebool{isreport}
 \makeatletter
