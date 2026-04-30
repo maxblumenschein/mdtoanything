@@ -85,6 +85,7 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 
 %lining tabular figures in tables %
 \AtBeginEnvironment{tabular}{\addfontfeature{Numbers={Lining,Monospaced}}}
+\AtBeginEnvironment{tabular*}{\addfontfeature{Numbers={Lining,Monospaced}}}
 \AtBeginEnvironment{longtable}{\addfontfeature{Numbers={Lining,Monospaced}}}
 
 
