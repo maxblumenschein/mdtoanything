@@ -266,12 +266,17 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 	% spacing between footlinerule and footnotes
 \makeatletter
 \def\footnoterule{\kern-8\p@
+  \kern 0.5\baselineskip
   \hrule \kern 6.475\p@} % baseline as spacing (11pt*1.25=13.75pt)\hrule is .4pt high
-\makeatother
-	% spacing after footnotemarker and footnote
-\makeatletter
+	% footnote layout: number at 0.5bs, text at 2bs; leftskip sets all lines, llap places mark behind
+	% bottom mark: normal (no superscript), lining tabular figures, same size as footnote text
 \long\def\@makefntext#1{%
-  \parindent 1em\noindent\hb@xt@ \baselineskip{\hss\@makefnmark}~#1%
+  \leftskip 2\baselineskip
+  \noindent
+  \llap{\makebox[2\baselineskip][l]{%
+    {\normalfont\addfontfeature{Numbers={Lining,Monospaced}}\@thefnmark}%
+  }}%
+  #1%
 }
 \makeatother
 
