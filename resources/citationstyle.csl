@@ -99,11 +99,11 @@
     <layout delimiter="; ">
       <choose>
         <if match="all" position="ibid-with-locator">
-          <text term="ibid" suffix=": "/>
+          <text term="ibid" text-case="capitalize-first" suffix=": "/>
           <text macro="locator"/>
         </if>
         <else-if match="all" position="ibid">
-          <text term="ibid"/>
+          <text term="ibid" text-case="capitalize-first"/>
         </else-if>
         <else>
           <group delimiter=" ">
