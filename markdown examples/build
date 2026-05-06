@@ -6,6 +6,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # Change to the script's directory
 cd "$SCRIPT_DIR"
 
+
 # LINEAR -> Execute the Pandoc command
 pandoc "text_example.md" \
 -o "linear_example.pdf" \

@@ -7,16 +7,24 @@
     <author>
       <name>Max Ehrengruber</name>
     </author>
-    <updated>2024-10-07T18:25:53+00:00</updated>
+    <updated>2026-04-30T23:00:20+00:00</updated>
   </info>
   <locale xml:lang="de">
     <terms>
       <term name="original-work-published">Originalausgabe erschienen</term>
+      <term name="chapter" form="short">
+        <single>Kap.</single>
+        <multiple>Kap.</multiple>
+      </term>
     </terms>
   </locale>
   <locale xml:lang="ch-de">
     <terms>
       <term name="original-work-published">Originalausgabe erschienen</term>
+      <term name="chapter" form="short">
+        <single>Kap.</single>
+        <multiple>Kap.</multiple>
+      </term>
     </terms>
   </locale>
   <macro name="author">
@@ -74,35 +82,61 @@
       <name delimiter=" / "/>
     </names>
   </macro>
-  <citation et-al-min="4" et-al-use-first="1" disambiguate-add-names="true" disambiguate-add-givenname="true" disambiguate-add-year-suffix="true">>
+  <macro name="locator">
+    <choose>
+      <if locator="page" match="none">
+        <group delimiter=" ">
+          <label variable="locator" form="short"/>
+          <text variable="locator"/>
+        </group>
+      </if>
+      <else>
+        <text variable="locator"/>
+      </else>
+    </choose>
+  </macro>
+  <citation et-al-min="4" et-al-use-first="1" disambiguate-add-names="true" disambiguate-add-givenname="true" disambiguate-add-year-suffix="true">
     <layout delimiter="; ">
       <choose>
-        <if match="all" position="ibid">
-          <text term="ibid"/>
+        <if match="all" position="ibid-with-locator">
+          <text term="ibid" suffix=": "/>
+          <text macro="locator"/>
         </if>
-        <else-if match="all" position="ibid-with-locator">
+        <else-if match="all" position="ibid">
           <text term="ibid"/>
         </else-if>
         <else>
-            <group delimiter=" ">
-            <names variable="author">
-                <name form="short" delimiter=" / "/>
+          <group delimiter=" ">
+            <group>
+              <names variable="author">
+                <name form="short" delimiter=" / " name-as-sort-order="none"/>
                 <substitute>
-                <names variable="editor" delimiter=" / "/>
-                <names variable="translator" delimiter=" / "/>
+                  <names variable="editor" delimiter=" / "/>
+                  <names variable="translator" delimiter=" / "/>
                 </substitute>
-            </names>
-            <choose>
+              </names>
+              <choose>
                 <if match="none" variable="author editor contributor container-author original-author" type="book">
-                <text variable="title"/>
+                  <text variable="title" prefix=" "/>
                 </if>
+              </choose>
+            </group>
+            <choose>
+              <if match="any" variable="locator">
+                <group delimiter="/" prefix="(" suffix="):">
+                  <date date-parts="year" form="text" variable="original-date"/>
+                  <date date-parts="year" form="text" variable="issued"/>
+                </group>
+                <text macro="locator"/>
+              </if>
+              <else>
+                <group delimiter="/" prefix="(" suffix=")">
+                  <date date-parts="year" form="text" variable="original-date"/>
+                  <date date-parts="year" form="text" variable="issued"/>
+                </group>
+              </else>
             </choose>
-            <group delimiter="/" prefix="(" suffix=")">
-                <date date-parts="year" form="text" variable="original-date"/>
-                <date date-parts="year" form="text" variable="issued"/>
-            </group>
-            <text variable="locator"/>
-            </group>
+          </group>
         </else>
       </choose>
     </layout>

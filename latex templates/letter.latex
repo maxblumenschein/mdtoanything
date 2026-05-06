@@ -205,17 +205,12 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
         \hfill
         \begin{minipage}[t][20mm][b]{85mm} % Footer aligned 20mm from the page's bottom
             \info
-            \ifdefined\name \name \hfill\break\fi
-            \ifdefined\street \street \hfill\break\fi
-            \ifdefined\zipcode \zipcode\nobreakspace\city \bigskip\hfill\break \fi
-            \ifdefined\phone \phone \hfill\break\fi
-            \ifdefined\email \email \hfill\fi
-            \ifdefined\webpage
-                \ifx\webpage\empty
-                \else
-                    \break\webpage
-                \fi
-            \fi
+            \printifset{\name}{\name \hfill\break}%
+            \printifset{\street}{\street \hfill\break}%
+            \printifset{\zipcode}{\zipcode\nobreakspace\city \bigskip\hfill\break}%
+            \printifset{\phone}{\phone \hfill\break}%
+            \printifset{\email}{\email \hfill}%
+            \printifset{\webpage}{\break\webpage}%
         \end{minipage}%
         $elseif(cv)$%
         \begin{minipage}[t][20mm][b]{85mm} % Footer aligned 20mm from the page's bottom
@@ -225,17 +220,12 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
         \hfill
         \begin{minipage}[t][20mm][b]{85mm} % Footer aligned 20mm from the page's bottom
             \info
-            \ifdefined\name \name \hfill\break\fi
-            \ifdefined\street \street \hfill\break\fi
-            \ifdefined\zipcode \zipcode\nobreakspace\city \bigskip\hfill\break \fi
-            \ifdefined\phone \phone \hfill\break\fi
-            \ifdefined\email \email \hfill\fi
-            \ifdefined\webpage
-                \ifx\webpage\empty
-                \else
-                    \break\webpage
-                \fi
-            \fi
+            \printifset{\name}{\name \hfill\break}%
+            \printifset{\street}{\street \hfill\break}%
+            \printifset{\zipcode}{\zipcode\nobreakspace\city \bigskip\hfill\break}%
+            \printifset{\phone}{\phone \hfill\break}%
+            \printifset{\email}{\email \hfill}%
+            \printifset{\webpage}{\break\webpage}%
         \end{minipage}%
         $endif$%
     }
@@ -322,30 +312,25 @@ $endif$
 $if(cv)$
 \vspace{0pt} % Forces minipage to start exactly at the top
 \begin{minipage}[t][][t]{120mm} % Reduce width slightly if needed
-    \name \\
-    \street \\ % Address line
-    \zipcode\nobreakspace\city \\ % Zip code and city
-    \bigskip % Optional, adjust if needed
-    \born \\
-    \phone \\
-    \email \\
-    % Check if \webpage is defined and non-empty, only then add a line break
-    \ifdefined\webpage
-        \ifx\webpage\empty
-            % Do nothing if \webpage is empty
-        \else
-            \webpage \\
-        \fi
-    \fi
+    \printifset{\name}{\name \\}%
+    \printifset{\street}{\street \\}%
+    \printifset{\zipcode}{\zipcode\nobreakspace\city \\}%
+    \bigskip
+    \printifset{\born}{\born \\}%
+    \printifset{\phone}{\phone \\}%
+    \printifset{\email}{\email \\}%
+    \printifset{\webpage}{\webpage \\}%
     \bigskip
     $skills$
 \end{minipage}
+\ifdefined\portraitpath\ifx\portraitpath\empty\else%
 \hfill
 \vspace{0pt} % Forces minipage to start exactly at the top
 \begin{minipage}[t][][t]{40mm}
     \vspace{-3mm} % Forces minipage to start exactly at the top
     \includegraphics[height=50mm, width=40mm, clip, keepaspectratio, max width=\linewidth]{\portraitpath}
-    \end{minipage}
+    \end{minipage}%
+\fi\fi
 $endif$
 
 %----------------------------------------------------------------------------------------

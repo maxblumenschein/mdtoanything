@@ -30,7 +30,7 @@ Die Dunkle Materie ist eine hypothetische Form von Materie, die in der Astrophys
 
 [^1]: [@planck2018]. Diese Hypothese wurde ursprünglich eingeführt, um die Diskrepanz zwischen der beobachteten und der berechneten Masse von Galaxien zu erklären. Sie dient als Modell, um die gravitativen Effekte zu deuten, die mit sichtbarer Materie allein nicht erklärt werden können.
 
-[^fntest]: [@planck2018]: 118–134.
+[^fntest]: [@planck2018, 118–134].
 
 1. **Unsichtbar und nicht nachweisbar:** Dunkle Materie gibt keine elektromagnetische Strahlung ab, absorbiert sie nicht und reflektiert sie nicht. Daher kann sie nicht direkt mit Teleskopen beobachtet werden, die auf elektromagnetische Strahlung angewiesen sind.
 
@@ -40,7 +40,7 @@ Die Dunkle Materie ist eine hypothetische Form von Materie, die in der Astrophys
 
 Die genaue Natur der Dunklen Materie bleibt eine der herausforderndsten Fragen in der modernen Physik. Forscher setzen ihre Bemühungen fort, dieses Rätsel zu lösen, und experimentieren mit verschiedenen Ansätzen, um Dunkle Materie direkt oder indirekt zu messen und so zu verstehen.[^3]
 
-[^3]: [@astronomer2020], [@blackhole2022].
+[^3]: [@astronomer2020; @blackhole2022].
 
 Die Dichte der Dunklen Materie $\rho_{DM}$ lässt sich im Zusammenhang mit der Gravitationswirkung zum Beispiel folgendermaßen ausdrücken:[^4]
 
@@ -82,7 +82,7 @@ Ein weiterer zentraler Punkt ist die Untersuchung der Wechselwirkungen zwischen 
 
 > Im Gegensatz zur Dunklen Materie, die sich unserem direkten Zugriff entzieht, ist die helle Materie aufgrund ihrer Wechselwirkung mit elektromagnetischer Strahlung deutlich zugänglicher für unsere Forschung. Diese essentielle Eigenschaft ermöglicht es uns nicht nur, sie zu beobachten, sondern auch tiefere Einsichten in ihre Verteilung und Dichte im Universum zu gewinnen.[^5]
 
-[^5]: [@hawking1988]: 79.
+[^5]: [@hawking1988, 79].
 
 Helle Materie spielt eine zentrale Rolle in der Struktur und Entwicklung von Galaxien und Galaxienhaufen. Ihr gravitativer Einfluss bestimmt die Verteilung und Bewegung von sichtbaren Materiekomponenten in diesen kosmischen Strukturen.
 

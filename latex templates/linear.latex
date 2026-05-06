@@ -146,14 +146,27 @@ BoldItalicFont  = BradfordMonoLL-Regular.otf]
 % title &
 % patch \maketitle so that it doesn't center
 \makeatletter
-\renewcommand{\maketitle}{\vspace*{\droptitle}
-\begin{flushleft}
-  \sffamily\setstretch{1.0}\Huge\bfseries\@title\par\vspace*{\baselineskip}
-  $if(titlepage)$$if(twoside)$\null\thispagestyle{empty}\newpage$endif$\null\thispagestyle{empty}\newpage
-\vspace*{\droptitle}\sffamily\setstretch{1.0}\Huge\bfseries\@title\par\vspace*{\baselineskip}$endif$
-  \normalsize\mdseries\@date\par
-  \normalsize\mdseries\@author\par
-\end{flushleft}
+\renewcommand{\maketitle}{%
+  $if(titlepage)$%
+  \vspace*{\droptitle}%
+  \begin{flushleft}%
+    \sffamily\setstretch{1.0}\Huge\bfseries\@title\par%
+  \end{flushleft}%
+  $if(twoside)$\null\thispagestyle{empty}\newpage$endif$%
+  \null\thispagestyle{empty}\newpage%
+  \vspace*{\droptitle}%
+  {\parindent\z@\raggedright%
+  \sffamily\setstretch{1.0}\Huge\bfseries\@title\par\vspace*{\baselineskip}%
+  \normalsize\mdseries\@date\par%
+  \normalsize\mdseries\@author\par}%
+  $else$%
+  \vspace*{\droptitle}%
+  \begin{flushleft}%
+    \sffamily\setstretch{1.0}\Huge\bfseries\@title\par\vspace*{\baselineskip}%
+    \normalsize\mdseries\@date\par%
+    \normalsize\mdseries\@author\par%
+  \end{flushleft}%
+  $endif$%
 }
 \makeatother
 

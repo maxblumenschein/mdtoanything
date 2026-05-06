@@ -1,4 +1,7 @@
-% define variables %
+% Helper: outputs #2 only if macro #1 is defined and non-empty
+\providecommand{\printifset}[2]{\ifdefined#1\ifx#1\empty\else#2\fi\fi}
+
+% define variables — leave field empty (\def\field{}) to omit from output %
 \def\name{Albert Einstein}
 \def\institution{ETH Zürich}
 \def\department{Institut für Teilchenphysik und Astrophysik}
@@ -11,6 +14,10 @@
 \def\bankaccount{Zürcher Kantonalbank, CH-8010 Zürich\hfill\break
 IBAN: CH72 0070 0930 0051 9082 0\hfill\break
 SWIFT/BIC: ZKBKCHZZ80A}
+
+% define cv-specific variables (optional) %
+\def\born{}
+\def\portraitpath{}
 
 % define path-variables %
 \def\fontpath{/windows/fonts}
