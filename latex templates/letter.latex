@@ -173,6 +173,7 @@ BoldItalicFont  = ABCDiatypeMono-MediumItalic.otf]
 
 %----------------------------------------------------------------------------------------
 % TABLE %
+\newcounter{none} % for longtables without a caption label
 \AtBeginEnvironment{longtable}{\fontsize{9}{10}\info\selectfont\addfontfeature{Numbers={Lining,Monospaced}}}
 \setlength\heavyrulewidth{0.5 pt}
 \setlength\lightrulewidth{0.25 pt}

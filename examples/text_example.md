@@ -11,8 +11,9 @@ lang: de
 
 abstract: Die Astrophysik ermöglicht es uns, die tiefen Geheimnisse des Universums zu entschlüsseln. Diese Disziplin erforscht die Entstehung von Sternen, die Dynamik von Galaxien und die kosmischen Wechselwirkungen, die das Universum formen. Besondere Aufmerksamkeit gilt der Dunklen Materie, die durch ihre gravitative Wirkung die Struktur des Kosmos prägt, aber selbst unsichtbar bleibt. Ebenso wirft die Dunkle Energie, verantwortlich für die beschleunigte Expansion des Universums, grundlegende Fragen auf. Dieser Artikel führt den Leser durch die faszinierenden Phänomene des Kosmos und zeigt, wie Astrophysik unser Verständnis von Zeit, Raum und Materie erweitert.
 
-bibliography: "../resources/example.bib"
-csl: "../resources/citationstyle.csl"
+bibliography: "resources/example.bib"
+csl: "resources/citationstyle.csl"
+crossrefYaml: "resources/crossref-de.yaml"
 
 documentclass: report
 ---
@@ -78,7 +79,7 @@ In der Astrophysik gibt es eine faszinierende Kategorie von Materie, die nicht m
 
 Die helle Materie besteht aus normaler, baryonischer Materie, die aus Protonen, Neutronen, Elektronen und anderen subatomaren Teilchen besteht. Im Gegensatz zur Dunklen Materie, die nur gravitativ mit anderen Materieformen interagiert, erleben wir die helle Materie auf der Erde und im gesamten beobachtbaren Universum direkt oder indirekt durch ihre Wechselwirkung mit Licht.
 
-Ein weiterer zentraler Punkt ist die Untersuchung der Wechselwirkungen zwischen heller Materie und anderen astrophysikalischen Phänomenen. Astronomen nutzen fortschrittliche Teleskope und Simulationstechniken, um das Verhalten heller Materie in verschiedenen Umgebungen zu analysieren. Durch die Beobachtung von Gravitationslinsen und die Analyse der Verteilung heller Materie in verschiedenen Galaxien können Wissenschaftler wichtige Informationen über die Struktur und Dynamik des Universums gewinnen. Diese Erkenntnisse sind entscheidend, um Modelle zu entwickeln, die sowohl die Rolle der hellen als auch der dunklen Materie in der kosmischen Evolution berücksichtigen. In einer umfassenden Analyse über die Eigenschaften der Materie im Universum stellt Stephen Hawking fest:
+Ein weiterer zentraler Punkt ist die Untersuchung der Wechselwirkungen zwischen heller Materie und anderen astrophysikalischen Phänomenen. Astronomen nutzen fortschrittliche Teleskope und Simulationstechniken, um das Verhalten heller Materie in verschiedenen Umgebungen zu analysieren. Durch die Beobachtung von Gravitationslinsen und die Analyse der Verteilung heller Materie in verschiedenen Galaxien können Wissenschaftler wichtige Informationen über die Struktur und Dynamik des Universums gewinnen. [@Fig:jwt]. Diese Erkenntnisse sind entscheidend, um Modelle zu entwickeln, die sowohl die Rolle der hellen als auch der dunklen Materie in der kosmischen Evolution berücksichtigen. In einer umfassenden Analyse über die Eigenschaften der Materie im Universum stellt Stephen Hawking fest:
 
 > Im Gegensatz zur Dunklen Materie, die sich unserem direkten Zugriff entzieht, ist die helle Materie aufgrund ihrer Wechselwirkung mit elektromagnetischer Strahlung deutlich zugänglicher für unsere Forschung. Diese essentielle Eigenschaft ermöglicht es uns nicht nur, sie zu beobachten, sondern auch tiefere Einsichten in ihre Verteilung und Dichte im Universum zu gewinnen.[^5]
 
@@ -92,7 +93,7 @@ Letztlich ermöglicht das Verständnis der hellen Materie nicht nur einen Blick 
 
 [^6]: [@einstein1915].
 
-![Das James-Webb-Weltraumteleskop der NASA hat das bisher tiefste und schärfste Infrarotbild des fernen Universums aufgenommen. Dieses Bild des Galaxienhaufens SMACS 0723, das als _Webb's First Deep Field_ bekannt ist, strotzt nur so vor Details.](https://www.nasa.gov/wp-content/uploads/2023/03/main_image_deep_field_smacs0723-5mb.jpg){ width=100% }
+![Das James-Webb-Weltraumteleskop der NASA hat das bisher tiefste und schärfste Infrarotbild des fernen Universums aufgenommen. Dieses Bild des Galaxienhaufens SMACS 0723, das als _Webb's First Deep Field_ bekannt ist, strotzt nur so vor Details.](https://www.nasa.gov/wp-content/uploads/2023/03/main_image_deep_field_smacs0723-5mb.jpg){#fig:jwt}
 
 1. **Galaktische Rotation:** In Galaxien beeinflusst die helle Materie die Rotationsgeschwindigkeiten von Sternen in den äußeren Regionen. Dieser Einfluss ist entscheidend für unser Verständnis der galaktischen Dynamik, da er dazu beiträgt, die beobachteten Rotationskurven zu erklären.
 
