@@ -7,7 +7,6 @@
 \usepackage{etoolbox} % programming facilities
 \usepackage{fancyhdr} % header & footer customization
 \usepackage[titles]{tocloft} % table of contents customization
-\usepackage{biblatex} % bibliography
 \usepackage{geometry} % page layout
 \usepackage{xcolor} % custom colors
 \usepackage{microtype} % advanced hyphenation and protrusion
@@ -314,7 +313,7 @@ $endif$
               singlelinecheck = false,
               font={footnotesize,stretch=1.1}}
 
-% bibliography style %
+% bibliography style (citeproc via CSLReferences) %
 $if(csl-refs)$
 % definitions for citeproc citations
 \NewDocumentCommand\citeproctext{}{}
@@ -332,7 +331,7 @@ $if(csl-refs)$
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
 \newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
-{\begin{list}{}{%
+{\raggedright\begin{list}{}{%
 	\setlength{\itemindent}{0pt}
 	\setlength{\leftmargin}{0pt}
 	\setlength{\parsep}{0pt}
@@ -444,10 +443,6 @@ $if(lot)$
 $endif$
 }{}
 
-\begingroup
-\nocite{*}
-\raggedright\printbibliography
-\endgroup
 
 \ifbool{isreport}{
 $if(apx)$

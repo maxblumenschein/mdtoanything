@@ -6,31 +6,46 @@ cd "$SCRIPT_DIR"
 # Make resources/ visible to the TeX engine for \input{user_variables_definition}
 export TEXINPUTS="$SCRIPT_DIR/resources:$TEXINPUTS"
 
+# When pandoc-crossref and citeproc are both needed, run them in two separate
+# passes to avoid citeproc failing to resolve in-footnote citations.
+# Pass 1: pandoc-crossref (JSON); Pass 2: citeproc + template + pdf-engine.
 
-# LINEAR -> Execute the Pandoc command
+# LINEAR
 pandoc "text_example.md" \
--o "output/linear_example.pdf" \
---template="../latex%20templates/linear.latex" \
---pdf-engine="lualatex" \
---citeproc \
---standalone \
---filter pandoc-crossref \
---resource-path=".:resources"
+  -t json \
+  --filter pandoc-crossref \
+  --resource-path=".:resources" \
+  -o /tmp/_linear_crossref.json 2>&1
 
-# INFO -> Execute the Pandoc command
+pandoc /tmp/_linear_crossref.json \
+  -f json \
+  -o "output/linear_example.pdf" \
+  --template="../latex templates/linear.latex" \
+  --pdf-engine="lualatex" \
+  --citeproc \
+  --standalone \
+  --resource-path=".:resources"
+
+# INFO
 pandoc "text_example.md" \
--o "output/info_example.pdf" \
---template="../latex%20templates/info.latex" \
---pdf-engine="lualatex" \
---citeproc \
---standalone \
---filter pandoc-crossref \
---resource-path=".:resources"
+  -t json \
+  --filter pandoc-crossref \
+  --resource-path=".:resources" \
+  -o /tmp/_info_crossref.json 2>&1
+
+pandoc /tmp/_info_crossref.json \
+  -f json \
+  -o "output/info_example.pdf" \
+  --template="../latex templates/info.latex" \
+  --pdf-engine="lualatex" \
+  --citeproc \
+  --standalone \
+  --resource-path=".:resources"
 
 # LETTER -> Execute the Pandoc command
 pandoc "letter_example.md" \
 -o "output/letter_example.pdf" \
---template="../latex%20templates/letter.latex" \
+--template="../latex templates/letter.latex" \
 --pdf-engine="lualatex" \
 --citeproc \
 --standalone \
@@ -39,7 +54,7 @@ pandoc "letter_example.md" \
 # LETTER-INVOICE -> Execute the Pandoc command
 pandoc "invoice_example.md" \
 -o "output/letter-invoice_example.pdf" \
---template="../latex%20templates/letter.latex" \
+--template="../latex templates/letter.latex" \
 --pdf-engine="lualatex" \
 --citeproc \
 --standalone \
@@ -48,7 +63,7 @@ pandoc "invoice_example.md" \
 # LETTER-CV -> Execute the Pandoc command
 pandoc "cv_example.md" \
 -o "output/letter-cv_example.pdf" \
---template="../latex%20templates/letter.latex" \
+--template="../latex templates/letter.latex" \
 --pdf-engine="lualatex" \
 --citeproc \
 --standalone \
