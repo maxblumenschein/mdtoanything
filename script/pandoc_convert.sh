@@ -4,6 +4,7 @@
 default_template_path=""
 default_template="linear.latex"
 pdf_engine="lualatex"
+export OSFONTDIR="$HOME/Library/Fonts"
 
 # Function to check if a URL is reachable
 check_url() {

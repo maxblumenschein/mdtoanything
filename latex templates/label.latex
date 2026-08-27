@@ -1,0 +1,69 @@
+\documentclass[$if(lang)$$babel-lang$$endif$]{article}
+
+% packages %
+\usepackage{babel}
+\usepackage{geometry}
+\usepackage{fontspec}
+\usepackage{luaotfload}
+\usepackage{setspace}
+\usepackage{microtype}
+
+% page size: 7.4 × 10.5 cm %
+\geometry{
+  paperwidth=7.4cm,
+  paperheight=10.5cm,
+  top=1.2cm,
+  bottom=1.2cm,
+  left=0.8cm,
+  right=0.8cm,
+}
+
+% font: Söhne %
+\AtBeginDocument{\fontsize{10pt}{11pt}\selectfont}
+
+\setmainfont[
+  ItalicFont = Söhne-BuchKursiv.ttf,
+  BoldFont = Söhne-Kräftig.ttf,
+  BoldItalicFont = Söhne-KräftigKursiv.ttf
+]{Söhne-Buch.ttf}
+
+\setstretch{1.2}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\raggedright
+
+\pagestyle{empty}
+
+% images %
+$if(graphics)$
+\usepackage{graphicx}
+$endif$
+
+% lists %
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%----------%
+% document %
+\begin{document}
+
+$if(author)$\textbf{$author$}$endif$
+
+\vspace{\baselineskip}
+
+$if(title)$\textbf{\textit{$title$}}$if(date)$, $date$$endif$$endif$
+
+\vspace{\baselineskip}
+
+$if(medium)$$medium$\\$endif$
+$if(dimensions)${\addfontfeature{Numbers={Lining,Monospaced}}$dimensions$}$endif$
+
+\vspace{\baselineskip}
+
+$if(edition)$$edition$$endif$
+
+\newpage
+
+$body$
+
+\end{document}

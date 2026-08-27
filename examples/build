@@ -5,6 +5,7 @@ cd "$SCRIPT_DIR"
 
 # Make resources/ visible to the TeX engine for \input{user_variables_definition}
 export TEXINPUTS="$SCRIPT_DIR/resources:$TEXINPUTS"
+export OSFONTDIR="$HOME/Library/Fonts"
 
 # When pandoc-crossref and citeproc are both needed, run them in two separate
 # passes to avoid citeproc failing to resolve in-footnote citations.
@@ -41,6 +42,14 @@ pandoc /tmp/_info_crossref.json \
   --citeproc \
   --standalone \
   --resource-path=".:resources"
+
+# LABEL
+pandoc "label_example.md" \
+-o "output/label_example.pdf" \
+--template="../latex templates/label.latex" \
+--pdf-engine="lualatex" \
+--standalone \
+--resource-path=".:resources"
 
 # LETTER -> Execute the Pandoc command
 pandoc "letter_example.md" \
