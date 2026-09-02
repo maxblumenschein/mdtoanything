@@ -57,6 +57,7 @@ $if(title)$\textit{$title$}$if(date)$, $date$$endif$$endif$
 
 $if(medium)$$medium$\\$endif$
 $if(dimensions)${\addfontfeature{Numbers={Lining,Monospaced}}$dimensions$}$endif$
+$if(dimensions_framed)$\\{\addfontfeature{Numbers={Lining,Monospaced}}$dimensions_framed$ (framed)}$endif$
 
 \vspace{\baselineskip}
 

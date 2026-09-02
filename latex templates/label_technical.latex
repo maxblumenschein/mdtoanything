@@ -1,0 +1,110 @@
+\documentclass[$if(lang)$$babel-lang$$endif$]{article}
+
+% packages %
+\usepackage{babel}
+\usepackage{iflang}
+\usepackage{geometry}
+\usepackage{fontspec}
+\usepackage{luaotfload}
+\usepackage{microtype}
+\usepackage{xcolor}
+
+% page size: A6 %
+\geometry{
+  paperwidth=10.5cm,
+  paperheight=14.8cm,
+  top=0.8cm,
+  bottom=0.8cm,
+  left=0.8cm,
+  right=0.8cm,
+}
+
+% font: Simple (Lineto) %
+\setmainfont[
+  ItalicFont = SimpleOblique.otf,
+  BoldFont = SimpleBold.otf,
+  BoldItalicFont = SimpleBoldOblique.otf
+]{SimpleRegular.otf}
+\AtBeginDocument{\fontsize{9pt}{12pt}\selectfont}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\raggedright
+\pagestyle{empty}
+
+% colors %
+\definecolor{labelgray}{gray}{0.5}
+\definecolor{rulegray}{gray}{0.6}
+
+% field label: small, gray %
+\newcommand{\flabel}[1]{%
+  {\fontsize{6pt}{7.5pt}\selectfont\color{labelgray}#1}%
+}
+
+% localized label text: first arg = english (default), second arg = german/ngerman/swiss %
+\newcommand{\ltext}[2]{%
+  \IfLanguageName{german}{#2}{\IfLanguageName{ngerman}{#2}{\IfLanguageName{swiss}{#2}{#1}}}%
+}
+
+% field value: same size as body, black %
+\newcommand{\fval}[1]{#1}
+
+% images %
+$if(graphics)$
+\usepackage{graphicx}
+$endif$
+
+% lists %
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%----------%
+% document %
+\begin{document}
+
+\flabel{\ltext{Information}{Information}}\\[-2pt]%
+{\color{rulegray}\rule{\linewidth}{0.3pt}}\\[5pt]%
+% Artist | Title %
+\noindent%
+\begin{minipage}[t]{0.46\linewidth}%
+  \flabel{\ltext{Artist / Author}{Künstler / Autor}}\\[2pt]%
+  $if(author)$\fval{$author$}$endif$%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{0.50\linewidth}%
+  \flabel{\ltext{Title}{Titel}}\\[2pt]%
+  $if(title)$\fval{$title$}$endif$%
+\end{minipage}\\[\baselineskip]%
+% Date | Medium %
+\noindent%
+\begin{minipage}[t]{0.46\linewidth}%
+  \flabel{\ltext{Date}{Datum}}\\[2pt]%
+  $if(date)$\fval{$date$}$endif$%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{0.50\linewidth}%
+  \flabel{\ltext{Medium}{Technik}}\\[2pt]%
+  $if(medium)$\fval{$medium$}$endif$%
+\end{minipage}\\[\baselineskip]%
+% Dimensions | Frame Dimensions %
+\noindent%
+\begin{minipage}[t]{0.46\linewidth}%
+  \flabel{\ltext{Dimensions (H×W×D)}{Masse (H×B×T)}}\\[2pt]%
+  $if(dimensions)$\fval{$dimensions$}$endif$%
+\end{minipage}%
+$if(dimensions_framed)$\hfill%
+\begin{minipage}[t]{0.50\linewidth}%
+  \flabel{\ltext{Frame Dimensions}{Masse gerahmt}}\\[2pt]%
+  \fval{$dimensions_framed$}%
+\end{minipage}$endif$\\[\baselineskip]%
+% Edition %
+\noindent%
+\flabel{\ltext{Edition}{Auflage}}\\[2pt]%
+$if(edition)$\fval{$edition$}$endif$\\[10pt]%
+{\color{rulegray}\rule{\linewidth}{0.2pt}}\\[5pt]%
+\flabel{\ltext{Description}{Beschreibung}}\\[4pt]%
+$body$
+
+\end{document}

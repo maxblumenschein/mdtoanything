@@ -51,6 +51,14 @@ pandoc "label_example.md" \
 --standalone \
 --resource-path=".:resources"
 
+# LABEL TECHNICAL
+pandoc "label_example.md" \
+-o "output/label_technical_example.pdf" \
+--template="../latex templates/label_technical.latex" \
+--pdf-engine="lualatex" \
+--standalone \
+--resource-path=".:resources"
+
 # LETTER -> Execute the Pandoc command
 pandoc "letter_example.md" \
 -o "output/letter_example.pdf" \
