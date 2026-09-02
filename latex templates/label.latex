@@ -51,7 +51,7 @@ $if(author)$\textbf{$author$}$endif$
 
 \vspace{\baselineskip}
 
-$if(title)$\textbf{\textit{$title$}}$if(date)$, $date$$endif$$endif$
+$if(title)$\textit{$title$}$if(date)$, $date$$endif$$endif$
 
 \vspace{\baselineskip}
 
