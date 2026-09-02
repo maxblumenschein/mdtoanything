@@ -8,6 +8,7 @@
 \usepackage{luaotfload}
 \usepackage{microtype}
 \usepackage{xcolor}
+\usepackage{enumitem}
 
 % page size: A6 %
 \geometry{
@@ -38,9 +39,9 @@
 \definecolor{labelgray}{gray}{0.5}
 \definecolor{rulegray}{gray}{0.6}
 
-% field label: small, gray %
+% field label: small, gray, set on the 12pt baseline grid %
 \newcommand{\flabel}[1]{%
-  {\fontsize{6pt}{7.5pt}\selectfont\color{labelgray}#1}%
+  {\fontsize{6pt}{12pt}\selectfont\color{labelgray}#1}%
 }
 
 % localized label text: first arg = english (default), second arg = german/ngerman/swiss %
@@ -57,6 +58,8 @@ $if(graphics)$
 $endif$
 
 % lists %
+\setlist[itemize]{nosep, leftmargin=1em, itemindent=0pt, labelwidth=0.7em, labelsep=0.3em, align=left, label=-}
+\setlist[enumerate]{nosep, leftmargin=1.5em}
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
@@ -64,47 +67,47 @@ $endif$
 % document %
 \begin{document}
 
-\flabel{\ltext{Information}{Information}}\\[-2pt]%
-{\color{rulegray}\rule{\linewidth}{0.3pt}}\\[5pt]%
+\flabel{\ltext{Information}{Information}}\\
+{\color{rulegray}\rule[2pt]{\linewidth}{0.3pt}}\\[\baselineskip]%
 % Artist | Title %
 \noindent%
 \begin{minipage}[t]{0.46\linewidth}%
-  \flabel{\ltext{Artist / Author}{Künstler / Autor}}\\[2pt]%
+  \flabel{\ltext{Artist / Author}{Künstler / Autor}}\\
   $if(author)$\fval{$author$}$endif$%
 \end{minipage}%
 \hfill%
 \begin{minipage}[t]{0.50\linewidth}%
-  \flabel{\ltext{Title}{Titel}}\\[2pt]%
+  \flabel{\ltext{Title}{Titel}}\\
   $if(title)$\fval{$title$}$endif$%
 \end{minipage}\\[\baselineskip]%
 % Date | Medium %
 \noindent%
 \begin{minipage}[t]{0.46\linewidth}%
-  \flabel{\ltext{Date}{Datum}}\\[2pt]%
+  \flabel{\ltext{Date}{Datum}}\\
   $if(date)$\fval{$date$}$endif$%
 \end{minipage}%
 \hfill%
 \begin{minipage}[t]{0.50\linewidth}%
-  \flabel{\ltext{Medium}{Technik}}\\[2pt]%
+  \flabel{\ltext{Medium}{Technik}}\\
   $if(medium)$\fval{$medium$}$endif$%
 \end{minipage}\\[\baselineskip]%
 % Dimensions | Frame Dimensions %
 \noindent%
 \begin{minipage}[t]{0.46\linewidth}%
-  \flabel{\ltext{Dimensions (H×W×D)}{Masse (H×B×T)}}\\[2pt]%
+  \flabel{\ltext{Dimensions (H×W×D)}{Masse (H×B×T)}}\\
   $if(dimensions)$\fval{$dimensions$}$endif$%
 \end{minipage}%
 $if(dimensions_framed)$\hfill%
 \begin{minipage}[t]{0.50\linewidth}%
-  \flabel{\ltext{Frame Dimensions}{Masse gerahmt}}\\[2pt]%
+  \flabel{\ltext{Frame Dimensions}{Masse gerahmt}}\\
   \fval{$dimensions_framed$}%
 \end{minipage}$endif$\\[\baselineskip]%
 % Edition %
 \noindent%
-\flabel{\ltext{Edition}{Auflage}}\\[2pt]%
-$if(edition)$\fval{$edition$}$endif$\\[10pt]%
-{\color{rulegray}\rule{\linewidth}{0.2pt}}\\[5pt]%
-\flabel{\ltext{Description}{Beschreibung}}\\[4pt]%
+\flabel{\ltext{Edition}{Auflage}}\\
+$if(edition)$\fval{$edition$}$endif$\\[2\baselineskip]%
+\flabel{\ltext{Description}{Beschreibung}}\\
+{\color{rulegray}\rule[2pt]{\linewidth}{0.2pt}}\\[\baselineskip]%
 $body$
 
 \end{document}
