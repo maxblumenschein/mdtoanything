@@ -9,15 +9,69 @@
 \usepackage{microtype}
 \usepackage{xcolor}
 \usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{eso-pic}
+
+%=====================================================%
+% CONFIGURATION - sizes & spacing                     %
+% Change values here; everything below reads from     %
+% these so the whole label stays in sync.              %
+%=====================================================%
 
 % page size: A6 %
+\newlength{\pagesizeW}   \setlength{\pagesizeW}{10.5cm}
+\newlength{\pagesizeH}   \setlength{\pagesizeH}{14.8cm}
+\newlength{\pagemarginT} \setlength{\pagemarginT}{0.8cm}
+\newlength{\pagemarginB} \setlength{\pagemarginB}{0.8cm}
+\newlength{\pagemarginL} \setlength{\pagemarginL}{0.8cm}
+\newlength{\pagemarginR} \setlength{\pagemarginR}{0.8cm}
+
+% baseline grid: every line of text (body & labels) sits on   %
+% multiples of \gridunit. Change this one value to re-tune    %
+% the whole label's vertical rhythm.                          %
+\newcommand{\gridunitpt}{12}                 % numeric pt value, kept in sync with \gridunit below
+\newlength{\gridunit}    \setlength{\gridunit}{\gridunitpt pt}
+
+% type sizes %
+\newlength{\bodyfontsize}  \setlength{\bodyfontsize}{9pt}   % field values / body text
+\newlength{\labelfontsize} \setlength{\labelfontsize}{6pt}  % small gray field labels
+
+% two-column field layout %
+\newcommand{\colwidthA}{0.475\linewidth}
+\newcommand{\colwidthB}{0.475\linewidth}
+
+% row spacing (in multiples of \gridunit) %
+\newcommand{\rowgap}{\gridunit}       % gap between an ordinary field row and the next
+\newcommand{\sectiongap}{2\gridunit}  % larger gap before the "Description" section
+
+% rules %
+\newlength{\ruleheavy}  \setlength{\ruleheavy}{0.3pt}  % rule under "Information" heading
+\newlength{\rulelight}  \setlength{\rulelight}{0.2pt}  % rule under "Description" heading
+\newlength{\ruleraise}  \setlength{\ruleraise}{3pt}    % vertical offset of both rules
+
+% baseline grid overlay (debug aid, off by default) %
+% Turn on by passing `showgrid: true` in the markdown YAML       %
+% front matter (or `pandoc -V showgrid=true`) - no template edit %
+% needed. Colors/line width tweakable here.                      %
+\newif\ifshowgrid
+\showgridfalse
+$if(showgrid)$\showgridtrue$endif$
+\definecolor{gridline}{RGB}{220,0,0}
+\newlength{\gridlinewidth} \setlength{\gridlinewidth}{0.25pt}
+\newcommand{\gridlinecount}{45} % enough lines to cover the full page height
+
+%=====================================================%
+% end configuration                                    %
+%=====================================================%
+
 \geometry{
-  paperwidth=10.5cm,
-  paperheight=14.8cm,
-  top=0.8cm,
-  bottom=0.8cm,
-  left=0.8cm,
-  right=0.8cm,
+  paperwidth=\pagesizeW,
+  paperheight=\pagesizeH,
+  top=\pagemarginT,
+  bottom=\pagemarginB,
+  left=\pagemarginL,
+  right=\pagemarginR,
 }
 
 % font: Simple (Lineto) %
@@ -26,10 +80,11 @@
   BoldFont = SimpleBold.otf,
   BoldItalicFont = SimpleBoldOblique.otf
 ]{SimpleRegular.otf}
-\AtBeginDocument{\fontsize{9pt}{12pt}\selectfont}
+\AtBeginDocument{\fontsize{\bodyfontsize}{\gridunit}\selectfont}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
+\setlength{\topskip}{\gridunit} % aligns the first line's baseline to the grid
 \hyphenpenalty=10000
 \exhyphenpenalty=10000
 \raggedright
@@ -39,9 +94,9 @@
 \definecolor{labelgray}{gray}{0.5}
 \definecolor{rulegray}{gray}{0.6}
 
-% field label: small, gray, set on the 12pt baseline grid %
+% field label: small, gray, set on the baseline grid %
 \newcommand{\flabel}[1]{%
-  {\fontsize{6pt}{12pt}\selectfont\color{labelgray}#1}%
+  {\fontsize{\labelfontsize}{\gridunit}\selectfont\color{labelgray}#1}%
 }
 
 % localized label text: first arg = english (default), second arg = german/ngerman/swiss %
@@ -51,6 +106,24 @@
 
 % field value: same size as body, black %
 \newcommand{\fval}[1]{#1}
+
+% baseline grid overlay: thin horizontal lines every \gridunit, %
+% spanning the text width, starting at the first baseline.      %
+\newcommand{\drawbaselinegrid}{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \foreach \n in {1,...,\gridlinecount} {
+      \draw[gridline, line width=\gridlinewidth]
+        ($$(current page.north west)+(\pagemarginL,-\pagemarginT-\n\gridunit)$$)
+        -- ($$(current page.north west)+(\pagemarginL+\textwidth,-\pagemarginT-\n\gridunit)$$);
+      \node[gridline, anchor=east, font=\fontsize{4pt}{4pt}\selectfont]
+        at ($$(current page.north west)+(\pagemarginL-2pt,-\pagemarginT-\n\gridunit)$$)
+        {\pgfmathtruncatemacro{\gridlabel}{\n*\gridunitpt}\gridlabel};
+    }
+  \end{tikzpicture}%
+}
+\ifshowgrid
+  \AddToShipoutPictureBG{\drawbaselinegrid}
+\fi
 
 % images %
 $if(graphics)$
@@ -68,46 +141,46 @@ $endif$
 \begin{document}
 
 \flabel{\ltext{Information}{Information}}\\
-{\color{rulegray}\rule[2pt]{\linewidth}{0.3pt}}\\[\baselineskip]%
+{\color{rulegray}\rule[\ruleraise]{\linewidth}{\ruleheavy}}\\[\rowgap]%
 % Artist | Title %
 \noindent%
-\begin{minipage}[t]{0.46\linewidth}%
+\begin{minipage}[t]{\colwidthA}%
   \flabel{\ltext{Artist / Author}{Künstler / Autor}}\\
   $if(author)$\fval{$author$}$endif$%
 \end{minipage}%
 \hfill%
-\begin{minipage}[t]{0.50\linewidth}%
+\begin{minipage}[t]{\colwidthB}%
   \flabel{\ltext{Title}{Titel}}\\
   $if(title)$\fval{$title$}$endif$%
-\end{minipage}\\[\baselineskip]%
+\end{minipage}\\[\rowgap]%
 % Date | Medium %
 \noindent%
-\begin{minipage}[t]{0.46\linewidth}%
+\begin{minipage}[t]{\colwidthA}%
   \flabel{\ltext{Date}{Datum}}\\
   $if(date)$\fval{$date$}$endif$%
 \end{minipage}%
 \hfill%
-\begin{minipage}[t]{0.50\linewidth}%
+\begin{minipage}[t]{\colwidthB}%
   \flabel{\ltext{Medium}{Technik}}\\
   $if(medium)$\fval{$medium$}$endif$%
-\end{minipage}\\[\baselineskip]%
+\end{minipage}\\[\rowgap]%
 % Dimensions | Frame Dimensions %
 \noindent%
-\begin{minipage}[t]{0.46\linewidth}%
+\begin{minipage}[t]{\colwidthA}%
   \flabel{\ltext{Dimensions (H×W×D)}{Masse (H×B×T)}}\\
   $if(dimensions)$\fval{$dimensions$}$endif$%
 \end{minipage}%
 $if(dimensions_framed)$\hfill%
-\begin{minipage}[t]{0.50\linewidth}%
+\begin{minipage}[t]{\colwidthB}%
   \flabel{\ltext{Frame Dimensions}{Masse gerahmt}}\\
   \fval{$dimensions_framed$}%
-\end{minipage}$endif$\\[\baselineskip]%
+\end{minipage}$endif$\\[\rowgap]%
 % Edition %
 \noindent%
 \flabel{\ltext{Edition}{Auflage}}\\
-$if(edition)$\fval{$edition$}$endif$\\[2\baselineskip]%
+$if(edition)$\fval{$edition$}$endif$\\[\sectiongap]%
 \flabel{\ltext{Description}{Beschreibung}}\\
-{\color{rulegray}\rule[2pt]{\linewidth}{0.2pt}}\\[\baselineskip]%
+{\color{rulegray}\rule[\ruleraise]{\linewidth}{\rulelight}}\\[\rowgap]%
 $body$
 
 \end{document}
