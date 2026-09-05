@@ -76,10 +76,10 @@ $if(showgrid)$\showgridtrue$endif$
 
 % font: Simple (Lineto) %
 \setmainfont[
-  ItalicFont = SimpleOblique.otf,
-  BoldFont = SimpleBold.otf,
-  BoldItalicFont = SimpleBoldOblique.otf
-]{SimpleRegular.otf}
+  ItalicFont = Söhne-BuchKursiv.ttf,
+  BoldFont = Söhne-Kräftig.ttf,
+  BoldItalicFont = Söhne-KräftigKursiv.ttf
+]{Söhne-Buch.ttf}
 \AtBeginDocument{\fontsize{\bodyfontsize}{\gridunit}\selectfont}
 
 \setlength{\parindent}{0pt}
@@ -140,38 +140,46 @@ $endif$
 % document %
 \begin{document}
 
+\begingroup
+\addfontfeature{Numbers=Monospaced}% tabular figures in the info section only
 \flabel{\ltext{Information}{Information}}\\
 {\color{rulegray}\rule[\ruleraise]{\linewidth}{\ruleheavy}}\\[\rowgap]%
 % Artist | Title %
 \noindent%
 \begin{minipage}[t]{\colwidthA}%
+  \raggedright
   \flabel{\ltext{Artist / Author}{Künstler / Autor}}\\
   $if(author)$\fval{$author$}$endif$%
 \end{minipage}%
 \hfill%
 \begin{minipage}[t]{\colwidthB}%
+  \raggedright
   \flabel{\ltext{Title}{Titel}}\\
   $if(title)$\fval{$title$}$endif$%
 \end{minipage}\\[\rowgap]%
 % Date | Medium %
 \noindent%
 \begin{minipage}[t]{\colwidthA}%
+  \raggedright
   \flabel{\ltext{Date}{Datum}}\\
   $if(date)$\fval{$date$}$endif$%
 \end{minipage}%
 \hfill%
 \begin{minipage}[t]{\colwidthB}%
+  \raggedright
   \flabel{\ltext{Medium}{Technik}}\\
   $if(medium)$\fval{$medium$}$endif$%
 \end{minipage}\\[\rowgap]%
 % Dimensions | Frame Dimensions %
 \noindent%
 \begin{minipage}[t]{\colwidthA}%
-  \flabel{\ltext{Dimensions (H×W×D)}{Masse (H×B×T)}}\\
+  \raggedright
+  \flabel{\ltext{Dimensions (H × W × D)}{Masse (H × B × T)}}\\
   $if(dimensions)$\fval{$dimensions$}$endif$%
 \end{minipage}%
 $if(dimensions_framed)$\hfill%
 \begin{minipage}[t]{\colwidthB}%
+  \raggedright
   \flabel{\ltext{Frame Dimensions}{Masse gerahmt}}\\
   \fval{$dimensions_framed$}%
 \end{minipage}$endif$\\[\rowgap]%
@@ -179,8 +187,11 @@ $if(dimensions_framed)$\hfill%
 \noindent%
 \flabel{\ltext{Edition}{Auflage}}\\
 $if(edition)$\fval{$edition$}$endif$\\[\sectiongap]%
+\endgroup
+$if(body)$
 \flabel{\ltext{Description}{Beschreibung}}\\
 {\color{rulegray}\rule[\ruleraise]{\linewidth}{\rulelight}}\\[\rowgap]%
 $body$
+$endif$
 
 \end{document}
