@@ -30,7 +30,7 @@
 % baseline grid: every line of text (body & labels) sits on   %
 % multiples of \gridunit. Change this one value to re-tune    %
 % the whole label's vertical rhythm.                          %
-\newcommand{\gridunitpt}{12}                 % numeric pt value, kept in sync with \gridunit below
+\newcommand{\gridunitpt}{13}                 % numeric pt value, kept in sync with \gridunit below
 \newlength{\gridunit}    \setlength{\gridunit}{\gridunitpt pt}
 
 % type sizes %
@@ -47,7 +47,7 @@
 
 % rules %
 \newlength{\ruleheavy}  \setlength{\ruleheavy}{0.3pt}  % rule under "Information" heading
-\newlength{\rulelight}  \setlength{\rulelight}{0.2pt}  % rule under "Description" heading
+\newlength{\rulelight}  \setlength{\rulelight}{0.3pt}  % rule under "Description" heading
 \newlength{\ruleraise}  \setlength{\ruleraise}{3pt}    % vertical offset of both rules
 
 % baseline grid overlay (debug aid, off by default) %
@@ -75,7 +75,9 @@ $if(showgrid)$\showgridtrue$endif$
 }
 
 % font: Simple (Lineto) %
+%
 \setmainfont[
+  LetterSpace = 0.8,
   ItalicFont = Söhne-BuchKursiv.ttf,
   BoldFont = Söhne-Kräftig.ttf,
   BoldItalicFont = Söhne-KräftigKursiv.ttf
