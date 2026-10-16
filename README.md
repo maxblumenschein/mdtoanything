@@ -194,7 +194,7 @@ Convert Markdown files straight from Finder:
 finder/install.sh
 ```
 
-2. Right-click one or more ``.md`` files → **Quick Actions** → **Convert Markdown…**, pick the output format and (for PDF) the template. Your last choice is preselected next time. The output is saved next to each input file. Failed conversions show the error in a dialog; no log files are kept.
+2. Right-click one or more ``.md`` files → **Quick Actions** → **Convert Markdown…**, pick a target from the list (e.g. ``PDF – letter``, ``Word (.docx)``) using the arrow keys and Return. Your last choice is preselected next time. The first time, macOS asks to let the Quick Action control Finder (it shows the dialog); allow it. The output is saved next to each input file. Failed conversions show the error in a dialog; no log files are kept.
 
 macOS doesn't let Quick Actions run scripts from protected folders like ``~/Documents``, so ``install.sh`` copies the scripts into the workflow bundle in ``~/Library/Services``. Re-run ``finder/install.sh`` after changing ``pandoc_convert.sh`` or adding templates. If macOS asks whether the Quick Action may access a folder, allow it so it can read your Markdown files. To remove the Quick Action, run ``finder/uninstall.sh``.
 
