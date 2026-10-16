@@ -177,6 +177,27 @@ sudo mv pandoc_convert.sh /usr/local/bin/pandoc_convert
 pandoc_convert
 ```
 
+Without arguments the script prompts for everything. It can also run non-interactively, converting one or more files at once:
+
+```bash
+pandoc_convert -f pdf -t letter.latex letter.md
+pandoc_convert -f docx notes.md report.md
+```
+
+### Finder Quick Action (macOS)
+
+Convert Markdown files straight from Finder:
+
+1. Install the Quick Action:
+
+```bash
+finder/install.sh
+```
+
+2. Right-click one or more ``.md`` files → **Quick Actions** → **Convert Markdown…**, pick the output format and (for PDF) the template. Your last choice is preselected next time. The output is saved next to each input file. Failed conversions show the error in a dialog; no log files are kept.
+
+macOS doesn't let Quick Actions run scripts from protected folders like ``~/Documents``, so ``install.sh`` copies the scripts into the workflow bundle in ``~/Library/Services``. Re-run ``finder/install.sh`` after changing ``pandoc_convert.sh`` or adding templates. If macOS asks whether the Quick Action may access a folder, allow it so it can read your Markdown files. To remove the Quick Action, run ``finder/uninstall.sh``.
+
 # Terms of Use
 
 This project is licensed under a Creative Commons license CC BY-NC-ND 4.0. The material may be distributed under the following conditions: Attribution “Markdown to PDF (or Almost Anything Else)”, no commercial use, no editing or modification.
