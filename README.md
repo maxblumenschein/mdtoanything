@@ -4,6 +4,27 @@ Using Pandoc and custom Latex templates to convert Markdown files (.md) to PDF, 
 
 # Setup
 
+## Quick Start (macOS)
+
+Open Terminal in this folder and run the setup wizard:
+
+```bash
+bash setup.sh
+```
+
+It walks you through everything needed on a fresh Mac and installs only what is missing:
+
+1. Homebrew
+2. Pandoc and pandoc-crossref
+3. LaTeX (MacTeX or BasicTeX with the packages the templates need)
+4. The templates and your personal details (opened in TextEdit for editing)
+5. A check of the fonts each template uses
+6. The ``pandoc_convert`` Terminal command
+7. The Finder Quick Action
+8. A test conversion of the examples, saved to ``~/Desktop/mdtoanything test``
+
+Run it again any time to check or repair the setup. The sections below describe the individual parts in detail.
+
 ## User Defined Variables
 
 The template files use variables to insert recurring information like author name or address. By default the variables are defined by ``user_variables_definition.tex`` inside the Pandoc ``/templates`` folder.
@@ -56,8 +77,10 @@ Custom high-quality fonts are used for typesetting:
 
 Pandoc assumes these fonts to be installed on your system:
 
-- macOS: ``/Library/Fonts/``
+- macOS: ``/Library/Fonts/`` or ``~/Library/Fonts/``
 - Windows: ``C:\\Windows\Fonts``
+
+On macOS, ``pandoc_convert.sh`` also finds fonts activated through a font manager, wherever the font files are stored. Before each conversion it links all fonts macOS reports as active into ``~/Library/Caches/mdtoanything/fonts``, where LuaTeX can find them. Fonts activated after a conversion are picked up on the next run.
 
 ### Custom Font Paths
 

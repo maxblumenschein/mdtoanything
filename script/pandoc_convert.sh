@@ -8,7 +8,9 @@
 default_template_path="$HOME/.pandoc/templates/"
 default_template="linear.latex"
 pdf_engine="lualatex"
-export OSFONTDIR="$HOME/Library/Fonts"
+
+# Folder where active fonts are linked for LuaTeX (fonts activated by font managers)
+font_link_dir="$HOME/Library/Caches/mdtoanything/fonts"
 
 # Finder Quick Actions run with a minimal PATH, so add the usual tool locations
 export PATH="/opt/homebrew/bin:/usr/local/bin:/Library/TeX/texbin:$PATH"
@@ -17,6 +19,33 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:/Library/TeX/texbin:$PATH"
 check_url() {
     curl --head --silent --fail --max-time 5 "$1" >/dev/null 2>&1
 }
+
+# Link the fonts macOS reports as active into $font_link_dir. LuaTeX only scans
+# the standard font folders, so fonts activated in place by a font manager are
+# invisible to it; their folders often can't be listed either (e.g. iCloud Drive)
+link_active_fonts() {
+    command -v osascript >/dev/null 2>&1 || return 0
+    rm -rf "$font_link_dir"
+    mkdir -p "$font_link_dir" || return 0
+
+    osascript -l JavaScript -e '
+        ObjC.import("CoreText");
+        const urls = ObjC.castRefToObject($.CTFontManagerCopyAvailableFontURLs());
+        const home = $.NSHomeDirectory().js;
+        const std = ["/System/Library/Fonts/", "/Library/Fonts/", home + "/Library/Fonts/"];
+        const paths = new Set();
+        for (let i = 0; i < urls.count; i++) {
+            const p = urls.objectAtIndex(i).path.js;
+            if (!std.some(s => p.startsWith(s))) paths.add(p);
+        }
+        [...paths].join("\n")' 2>/dev/null |
+        while IFS= read -r font; do
+            [ -n "$font" ] && ln -sf "$font" "$font_link_dir/"
+        done
+}
+
+link_active_fonts
+export OSFONTDIR="$HOME/Library/Fonts:$font_link_dir"
 
 # Resolve the template file to a URL or local path (sets template_path)
 resolve_template() {
@@ -100,6 +129,7 @@ convert_file() {
         echo "Conversion successful! Output saved to '$output_path'."
     else
         echo "Error: Pandoc failed to convert '$input_path'."
+        echo "Hint: if a font \"cannot be found\", make sure it is installed or activated in your font manager, then run again."
     fi
     return $status
 }
@@ -110,6 +140,9 @@ validate_format() {
         exit 1
     fi
 }
+
+# Stop here when sourced (setup.sh reuses the settings and functions above)
+return 0 2>/dev/null
 
 # Interactive mode when called without arguments
 if [ $# -eq 0 ]; then
