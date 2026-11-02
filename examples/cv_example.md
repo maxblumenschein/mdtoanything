@@ -1,11 +1,10 @@
 ---
 title: CV
-lang: de
 
+lang: de
 custom_author: true
 
 cv: true
-
 skills: |
   | Sprachen: Deutsch (Muttersprache), Englisch (C1)
 ---

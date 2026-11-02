@@ -1,21 +1,19 @@
 ---
 title: "Astrophysik: Eine Reise durch das Universum"
-date: 27. Juni 1913
-custom_author: true
-
-numdepth: 2
-
-adress: true
+date: 27. Juni 1913
 
 lang: de
+custom_author: true
 
+address: true
 abstract: Die Astrophysik ermöglicht es uns, die tiefen Geheimnisse des Universums zu entschlüsseln. Diese Disziplin erforscht die Entstehung von Sternen, die Dynamik von Galaxien und die kosmischen Wechselwirkungen, die das Universum formen. Besondere Aufmerksamkeit gilt der Dunklen Materie, die durch ihre gravitative Wirkung die Struktur des Kosmos prägt, aber selbst unsichtbar bleibt. Ebenso wirft die Dunkle Energie, verantwortlich für die beschleunigte Expansion des Universums, grundlegende Fragen auf. Dieser Artikel führt den Leser durch die faszinierenden Phänomene des Kosmos und zeigt, wie Astrophysik unser Verständnis von Zeit, Raum und Materie erweitert.
 
-bibliography: "resources/example.bib"
-csl: "resources/citationstyle.csl"
-crossrefYaml: "resources/crossref-de.yaml"
-
 documentclass: report
+numdepth: 2
+
+bibliography: resources/example.bib
+csl: resources/citationstyle.csl
+crossrefYaml: resources/crossref-de.yaml
 ---
 # Einleitung
 

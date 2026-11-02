@@ -24,7 +24,7 @@ bold=$(tput bold 2>/dev/null) dim=$(tput dim 2>/dev/null) reset=$(tput sgr0 2>/d
 green=$(tput setaf 2 2>/dev/null) red=$(tput setaf 1 2>/dev/null) yellow=$(tput setaf 3 2>/dev/null)
 
 step_no=0
-step() { step_no=$((step_no + 1)); echo; echo "${bold}[$step_no/8] $1${reset}"; }
+step() { step_no=$((step_no + 1)); echo; echo "${bold}[$step_no/9] $1${reset}"; }
 ok() { echo "  ${green}✓${reset} $1"; }
 fail() { echo "  ${red}✗${reset} $1"; }
 warn() { echo "  ${yellow}!${reset} $1"; }
@@ -75,7 +75,8 @@ echo
 echo "  1. Homebrew (installs the other tools)   5. Fonts used by the templates"
 echo "  2. Pandoc (the converter)                6. The pandoc_convert command"
 echo "  3. LaTeX (typesets the PDFs)             7. The Finder Quick Action"
-echo "  4. Templates and your personal details   8. A test conversion"
+echo "  4. Templates and your personal details   8. Templates for new files in Zed"
+echo "                                           9. A test conversion"
 echo
 echo "Nothing is changed without asking first. Some steps ask for your Mac password."
 echo
@@ -265,7 +266,19 @@ elif ask "$([ -d "$workflow" ] && echo "Update" || echo "Install") the Finder Qu
     info "your files (and possibly iCloud Drive for fonts). Allow these."
 fi
 
-# 8. Test conversion ---------------------------------------------------------
+# 8. Zed templates -----------------------------------------------------------
+step "Templates for new files in Zed"
+info "Adds snippets (tpl-letter, …) to the Zed editor."
+zed_templates="$HOME/.config/zed/mdtoanything/templates"
+if [ ! -d "/Applications/Zed.app" ] && ! command -v zed >/dev/null 2>&1; then
+    info "Zed is not installed, skipped."
+elif diff -rq "$REPO_DIR/zed/templates" "$zed_templates" >/dev/null 2>&1; then
+    ok "The Zed templates are installed and up to date."
+elif ask "$([ -d "$zed_templates" ] && echo "Update" || echo "Install") the Zed templates?"; then
+    "$REPO_DIR/zed/install.sh" >/dev/null && ok "Zed templates installed."
+fi
+
+# 9. Test conversion ---------------------------------------------------------
 step "Test conversion"
 test_dir="$HOME/Desktop/mdtoanything test"
 if ask "Convert the examples to check everything works (saved to ~/Desktop/mdtoanything test)?"; then
@@ -308,4 +321,5 @@ echo
 echo "${bold}Done.${reset} Convert files with:"
 echo "  • Finder: right-click .md files → Quick Actions → Convert Markdown…"
 echo "  • Terminal: pandoc_convert (asks for everything) or pandoc_convert -f pdf -t letter.latex file.md"
+echo "New files in Zed: Cmd-N and type tpl-letter."
 echo "Run this wizard again any time to check or repair the setup."

@@ -2,12 +2,10 @@
 title: Rechnung
 date: 14.12.1927, Nr. 27.12.006
 
-invoice: true
-
 lang: de
-
 custom_author: true
 
+invoice: true
 to: |
   | NASA Headquarters
   | 300 E Street SW

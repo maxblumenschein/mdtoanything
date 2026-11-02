@@ -1,8 +1,8 @@
 ---
 title: Quantenmechanik und Gravitation
 date: \today
-lang: de
 
+lang: de
 custom_author: true
 
 to: |

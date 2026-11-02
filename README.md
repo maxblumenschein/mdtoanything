@@ -21,7 +21,8 @@ It walks you through everything needed on a fresh Mac and installs only what is 
 5. A check of the fonts each template uses
 6. The ``pandoc_convert`` Terminal command
 7. The Finder Quick Action
-8. A test conversion of the examples, saved to ``~/Desktop/mdtoanything test``
+8. The templates for new files in Zed (if Zed is installed)
+9. A test conversion of the examples, saved to ``~/Desktop/mdtoanything test``
 
 Run it again any time to check or repair the setup. The sections below describe the individual parts in detail.
 
@@ -220,6 +221,22 @@ finder/install.sh
 2. Right-click one or more ``.md`` files → **Quick Actions** → **Convert Markdown…**, pick a target from the list (e.g. ``PDF – letter``, ``Word (.docx)``) using the arrow keys and Return. Your last choice is preselected next time. The first time, macOS asks to let the Quick Action control Finder (it shows the dialog); allow it. The output is saved next to each input file. Failed conversions show the error in a dialog; no log files are kept.
 
 macOS doesn't let Quick Actions run scripts from protected folders like ``~/Documents``, so ``install.sh`` copies the scripts into the workflow bundle in ``~/Library/Services``. Re-run ``finder/install.sh`` after changing ``pandoc_convert.sh`` or adding templates. If macOS asks whether the Quick Action may access a folder, allow it so it can read your Markdown files. To remove the Quick Action, run ``finder/uninstall.sh``.
+
+### Zed Templates
+
+Start new files from a template in the [Zed](https://zed.dev) editor. The templates in ``zed/templates`` (``letter``, ``invoice``, ``notes``, ``text``, ``label``) contain the YAML header for the matching LaTeX template. ``text`` lists every available variable, with the optional ones commented out.
+
+1. Install the snippets:
+
+```bash
+zed/install.sh
+```
+
+2. Create a file: ``Cmd-N``, type ``tpl-letter``, press Return, then ``Tab`` through the fields. ``Cmd-S`` asks where to save the file.
+
+``install.sh`` adds the snippets to ``~/.config/zed/snippets/snippets.json``. Your other snippets are kept, and the previous file is backed up as ``snippets.json.bak``. Comments in this file are lost when it is rewritten. Tasks added to ``~/.config/zed/tasks.json`` by earlier versions are removed. Re-run ``zed/install.sh`` after changing a template. To remove the entries, run ``zed/uninstall.sh``.
+
+
 
 # Terms of Use
 
