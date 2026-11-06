@@ -110,11 +110,14 @@ convert_file() {
     local status
     if command -v pandoc-crossref >/dev/null 2>&1; then
         # Run pandoc-crossref and citeproc in separate passes, so citeproc
-        # resolves in-footnote citations (see examples/build)
-        local crossref_json
+        # resolves in-footnote citations (see examples/build). pandoc-crossref
+        # needs the target format, otherwise it numbers captions itself
+        local crossref_json crossref_format="$output_format"
+        [ "$output_format" == "pdf" ] && crossref_format="latex"
         crossref_json="$(mktemp -t pandoc_crossref)"
         echo "Executing pandoc (pandoc-crossref + citeproc) in $input_dir"
-        pandoc "$input_path" -t json --filter pandoc-crossref --resource-path="$resource_path" -o "$crossref_json" &&
+        pandoc "$input_path" -t json --resource-path="$resource_path" |
+            pandoc-crossref --pipe "$crossref_format" > "$crossref_json" &&
             pandoc "$crossref_json" -f json "${pandoc_args[@]}"
         status=$?
         rm -f "$crossref_json"

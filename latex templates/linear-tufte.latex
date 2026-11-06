@@ -1,0 +1,670 @@
+\documentclass[$if(fontsize)$$fontsize$$else$11pt$endif$,$if(lang)$$babel-lang$$endif$,$if(twoside)$twoside,openright$endif$,a4paper]{$documentclass$}
+
+% packages %
+\usepackage{babel}
+\usepackage{etoolbox} % programming facilities
+\usepackage{fancyhdr} % header & footer customization
+\usepackage[titles]{tocloft} % table of contents customization
+\usepackage{geometry} % page layout
+\usepackage{xcolor} % custom colors
+\usepackage[normalem]{ulem} % strike-through
+\usepackage{soul}
+\usepackage[expansion=false]{microtype} % protrusion, font expansion only serves justified text
+\usepackage{lmodern} % lmodern as base-font
+\usepackage{titling} % custom title styling
+\usepackage{titlesec} % custom title fonts
+\usepackage{fontspec} % allow custom fonts
+\usepackage{luaotfload} % opentype custom fonts
+\usepackage{setspace} % formating of text
+\usepackage{ragged2e} % ragged-right text with hyphenation
+\usepackage{marginnote} % margin notes inside floats and boxes
+\usepackage{marginfix} % keeps margin notes from running off the page
+\usepackage{enumitem} % lists
+\usepackage{caption} % captions customization
+\usepackage{longtable} % tables
+\usepackage{booktabs} % tables+
+\usepackage{array} % used for tables
+\usepackage[toc]{appendix}
+\usepackage{pdfpages}
+\usepackage{url}
+\usepackage{amsmath} % math
+\usepackage{tikz}
+\usetikzlibrary{trees} % treediagrams
+\usepackage{pgfplots} % plots
+\usepackage[hidelinks,hyperfootnotes=false]{hyperref} % cross-referencing commands
+\usepackage[nameinlink]{cleveref} % advanced referencing
+
+% input user variables information %
+  % either inside input directory:
+$if(custom_author)$
+\input{user_variables_definition}
+  % or inside pandoc/templates directory:
+$else$
+\input{\string~/.pandoc/templates/user_variables_definition.tex}%Mac
+%\input{\string~/AppData/Roaming/pandoc/templates/user_variables_definition.tex}%Windows
+$endif$
+  % or inside local tex directory:
+%\usepackage{user_variables_definition}
+
+% page layout %
+% text column with a wide margin column on the right (tufte-latex a4 proportions)
+\geometry{
+top=43.3353571543mm, %297mm/1.618^4
+bottom=43.3353571543mm,
+left=24.8mm,
+textwidth=107mm,
+marginparsep=8.2mm,
+marginparwidth=49.4mm, %24.8mm+107mm+8.2mm+49.4mm leaves 20.6mm on the right
+asymmetric, % margin column on the right of every page, also with twoside
+}
+
+% custom fonts set %
+\setstretch{1.1}
+\setmainfont[
+%Path = \fontpath,
+LetterSpace = 0.3,
+Numbers = OldStyle,
+ItalicFont = BradfordLL-RegularItalic.otf,
+BoldFont = BradfordLL-Bold.otf,
+BoldItalicFont  = BradfordLL-BoldItalic.otf]
+{BradfordLL-Regular.otf}
+
+\setmonofont[
+%Path = \fontpath,
+Scale       = MatchLowercase ,
+ItalicFont = BradfordMonoLL-Regular.otf,
+BoldFont = BradfordMonoLL-Regular.otf,
+BoldItalicFont  = BradfordMonoLL-Regular.otf]
+{BradfordMonoLL-Regular.otf}
+
+%lining-numbers command for occasional use
+\newcommand\liningnumbers{\addfontfeature{Numbers={Lining,Monospaced}}}
+
+%lining tabular figures in tables %
+\AtBeginEnvironment{tabular}{\small\addfontfeature{Numbers={Lining,Monospaced}}}
+\AtBeginEnvironment{tabular*}{\small\addfontfeature{Numbers={Lining,Monospaced}}}
+\AtBeginEnvironment{longtable}{\small\addfontfeature{Numbers={Lining,Monospaced}}}
+
+
+% define isreport boolean which may be used inside the document contrary to ifclassloaded
+\providebool{isreport}
+\makeatletter
+\@ifclassloaded{report}{\booltrue{isreport}}{\boolfalse{isreport}}
+\makeatother
+
+% define isarticle boolean which may be used inside the document contrary to ifclassloaded
+\providebool{isarticle}
+\makeatletter
+\@ifclassloaded{article}{\booltrue{isarticle}}{\boolfalse{isarticle}}
+\makeatother
+
+% define isarticle boolean which may be used inside the document contrary to ifclassloaded
+\providebool{isbook}
+\makeatletter
+\@ifclassloaded{book}{\booltrue{isbook}}{\boolfalse{isbook}}
+\makeatother
+
+% body %
+\setlength{\emergencystretch}{3em} %parameter for justification
+\setlength{\parindent}{2em}
+% ragged-right text, paragraphs keep their indent
+\setlength{\RaggedRightParindent}{\parindent}
+\AtBeginDocument{\RaggedRight}
+
+% numbering of headings, off by default
+\setcounter{secnumdepth}{$if(numdepth)$$numdepth$$else$-1$endif$}
+
+% unnumbered chapters don't step the chapter counter, number figures, tables and equations continuously
+\ifdefined\chapter
+\ifnum\value{secnumdepth}<0
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+\counterwithout{equation}{chapter}
+\fi
+\fi
+
+% custom title & heading fonts: Bradford italic, no bold
+% notes in headings are set beside the last line of the heading (\mdtoa@headingnotes, see sidenotes)
+\makeatletter
+\ifdefined\chapter
+\titleformat{\chapter}[hang]{\mdtoa@headingnotes\raggedright\setstretch{1.0}\Huge\itshape}{\thechapter}{.5em}{}[\mdtoa@flushheadingnotes]
+\fi
+\titleformat{\section}[hang]{\mdtoa@headingnotes\raggedright\setstretch{1.0}\Large\itshape}{\thesection}{.5em}{}[\mdtoa@flushheadingnotes]
+\titleformat{\subsection}[hang]{\mdtoa@headingnotes\raggedright\setstretch{1.0}\large\itshape}{\thesubsection}{.5em}{}[\mdtoa@flushheadingnotes]
+\titleformat{\subsubsection}[hang]{\mdtoa@headingnotes\raggedright\normalsize\itshape}{\thesubsubsection}{.5em}{}[\mdtoa@flushheadingnotes]
+% run-in headings: titlesec sets their notes after the heading, in the same line
+\titleformat{\paragraph}[runin]{\normalsize\itshape}{\theparagraph}{.5em}{}
+\titleformat{\subparagraph}[runin]{\normalsize\itshape}{\thesubparagraph}{.5em}{}
+\makeatother
+
+% title &
+% patch \maketitle so that it doesn't center
+\makeatletter
+\renewcommand{\maketitle}{%
+  $if(titlepage)$%
+  \vspace*{\droptitle}%
+  \begin{flushleft}%
+    \setstretch{1.0}\Huge\itshape\@title\par%
+  \end{flushleft}%
+  $if(twoside)$\null\thispagestyle{empty}\newpage$endif$%
+  \null\thispagestyle{empty}\newpage%
+  \vspace*{\droptitle}%
+  {\parindent\z@\raggedright%
+  \setstretch{1.0}\Huge\itshape\@title\par\vspace*{\baselineskip}%
+  \normalsize\upshape\@date\par%
+  \normalsize\upshape\@author\par}%
+  $else$%
+  \vspace*{\droptitle}%
+  \begin{flushleft}%
+    \setstretch{1.0}\Huge\itshape\@title\par\vspace*{\baselineskip}%
+    \normalsize\upshape\@date\par%
+    \normalsize\upshape\@author\par%
+  \end{flushleft}%
+  $endif$%
+}
+\makeatother
+
+\setlength{\droptitle}{4.5em} %adjust vertical offset of title to align with other headings
+
+\title{$title$\vspace*{2\baselineskip}}
+\date{
+  $project$\vspace*{\baselineskip}\endgraf
+  $date$\endgraf
+  $if(address)$\vspace*{2\baselineskip}$endif$ %spacing between date and author, if full address shall be included
+}
+% add additional info to author field %
+\author{
+        \name\endgraf
+        $if(address)${
+          \department\endgraf
+          \vspace*{\baselineskip}
+          \institution\endgraf
+          \street\endgraf
+          \zipcode\,\city\endgraf
+          \phone\endgraf
+          \email\endgraf
+          }$endif$\endgraf\vspace*{2\baselineskip}
+        %\vspace{-0.6\baselineskip} % adjust spacing after author field
+        }
+
+% header & footer %
+\pagestyle{fancy} % for "fancy" style
+    \fancyhf{} % remove header & footer
+    \fancyhfoffset[R]{\dimexpr\marginparsep+\marginparwidth\relax} % header & footer span the margin column
+    \fancyfoot[R]{\scriptsize\textcolor{lightgray}\thepage} % folio on the right edge of the margin column
+    \renewcommand{\headrulewidth}{0pt} % remove header decoration line
+
+\fancypagestyle{plain}{% for "plain" style, used for titlepage and chapter beginnings
+    \fancyhf{} % remove header & footer
+    \fancyhfoffset[R]{\dimexpr\marginparsep+\marginparwidth\relax}%
+    \fancyfoot[R]{\scriptsize\textcolor{lightgray}\thepage} % folio on the right edge of the margin column
+    \renewcommand{\headrulewidth}{0pt}}
+
+% abstract %
+% left flushed abstract
+\renewenvironment{abstract}
+    {% remove label "Abstract"
+    }
+    {\par\medskip}
+
+% table of contents %
+% titles of contents & lists styled like chapter headings, or like section headings in articles
+\ifdefined\chapter
+\newcommand\listtitlefont{\setstretch{1.0}\Huge\itshape}
+\else
+\newcommand\listtitlefont{\setstretch{1.0}\Large\itshape}
+\fi
+\renewcommand{\cfttoctitlefont}{\listtitlefont}
+% ragged-right entries, the page numbers stay flush right
+\cftsetrmarg{2.55em plus 4em}
+
+\makeatletter
+\@ifclassloaded{report}{
+% unböld chapter names %
+\renewcommand\cftchapfont{\mdseries}
+% unböld chapter folios %
+\renewcommand\cftchappagefont{\mdseries\liningnumbers}
+% unböld section names %
+\renewcommand\cftsecfont{\mdseries}
+% unböld section folios %
+\renewcommand\cftsecpagefont{\mdseries\liningnumbers}
+% unböld subsection names %
+\renewcommand\cftsubsecfont{\mdseries}
+% unböld subsection folios %
+\renewcommand\cftsubsecpagefont{\mdseries\liningnumbers}
+}{}
+\makeatother
+
+\makeatletter
+\@ifclassloaded{book}{
+% unböld chapter names %
+\renewcommand\cftchapfont{\mdseries}
+% unböld chapter folios %
+\renewcommand\cftchappagefont{\mdseries\liningnumbers}
+% unböld section names %
+\renewcommand\cftsecfont{\mdseries}
+% unböld section folios %
+\renewcommand\cftsecpagefont{\mdseries\liningnumbers}
+% unböld subsection names %
+\renewcommand\cftsubsecfont{\mdseries}
+% unböld subsection folios %
+\renewcommand\cftsubsecpagefont{\mdseries\liningnumbers}
+}{}
+\makeatother
+
+\makeatletter
+\@ifclassloaded{article}{
+% unböld section names %
+\renewcommand\cftsecfont{\mdseries}
+% unböld section folios %
+\renewcommand\cftsecpagefont{\mdseries\liningnumbers}
+% unböld subsection names %
+\renewcommand\cftsubsecfont{\mdseries}
+% unböld subsection folios %
+\renewcommand\cftsubsecpagefont{\mdseries\liningnumbers}
+% unböld subsubsection names %
+\renewcommand\cftsubsubsecfont{\mdseries}
+% unböld subsubsection folios %
+\renewcommand\cftsubsubsecpagefont{\mdseries\liningnumbers}
+}{}
+\makeatother
+
+% list of figures %
+\renewcommand\cftloftitlefont{\listtitlefont}
+% unböld figure caption %
+\renewcommand\cftfigfont{\mdseries}
+% unböld figure folios %
+\renewcommand\cftfigpagefont{\mdseries\liningnumbers}
+
+% list of tables %
+\renewcommand\cftlottitlefont{\listtitlefont}
+% unböld table caption %
+\renewcommand\cfttabfont{\mdseries}
+% unböld table folios %
+\renewcommand\cfttabpagefont{\mdseries\liningnumbers}
+
+
+% blockquotes %
+\AtBeginEnvironment{quote}{\small}
+
+\renewenvironment{quote}{%
+  \list{}{%
+    \leftmargin2em   % this is the adjusting screw
+    \rightmargin2em
+    \setstretch{1.1}
+  }
+  \item\relax
+}
+{\endlist}
+ \AtBeginEnvironment{quote}{\par
+ %\itshape%  % italic blockquotes
+ }
+
+% lists %
+\setlist{leftmargin=2em}
+
+% sidenotes & margin notes %
+% footnotes become numbered sidenotes in the margin column, \marginnote{…} sets an unnumbered note
+\setlength{\marginparpush}{7pt} % spacing between notes
+\makeatletter
+% style of all text in the margin column
+\newcommand\marginstyle{\normalfont\footnotesize\setstretch{1.1}\RaggedRight\parindent\z@\parskip\z@}
+% note number in the text and in the margin
+\newcommand\sidenotemark[1]{\textsuperscript{\liningnumbers#1}}
+
+% \marginpar only works in the main text; floats, minipages, parboxes and table cells use marginnote
+\newif\ifmdtoa@outerpar \mdtoa@outerpartrue
+\appto\@parboxrestore{\mdtoa@outerparfalse}
+\appto\@arrayparboxrestore{\mdtoa@outerparfalse}
+\renewcommand*{\raggedrightmarginnote}{}
+\NewCommandCopy\mdtoa@marginnote\marginnote
+\newcommand\mdtoa@margin[1]{%
+  \@tempswatrue
+  \ifinner\@tempswafalse\fi
+  \ifmdtoa@outerpar\else\@tempswafalse\fi
+  \ifdefined\@captype\@tempswafalse\fi
+  \if@tempswa
+    \marginpar{\marginstyle#1}%
+  \else
+    % marginnote puts notes in the left margin of even pages, the margin column is always on the right
+    \begingroup\@twosidefalse\mdtoa@marginnote{\marginstyle#1}[\z@]\endgroup
+  \fi}
+% notes start with a strut, so their first baseline aligns with the line of the reference
+\newcommand\mdtoa@sidenote[2]{\mdtoa@margin{\strut\sidenotemark{#1}\hspace{.3em}\ignorespaces#2}}
+
+\NewDocumentCommand\mdtoa@footnote{o +m}{%
+  \IfNoValueTF{#1}
+    {\stepcounter{footnote}\protected@edef\mdtoa@num{\thefootnote}}
+    {\begingroup\c@footnote=#1\relax\protected@xdef\mdtoa@num{\thefootnote}\endgroup}%
+  \sidenotemark{\mdtoa@num}%
+  \expandafter\mdtoa@sidenote\expandafter{\mdtoa@num}{#2}}
+% headings: the mark is set in the heading, the note after it (titlesec's \footnote would set it below the heading space)
+\let\mdtoa@headingnotelist\@empty
+\NewDocumentCommand\mdtoa@headingfootnote{o +m}{%
+  \IfNoValueTF{#1}
+    {\stepcounter{footnote}\protected@edef\mdtoa@num{\thefootnote}}
+    {\begingroup\c@footnote=#1\relax\protected@xdef\mdtoa@num{\thefootnote}\endgroup}%
+  \sidenotemark{\mdtoa@num}%
+  \protected@xdef\mdtoa@headingnotelist{%
+    \unexpanded\expandafter{\mdtoa@headingnotelist}%
+    \noexpand\mdtoa@headingnote{\mdtoa@num}{\unexpanded{#2}}}}
+\newcommand\mdtoa@headingnotes{\let\footnote\mdtoa@headingfootnote}
+% in vertical mode after the heading, raised by the depth of its last line and the strut of the note
+\newcommand\mdtoa@headingnote[2]{%
+  \sbox\z@{\marginstyle\strut}%
+  \ifdim\prevdepth<\z@
+    \mparshift{-\ht\z@}%
+  \else
+    \mparshift{-\dimexpr\prevdepth+\ht\z@\relax}%
+  \fi
+  \mdtoa@sidenote{#1}{#2}}
+\newcommand\mdtoa@flushheadingnotes{%
+  \mdtoa@headingnotelist
+  \global\let\mdtoa@headingnotelist\@empty}
+% defined at the begin of the document, after packages have set up their footnotes
+\newcommand\mdtoa@setupnotes{%
+  \let\footnote\mdtoa@footnote
+  \RenewDocumentCommand\footnotemark{o}{%
+    \IfNoValueTF{##1}
+      {\stepcounter{footnote}\sidenotemark{\thefootnote}}
+      {\begingroup\c@footnote=##1\relax\sidenotemark{\thefootnote}\endgroup}}%
+  \RenewDocumentCommand\footnotetext{o +m}{%
+    \IfNoValueTF{##1}
+      {\protected@edef\mdtoa@num{\thefootnote}}
+      {\begingroup\c@footnote=##1\relax\protected@xdef\mdtoa@num{\thefootnote}\endgroup}%
+    \ifvmode\if@noskipsec
+      % note of a run-in heading: set it in the paragraph that starts with the heading
+      \protected@edef\mdtoa@tempa{%
+        \noexpand\AddToHookNext{para/begin}{\noexpand\mdtoa@sidenote{\mdtoa@num}{\unexpanded{##2}}}}%
+      \mdtoa@tempa
+    \else
+      \expandafter\mdtoa@sidenote\expandafter{\mdtoa@num}{##2}%
+    \fi\else
+      \expandafter\mdtoa@sidenote\expandafter{\mdtoa@num}{##2}%
+    \fi}%
+  % \marginnote{text} or \marginnote[offset]{text}, an offset turns off the collision avoidance
+  \RenewDocumentCommand\marginnote{o +m}{%
+    \IfNoValueTF{##1}
+      {\mdtoa@margin{\strut\ignorespaces##2}}
+      {\begingroup\@twosidefalse\mdtoa@marginnote{\marginstyle##2}[##1]\endgroup}}}
+\AtBeginDocument{\mdtoa@setupnotes}
+
+% new thought: opening words in small caps, letterspaced capitals if the font has no small caps
+\ExplSyntaxOn
+\NewDocumentCommand\newthought{m}{
+  \par\addvspace{\baselineskip}\noindent
+  \fontspec_if_feature:nTF {smcp}
+    {{\scshape\addfontfeature{LetterSpace=5}#1}}
+    {{\footnotesize\addfontfeature{LetterSpace=10}\MakeUppercase{#1}}}
+}
+\ExplSyntaxOff
+
+% full width: text, tables and figures across text and margin column
+\newif\ifmdtoa@fullwidth
+\newenvironment{fullwidth}{%
+  \par
+  \blockmargin % keeps margin notes out of the full width
+  \hsize\dimexpr\columnwidth+\marginparsep+\marginparwidth\relax
+  \linewidth\hsize
+  \mdtoa@fullwidthtrue
+  \mdtoa@margincaptionsfalse}
+  {\par\unblockmargin}
+% floats reset their width to the text column
+\newcommand\mdtoa@fullwidthfloat{%
+  \ifmdtoa@fullwidth
+    \hsize\dimexpr\columnwidth+\marginparsep+\marginparwidth\relax
+    \linewidth\hsize
+  \fi}
+\AtBeginDocument{\appto\@floatboxreset{\mdtoa@fullwidthfloat}}
+
+% figures & tables in the margin column, a figure environment inside sets its contents in place
+% the top aligns with the capitals of the text line
+\newlength\mdtoa@capheight
+\newcommand\mdtoa@marginfloat[2]{% #1 figure or table, #2 contents
+  \mdtoa@capheight=\fontcharht\font`H\relax
+  \mdtoa@margin{%
+    \vskip-\mdtoa@capheight
+    \def\@captype{#1}%
+    \renewenvironment{#1}[1][]{}{}%
+    \mdtoa@margincaptionsfalse
+    \captionsetup{hypcap=false}%
+    #2}}
+\NewDocumentEnvironment{marginfigure}{+b}{\mdtoa@marginfloat{figure}{#1}}{}
+\NewDocumentEnvironment{margintable}{+b}{\mdtoa@marginfloat{table}{#1}}{}
+
+% figure captions in the margin column, the last line aligned with the bottom of the figure
+\newif\ifmdtoa@margincaptions \mdtoa@margincaptionstrue
+\newlength\mdtoa@captionraise
+\newsavebox\mdtoa@captionbox
+\let\mdtoa@captionargs\relax
+\newcommand\mdtoa@figurebegin{%
+  \let\centering\relax % figures flush left
+  \ifmdtoa@margincaptions
+    \DeclareCommandCopy\mdtoa@caption\caption
+    \DeclareCommandCopy\mdtoa@label\label
+    \let\mdtoa@captionlabels\@empty
+    % store the caption and the labels following it, set them at the end of the figure
+    \RenewDocumentCommand\caption{o +m}{%
+      \par % ends the paragraph of the figure, as \caption does
+      \IfNoValueTF{##1}
+        {\def\mdtoa@captionargs{\mdtoa@caption{##2}}}
+        {\def\mdtoa@captionargs{\mdtoa@caption[##1]{##2}}}%
+      \RenewDocumentCommand\label{m}{\appto\mdtoa@captionlabels{\mdtoa@label{####1}}}}%
+  \fi}
+\newcommand\mdtoa@figureend{%
+  \ifx\mdtoa@captionargs\relax\else
+    \par
+    % baseline of the last line of the figure
+    \mdtoa@captionraise=\prevdepth
+    \ifdim\mdtoa@captionraise<\z@ \mdtoa@captionraise=\z@\fi
+    % caption box with the baseline of its last line at the bottom, takes no space
+    \sbox\mdtoa@captionbox{\parbox[b]{\marginparwidth}{%
+      \captionsetup{position=below,skip=\z@}%
+      \mdtoa@captionargs\mdtoa@captionlabels\par
+      \ifdim\prevdepth>\z@\vskip-\prevdepth\fi}}%
+    % figures placed here [H] keep margin notes out of the caption, see \mdtoa@figureafter
+    \ifx\@currbox\float@box
+      \xdef\mdtoa@captionspace{\the\dimexpr\ht\mdtoa@captionbox+\mdtoa@captionraise\relax}%
+    \fi
+    \ht\mdtoa@captionbox\z@ \dp\mdtoa@captionbox\z@
+    \nointerlineskip
+    \hbox to\z@{%
+      \hskip\dimexpr\linewidth+\marginparsep\relax
+      \raise\mdtoa@captionraise\box\mdtoa@captionbox
+      \hss}%
+  \fi}
+% directly after the box of a [H] figure, reserve the caption's space in the margin
+\newcommand\mdtoa@figureafter{%
+  \ifx\mdtoa@captionspace\relax\else
+    \marginphantom[-\mdtoa@captionspace]{\mdtoa@captionspace}%
+    \global\let\mdtoa@captionspace\relax
+  \fi}
+\let\mdtoa@captionspace\relax
+\AtBeginDocument{%
+  \ifdefined\float@endH
+    \patchcmd{\float@endH}{\box\@currbox}{\box\@currbox\mdtoa@figureafter}{}%
+      {\@latex@warning@no@line{linear-tufte: margin notes may overlap figure captions}}%
+  \fi}
+\AtBeginEnvironment{figure}{\mdtoa@figurebegin}
+\AtEndEnvironment{figure}{\mdtoa@figureend}
+\makeatother
+
+% images %
+$if(graphics)$
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+% Make use of float-package and set default placement for figures to H.
+% The option H means 'PUT IT HERE' (as  opposed to the standard h option which means 'You may put it here if you like').
+\usepackage{float}
+\floatplacement{figure}{$if(float-placement-figure)$$float-placement-figure$$else$H$endif$}
+\makeatother
+$endif$
+
+% lists %
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% leftaligned captions
+\captionsetup{justification   = RaggedRight,
+              singlelinecheck = false,
+              font={rm,up,md,footnotesize,stretch=1.1}}
+
+% bibliography style %
+$if(csl-refs)$
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+\begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+% allow citations to break across lines
+\let\@cite@ofmt\@firstofone
+% avoid brackets around text for \cite:
+\def\@biblabel#1{}
+\def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+{\raggedright\begin{list}{}{%
+	\setlength{\itemindent}{0pt}
+	\setlength{\leftmargin}{0pt}
+	\setlength{\parsep}{0pt}
+	% turn on hanging indent if param 1 is 1
+	\ifodd #1
+	\setlength{\leftmargin}{\cslhangindent}
+	\setlength{\itemindent}{-1\cslhangindent}
+	\fi
+	% set entry spacing
+	\setlength{\itemsep}{#2\baselineskip}}}
+{\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+\urlstyle{same}
+
+\raggedbottom % prevents \flushbottom when using twoside option
+
+%----------%
+% document %
+\begin{document}
+
+$if(title)$
+\maketitle
+\thispagestyle{empty}
+$endif$
+
+\ifbool{isreport}{
+$if(abstract)$
+\chapter*{Abstract}
+    \begin{abstract}
+    $abstract$
+    \end{abstract}
+$endif$
+}{}
+
+\ifbool{isarticle}{
+$if(abstract)$
+\section*{Abstract}
+    \begin{abstract}
+    $abstract$
+    \end{abstract}
+$endif$
+}{}
+
+\ifbool{isbook}{
+$if(abstract)$
+\chapter*{Abstract}
+  $abstract$
+$endif$
+}{}
+
+\ifbool{isreport}{\pagebreak}{}
+\ifbool{isarticle}{
+$if(titlepage)$
+\pagebreak
+$endif$
+}{}
+
+$if(toc)$
+\tableofcontents
+$endif$
+
+$body$
+
+\ifbool{isreport}{
+$if(lof)$
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+$endif$
+}{}
+
+\ifbool{isarticle}{
+$if(lof)$
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+$endif$
+}{}
+
+\ifbool{isbook}{
+$if(lof)$
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+$endif$
+}{}
+
+\ifbool{isreport}{
+$if(lot)$
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+$endif$
+}{}
+
+\ifbool{isarticle}{
+$if(lot)$
+\addcontentsline{toc}{section}{\listtablename}
+\listoftables
+$endif$
+}{}
+
+\ifbool{isbook}{
+$if(lot)$
+\addcontentsline{toc}{section}{\listtablename}
+\listoftables
+$endif$
+}{}
+
+
+\ifbool{isreport}{
+$if(apx)$
+\appendix
+\chapter{Appendix}
+\includepdf[pages=-]{$apx$}
+$endif$
+}{}
+
+\ifbool{isarticle}{
+$if(apx)$
+\appendix
+\section{Appendix}
+\includepdf[pages=-]{$apx$}
+$endif$
+}{}
+
+\end{document}

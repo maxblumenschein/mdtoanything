@@ -72,7 +72,10 @@ Custom high-quality fonts are used for typesetting:
     - Söhne
     - LL Bradford
     - LL Bradford Mono
-3. ``letter.latex``:
+3. ``linear-tufte.latex``:
+    - LL Bradford
+    - LL Bradford Mono
+4. ``letter.latex``:
     - ABC Social
     - ABC Social Extended
 
@@ -128,7 +131,7 @@ csl: "https://raw.githubusercontent.com/maxblumenschein/slick-csl/main/me.csl"
 
 Available YAML-variables vary from template to template. For a full list see below:
 
-### General (info.latex, linear.latex, letter.latex)
+### General (info.latex, linear.latex, linear-tufte.latex, letter.latex)
 
 ```yaml
 title: main title
@@ -159,6 +162,38 @@ cref: latex cross-referencing [true,false]
 ```yaml
 titlepage: inserts a page break after the titlepage [true,false]
 ```
+
+### linear-tufte.latex
+
+A variation of ``linear.latex`` after Edward Tufte's books ([tufte-latex](https://github.com/tufte-latex/tufte-latex), [tufte-css](https://github.com/edwardtufte/tufte-css)): a narrower text column with a wide margin column on the right, ragged-right text, headings in Bradford italic. Footnotes become sidenotes in the margin, next to the line they belong to, and figure captions are set in the margin beside the figure. Headings are not numbered unless ``numdepth`` is set.
+
+It takes the same YAML variables as ``linear.latex``. The margin can also be used with LaTeX inside the Markdown file:
+
+```latex
+\marginnote{Unnumbered note in the margin.}
+\newthought{The opening words} of a paragraph in small caps.
+```
+
+Environments, written as raw LaTeX blocks:
+
+- ``fullwidth``: text, tables and figures across the text and the margin column.
+- ``marginfigure`` and ``margintable``: a small figure or table in the margin, written in LaTeX (``\includegraphics``, ``tabular``, ``\caption``).
+
+````markdown
+```{=latex}
+\begin{fullwidth}
+```
+
+This paragraph and the figure below span the full width.
+
+![A wide figure.](figure.jpg)
+
+```{=latex}
+\end{fullwidth}
+```
+````
+
+Notes are kept on the page: when the margin is full, they move up or on to the next page instead of running off the bottom.
 
 ### letter.latex
 

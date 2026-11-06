@@ -15,8 +15,8 @@ PANDOC_TEMPLATES="$HOME/.pandoc/templates"
 # LaTeX packages for BasicTeX (MacTeX already includes everything)
 TL_PACKAGES="adjustbox collectbox appendix babel-german babel-english hyphen-german
 booktabs caption cleveref enumitem environ eso-pic etoolbox fancyhdr float fontspec
-footmisc geometry hyperref iflang koma-script lastpage lm luaotfload mdframed
-microtype needspace pdfcol pdfpages pgf pgfplots ragged2e setspace soul tcolorbox
+footmisc geometry hyperref iflang koma-script lastpage lm luaotfload marginfix
+marginnote mdframed microtype needspace pdfcol pdfpages pgf pgfplots ragged2e setspace soul tcolorbox
 textpos titlesec titling tocloft trimspaces ulem url wrapfig xcolor xpatch zref"
 
 # Output helpers

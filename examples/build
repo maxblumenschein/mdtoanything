@@ -5,18 +5,21 @@ cd "$SCRIPT_DIR"
 
 # Make resources/ visible to the TeX engine for \input{user_variables_definition}
 export TEXINPUTS="$SCRIPT_DIR/resources:$TEXINPUTS"
-export OSFONTDIR="$HOME/Library/Fonts"
+
+# Link fonts activated by a font manager and set OSFONTDIR, as pandoc_convert does
+. "$SCRIPT_DIR/../script/pandoc_convert.sh"
 
 # When pandoc-crossref and citeproc are both needed, run them in two separate
 # passes to avoid citeproc failing to resolve in-footnote citations.
 # Pass 1: pandoc-crossref (JSON); Pass 2: citeproc + template + pdf-engine.
+# pandoc-crossref runs in pipe mode, told the target format (latex): as a filter
+# of the JSON pass it would number captions and references itself ("Figure 1:").
 
 # LINEAR
 pandoc "text_example.md" \
   -t json \
-  --filter pandoc-crossref \
-  --resource-path=".:resources" \
-  -o /tmp/_linear_crossref.json 2>&1
+  --resource-path=".:resources" |
+  pandoc-crossref --pipe latex > /tmp/_linear_crossref.json
 
 pandoc /tmp/_linear_crossref.json \
   -f json \
@@ -27,12 +30,26 @@ pandoc /tmp/_linear_crossref.json \
   --standalone \
   --resource-path=".:resources"
 
+# LINEAR-TUFTE
+pandoc "text_example.md" \
+  -t json \
+  --resource-path=".:resources" |
+  pandoc-crossref --pipe latex > /tmp/_linear-tufte_crossref.json
+
+pandoc /tmp/_linear-tufte_crossref.json \
+  -f json \
+  -o "output/linear-tufte_example.pdf" \
+  --template="../latex templates/linear-tufte.latex" \
+  --pdf-engine="lualatex" \
+  --citeproc \
+  --standalone \
+  --resource-path=".:resources"
+
 # INFO
 pandoc "text_example.md" \
   -t json \
-  --filter pandoc-crossref \
-  --resource-path=".:resources" \
-  -o /tmp/_info_crossref.json 2>&1
+  --resource-path=".:resources" |
+  pandoc-crossref --pipe latex > /tmp/_info_crossref.json
 
 pandoc /tmp/_info_crossref.json \
   -f json \
