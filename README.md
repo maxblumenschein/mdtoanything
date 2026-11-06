@@ -212,7 +212,7 @@ skills: inserts author´s skills info [e.g. "English C1"]
 ## Scripting
 
 The Bash script ``pandoc_convert.sh`` inside ``/script`` converts from and to the common formats ``.pdf``, ``.docx`` and ``.icml``. It allows easy control over file conversion for various formats while automating common Pandoc tasks and setting necessary arguments.
-It prompts the user for a input file path, output path (defaulting to the input path if left blank), output format and desired template (if needed).
+It prompts the user for an input file path, output format, desired template (if needed) and output path. Formats and templates are picked from a menu with the arrow keys or Tab, file paths complete with Tab, and pressing Return accepts the shown default.
 
 ### Setup
 
